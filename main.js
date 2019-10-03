@@ -21,6 +21,27 @@ class Revisorhus {
             this.revisore[i].printInfo();
         }
     }
+
+    //Load tidspunkter og formater kalender for en måned
+    loadMonth(){
+
+    }
+
+    //Opdaterer siden når en aftale er tilføjet / Ændret
+    updateMonth(){
+
+    }
+
+    //Create new revisor and add it to this revisorhus
+    newRevisor(){
+
+    }
+
+    //Create new meeting and assign to a revisor
+    newMeeting(revisor, start, slut){
+
+    }
+
 }
 
 class Revisor {
@@ -61,6 +82,16 @@ class Meeting {
         //1000 (ms) * 60 (seconds) * 60 (minutes) to get the time difference in hours
         var differenceInHours = (this.endTime.getTime() - this.startTime.getTime()) / (1000 * 60 * 60);
         console.log('Mødet varer: ' + differenceInHours + ' timer');
+    }
+
+
+    deleteMeeting(){
+
+    }
+
+    //Inspiration: https://stackoverflow.com/a/11796776
+    changeMeeting(args) {
+
     }
 }
 
@@ -106,3 +137,5 @@ function loadData(){
     //Skal kunne loade data fra både arrays og fra local data
     //Se: https://stackoverflow.com/a/2010948
 }
+
+
