@@ -1,0 +1,21 @@
+.calendercontainer,
+.calendercontainer div{
+    box-sizing: border-box;
+}
+.ugedage, .dage{
+    width: 700px;
+    display: inline-block;
+    flex-wrap: nowrap;
+}
+.ugedage .ugedag{
+    width: 100px;
+    display: block;
+    float: left;
+}
+.dage .dag{
+    display: block;
+    float: left;
+    width: 100px;
+    height: 50px;
+    border: 1px solid red;
+}
