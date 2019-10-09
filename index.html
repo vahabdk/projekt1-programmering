@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Projekt 0</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="calendercontainer">
+        <div class="måned">
+            <span id="månedVenstre"><</span>
+            <span id="månedNavn"></span>
+            <span id="månedHøjre">></span>
+        </div>
+        <div class="ugedage">
+            <div class="ugedag mandag">M</div>
+            <div class="ugedag tirsdag">T</div>
+            <div class="ugedag onsdag">O</div>
+            <div class="ugedag torsdag">T</div>
+            <div class="ugedag fredrag">F</div>
+            <div class="ugedag lørdag">L</div>
+            <div class="ugedag søndag">S</div>
+        </div>
+        <div class="dage">
+
+        </div>
+    </div>
+
+    <script src="Kalender.js"></script>
+
+    <script>
+        var k = new Kalender();
+        k.initKalender();
+
+        document.getElementById('månedVenstre').addEventListener('click', function(){
+            k.updateMonth('venstre');
+        });
+        document.getElementById('månedHøjre').addEventListener('click', function(){
+            k.updateMonth('højre');
+        });
+    </script>
+
+</body>
+</html>
