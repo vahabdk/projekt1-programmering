@@ -16,9 +16,6 @@ class Revisorhus {
         this.revisorer.push(revisor);
     }
 
-    removeRevisor(revisor) {
-        this.revisor.remove(revisor);
-    }
 
 }
 
@@ -27,4 +24,9 @@ revhus.setRevisorhus("Birkholm Revision");
 
 revhus.addRevisor("Kristian");
 revhus.addRevisor("Jacob");
-console.log(revhus.getRevisorer());
+revhus.addRevisor("Jacob");
+revhus.addRevisor("Jacob");
+revhus.addRevisor("Jacob");
+revhus.addRevisor("Jacob");
+
+console.log(revhus.getRevisorhusInfo() + " er et revisorhus med følgende revisorer: " + revhus.getRevisorer());
