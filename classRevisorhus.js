@@ -21,17 +21,17 @@ class Revisorhus {
         return this.revisorhusInfo;
     }
 
-    //For at kunne ændre i navnet tilføjes en get function
+    //For at kunne hente revisorerne samlet, tilføjes en get function
     getRevisorer() {
         return this.revisorer;
     }
-    //Laver en function for at kunne tilføje flere revisorer ved bare at skrive add.revisor("navn");
+    //Laver en function for at kunne tilføje flere revisorer ved at skrive add.revisor("navn");
     addRevisor(revisor) {
         this.revisorer.push(revisor);
     }
 }
 
-//Laver en reference til revisorhusklassen, så den er nem at påkalde.
+//Laver en reference til revisorhusklassen, så den kan påkaldes.
 revhus = new Revisorhus("Birkholm Revision");
 
 //Her anvendes den function som blev lavet oppe i klassen.
