@@ -8,11 +8,11 @@ class Revisorhus {
     getRevisorhusInfo() {
         return this.revisorhusInfo;
     }
-    //For at kunne ændre i navnet tilføjes get en get function
+    //For at kunne ændre i navnet tilføjes en get function
     getRevisorer() {
         return this.revisorer;
     }
-    //Laver en function for at kunne tilføje flere revisorer uden for denne klasse
+    //Laver en function for at kunne tilføje flere revisorer ved bare at skrive add.revisor("navn");
     addRevisor(revisor) {
         this.revisorer.push(revisor);
     }
