@@ -16,7 +16,6 @@ class Revisorhus {
         this.revisorer.push(revisor);
     }
 
-
 }
 
 let revhus = new Revisorhus();
