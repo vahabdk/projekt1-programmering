@@ -25,7 +25,7 @@ class Revisorhus {
     getRevisorer() {
         return this.revisorer;
     }
-    //Laver en function for at kunne tilføje flere revisorer ved at skrive add.revisor("navn");
+    //Laver en function for at kunne tilføje flere revisorer så det derved er muligt at skrive add.revisor("navn");
     addRevisor(revisor) {
         this.revisorer.push(revisor);
     }
