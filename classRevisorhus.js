@@ -19,11 +19,13 @@ class Revisorhus {
 
 }
 
-//Ti
+//Her påkaldes getfunctionen med set
 let revhus = new Revisorhus();
 revhus.setRevisorhus("Birkholm Revision");
 
+//Revisorerne benytter add functionen, som er lavet oppe i klassen
 revhus.addRevisor("Kristian");
 revhus.addRevisor("Jacob");
 
+//Test af at det virker
 console.log(revhus.getRevisorhusInfo() + " er et revisorhus med følgende revisorer: " + revhus.getRevisorer());
