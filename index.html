@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Projekt 0</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="calendercontainer">
+        <div class="måned">
+            <div class="årvælgerContainer">
+                <span id="årVenstre"><</span>
+                <span id="år"></span>
+                <span id="årHøjre">></span>
+            </div>
+            <div class="månedvælgerContainer">
+                <div class="månedKnap" data-måned="0">Jan</div>
+                <div class="månedKnap" data-måned="1">Feb</div>
+                <div class="månedKnap" data-måned="2">Mar</div>
+                <div class="månedKnap" data-måned="3">Apr</div>
+                <div class="månedKnap" data-måned="4">Maj</div>
+                <div class="månedKnap" data-måned="5">Jun</div>
+                <div class="månedKnap" data-måned="6">Jul</div>
+                <div class="månedKnap" data-måned="7">Aug</div>
+                <div class="månedKnap" data-måned="8">Sep</div>
+                <div class="månedKnap" data-måned="9">Okt</div>
+                <div class="månedKnap" data-måned="10">Nov</div>
+                <div class="månedKnap" data-måned="11">Dec</div>
+
+            </div>
+            <span id="månedNavn"></span>
+        </div>
+        <div class="ugedage">
+            <div class="ugedag mandag">Man</div>
+            <div class="ugedag tirsdag">Tir</div>
+            <div class="ugedag onsdag">Ons</div>
+            <div class="ugedag torsdag">Tor</div>
+            <div class="ugedag fredrag">Fre</div>
+            <div class="ugedag lørdag">Lør</div>
+            <div class="ugedag søndag">Søn</div>
+        </div>
+        <div class="dage">
+        </div>
+        <div id="tidsplan">
+            <div class="venstreSide">
+                <span id="tidsplanUgedag"></span>
+                <span id="tidsplanDato"></span>
+            </div>
+            <div class="højreSide">
+                <h3 class="titel">Vælg en ledig tid</h3>
+                <div id="tiderContainer">
+                    <span class="tidspunkt">12:00 - 12:30</span>
+                    <span class="tidspunkt">12:30 - 13:00</span>
+                    <span class="tidspunkt">13:00 - 13:30</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="Kalender.js"></script>
+
+    <script>
+        var k = new Kalender();
+        k.initKalender();
+
+        //TIlføj eventhandler for måned-knapper, så kalenderen kan opdateres når der vælges en ny måned
+        var månedknapper = document.getElementsByClassName('månedKnap');
+        for (var i = 0; i<månedknapper.length; i++){
+            månedknapper[i].addEventListener('click', function(){
+                console.log('Knap klikket');
+                k.updateMonth(this.getAttribute('data-måned'));
+            });
+        }
+
+        //Tilføj clikhandler for de to pile, til at vælge et nyt år
+        document.getElementById('årVenstre').addEventListener('click', function(){
+            k.updateÅr(-1);
+        });
+        document.getElementById('årHøjre').addEventListener('click', function(){
+            k.updateÅr(1);
+        });
+
+        var månedknapper = document.getElementsByClassName('månedKnap');
+        for (var i = 0; i<månedknapper.length; i++){
+            månedknapper[i].addEventListener('click', function(){
+                console.log('Knap klikket');
+                k.updateMonth(this.getAttribute('data-måned'));
+            });
+        }
+
+        //Tilføjer eventlistener til dynamisk tilføjede elementer (altså via javascript), hvilket ugedagene er
+        //Kilde: https://stackoverflow.com/a/27373951
+        document.addEventListener('click', function (e) {
+            if (e.target.classList.contains('iMåneden')) {
+                k.opdaterTidsplan(e.target);
+            }
+        });
+    </script>
+
+</body>
+</html>

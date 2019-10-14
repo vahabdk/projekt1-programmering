@@ -1,0 +1,151 @@
+body{
+    background-color: rgb(250, 250, 250);
+}
+.calendercontainer{
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: block;
+    width: 500px;
+    margin-top: 100px;
+    padding: 24px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    background-color: white;
+}
+.calendercontainer,
+.calendercontainer div{
+    box-sizing: border-box;
+}
+.calendercontainer * {
+    font-family: 'Roboto', 'roboto', sans-serif;
+}
+.måned{
+    display: block;
+    width: auto;
+}
+.årvælgerContainer{
+    display: block;
+    text-align: center;
+}
+#år{
+    display: inline-block;
+    font-weight: 700;
+    font-size: 14px;
+    color: rgb(130, 130, 130);
+}
+#årVenstre,
+#årHøjre{
+    cursor: pointer;
+    display: block;
+    float: left;
+    font-weight: 700;
+    color: rgb(130, 130, 130);
+}
+#årHøjre{
+    float: right;
+}
+.månedvælgerContainer{
+    padding: 32px 0 24px;
+}
+.månedvælgerContainer div{
+    display: block;
+    float: left;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-align: center;
+    color: rgb(140, 140, 140);
+    width: calc(100% / 12);
+    cursor: pointer;
+}
+#månedNavn{
+    display: block;
+    text-align: center;
+    font-weight: 500;
+    font-size: 28px;
+    color: rgb(30, 30, 30);
+    padding: 24px 0 8px 0;
+}
+
+.ugedage{
+    margin-bottom: -4px;
+    padding: 12px 0 8px;
+}
+.ugedage, .dage{
+    width: 100%;
+    display: inline-block;
+}
+.ugedage .ugedag{
+    width: calc(100% / 7);
+    display: block;
+    float: left;
+    font-weight: 300;
+    text-align: center;
+}
+.dage .dag{
+    display: block;
+    float: left;
+    width: calc(100% / 7);
+    height: 50px;
+    line-height: 50px;
+    transition-duration: 0.5s;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+}
+.dage .dag.ledig{
+    background-color: rgb(240, 255, 240);
+}
+.dage .dag.ledig:hover{
+    background-color: rgb(170, 255, 170);
+}
+.dage .dag.optaget{
+    background-color: rgb(255, 230, 230);
+}
+.dage .dag.ikkeImåneden {
+    cursor: default;
+}
+
+
+#tidsplan{
+    display: none;
+    margin-top: 34px;
+    padding-top: 20px;
+    border-top: 3px solid rgb(170, 170, 170);
+}
+#tidsplan .venstreSide{
+    display: inline-block;
+    width: 33%;
+}
+#tidsplan .venstreSide #tidsplanUgedag{
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    color: rgb(120, 120, 120);
+}
+#tidsplan .venstreSide #tidsplanDato{
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
+    color: rgb(60, 60, 60);
+}
+#tidsplan .højreSide{
+    display: inline-block;
+    width: 66%;
+}
+#tidsplan .højreSide h3{
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+}
+#tidsplan .højreSide #tiderContainer{
+    display: inline-block;
+    width: 100%;
+    min-height: 150px;
+}
+#tidsplan #tiderContainer .tidspunkt{
+    display: block;
+    margin: 12px 0;
+    cursor: pointer;
+    font-weight: 700;
+    color: rgb(80, 80, 80);
+}

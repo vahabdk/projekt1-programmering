@@ -149,7 +149,7 @@ peter.addMeeting(meeting1);
 //peter.printInfo();
 
 //Lav revisorhus
-revisorCentralen = new Revisorhus ("")
+revisorCentralen = new Revisorhus('Revisorcentralen');
 revisorCentralen.addRevisor(peter);
 revisorCentralen.printInfo();
 
