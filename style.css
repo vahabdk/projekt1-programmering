@@ -100,6 +100,7 @@ body{
 }
 .dage .dag.optaget{
     background-color: rgb(255, 230, 230);
+    cursor: default;
 }
 .dage .dag.ikkeImåneden {
     cursor: default;
