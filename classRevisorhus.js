@@ -1,13 +1,26 @@
 class Revisorhus {
 
-    setRevisorhus(revisorhusInfo) {
+    constructor(revisorhusInfo) {
         this.revisorhusInfo = revisorhusInfo;
         this.revisorer = [];
     }
-    //For at kunne ændre i nanvet på revisorhuset, tilføjes en get function
+
+    //For at udskrive al info omkring revisorer, hentes info fra klassen revisorer, som findes i et andet js dokument. getinfo skal erstattes med korrekt reference
+    getInfo() {
+        var text = "";
+        text = this.revisorhusInfo + "<br/>";
+
+        for (i = 0; i < this.revisorer.length; i++) {
+            text += this.revisorer[i].getinfo() + "<br/>";
+        }
+        return text;
+    }
+
+    //Laver en function for at kunne kalde på revisorhuset
     getRevisorhusInfo() {
         return this.revisorhusInfo;
     }
+
     //For at kunne ændre i navnet tilføjes en get function
     getRevisorer() {
         return this.revisorer;
@@ -16,16 +29,15 @@ class Revisorhus {
     addRevisor(revisor) {
         this.revisorer.push(revisor);
     }
-
 }
 
-//Her påkaldes getfunctionen med set
-let revhus = new Revisorhus();
-revhus.setRevisorhus("Birkholm Revision");
+//Laver en reference til revisorhusklassen, så den er nem at påkalde.
+revhus = new Revisorhus("Birkholm Revision");
 
-//Revisorerne benytter add functionen, som er lavet oppe i klassen
+//Her anvendes den function som blev lavet oppe i klassen.
 revhus.addRevisor("Kristian");
 revhus.addRevisor("Jacob");
+revhus.addRevisor("Andreas");
 
 //Test af at det virker
 console.log(revhus.getRevisorhusInfo() + " er et revisorhus med følgende revisorer: " + revhus.getRevisorer());
