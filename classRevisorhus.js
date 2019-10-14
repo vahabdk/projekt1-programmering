@@ -24,9 +24,5 @@ revhus.setRevisorhus("Birkholm Revision");
 
 revhus.addRevisor("Kristian");
 revhus.addRevisor("Jacob");
-revhus.addRevisor("Jacob");
-revhus.addRevisor("Jacob");
-revhus.addRevisor("Jacob");
-revhus.addRevisor("Jacob");
 
 console.log(revhus.getRevisorhusInfo() + " er et revisorhus med følgende revisorer: " + revhus.getRevisorer());
