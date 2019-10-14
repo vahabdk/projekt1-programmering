@@ -68,5 +68,28 @@ class kortMøde extends Møde {
 
     }
 }
-
 møde2 = new kortMøde(start);
+
+
+}
+class Kundenavn {
+
+    set Kundenavn(Navn) {
+        this.navn = Kundenavn;
+    }
+
+    get Kundenavn() {
+        return this.navn;
+    }
+}
+class kommentar {
+    set Kommentar(kommentar){
+        this.kommentar = "";
+        }
+
+     get Kommentar(){
+        return this.kommentar;
+     }
+}
+var event() = møde1 &&|| møde2;
+
