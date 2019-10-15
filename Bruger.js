@@ -13,7 +13,7 @@ class Bruger {
     vismoeder (){
     console.log(moeder);
     for(var i=0; i<this.moeder.length; i++){
-        console.log("Møde " + i + "\n" + this.moeder[i].startTime + "-" + this.moeder[i].endTime);
+        console.log("Møde" + i + "\n" + this.moeder[i].startTime + "-" + this.moeder[i].endTime);
     }
 
 }
