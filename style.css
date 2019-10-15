@@ -149,3 +149,8 @@ body{
     font-weight: 700;
     color: rgb(80, 80, 80);
 }
+
+/*login styles */
+#loginError{
+    color: red;
+}
