@@ -56,7 +56,7 @@ møde1.printTime();
 
 console.log(møde1.mødeLængde());
 
-// dette for at gøre brugeren opmærksom på den tid der er til rådighed
+// dette for at gøre opmærksom på den tid der er til rådighed
 if (møde1.mødeLængde() <= 0.5){
     console.log('30 minutter');
 }

@@ -1,5 +1,3 @@
-
-
 class Bruger {
     constructor(navn, revisor){
         this.brugernavn = navn;
