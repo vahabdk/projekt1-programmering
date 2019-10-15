@@ -1,14 +1,29 @@
 body{
     background-color: rgb(250, 250, 250);
 }
-.optionContainer{
-    display: flex;
+/*.optionContainer{
+    position: absolute;
+    top: 20%;
+    left: 25%;
+    transform: translate(-50%, -50%);
     float: left;
+
+}
+
+ */
+.optionContainer{
+    position: absolute;
+    top: 20%;
+    left: 25%;
 }
 
 .calendercontainer{
-    display: block;
-    float: ;
+   /* for at centrere kalenderen bruges disse fire linjer. https://css-tricks.com/quick-css-trick-how-to-center-an-object-exactly-in-the-center/ */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
     width: 500px;
     padding: 24px;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
