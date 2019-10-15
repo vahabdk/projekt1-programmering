@@ -1,21 +1,23 @@
 //Lav dummydata
-var idag = new Date();
-var imorgen = new Date;
+var imorgen = new Date();
 imorgen.setDate(imorgen.getDate() + 1);
 
-var møde1 = new langMøde(idag);
+var startPeter = 8;
+var slutPeter = 16;
+
 var møde2 = new kortMøde(imorgen);
 
-var peter = new Revisor('Peter', [møde1, møde2]);
-console.log(peter.getMøder());
+var peter = new Revisor('Peter', [], startPeter, slutPeter);
+
+var idag = new Date();
+for(var i=startPeter; i<slutPeter - 1; i++){
+    peter.tilføjMøder(new langMøde(new Date(idag.getFullYear(), idag.getMonth(), idag.getDate(), i, 0, 0, 0)));
+}
 
 var r1 = new Revisorhus('Revisorcentralen');
 r1.addRevisor(peter);
 
-
 var k = new Kalender(r1, r1.getRevisorer()[0]);
-
-
 
 
 

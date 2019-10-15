@@ -131,7 +131,6 @@ class Kalender {
 
     //Opdatér tidsplanen så den viser de rette oplysninger
     opdaterTidsplan(element){
-
         //Opret et Date objekt for den dato der trykkes på
         var elementDato = new Date(this.måned.getFullYear(), this.måned.getMonth(), element.innerText);
 
@@ -139,8 +138,7 @@ class Kalender {
         var ugedag = this.ugedage[elementDato.getDay()];
 
         var tiderContainer = document.getElementById('tiderContainer');
-
-        console.log(elementDato);
+        var mødeLængde = Number(document.getElementById('mødeOption').value);
 
         //Gør tidsplanen synlig
         document.getElementById('tidsplan').style.display = 'flex';
@@ -156,16 +154,47 @@ class Kalender {
             this.månedNavne[elementDato.getMonth()] + ' ' + elementDato.getFullYear();
 
 
-        //Load tider ind i tidsplanen
-        for(var i=0; i<this.møderDenneMåned.length; i++){
-            if(this.møderDenneMåned[i].getStartTid().getDate() == dag){
-                var startTidspunkt = this.møderDenneMåned[i].getStartTid().getHours() + ':' + this.møderDenneMåned[i].getStartTid().getMinutes();
-                var slutTidspunkt = this.møderDenneMåned[i].getSlutTid().getHours() + ':' + this.møderDenneMåned[i].getSlutTid().getMinutes();
+        var tiderPåDagen = [];
+        //for(var i=this.visKalenderFor.getStartdag(); i<this.visKalenderFor.getSlutdag(); i += mødeLængde){
+        for(var i=this.visKalenderFor.getStartdag(); i<this.visKalenderFor.getSlutdag(); i += mødeLængde){
+            tiderPåDagen.push(i);
+            console.log(i);
+        }
 
-                var tidspunkt = document.createElement('span');
-                tidspunkt.className = 'tidspunkt';
-                tidspunkt.innerHTML = startTidspunkt + ' - ' + slutTidspunkt;
-                tiderContainer.appendChild(tidspunkt);
+        //Gennemgå de møder der er
+        for(var i=0; i<this.møderDenneMåned.length; i++){
+            //Gennemgå de tider der er i dag
+            if(this.møderDenneMåned[i].getStartTid().getDate() == dag) {
+                //Fjern de tider, som allerede er optaget
+                for (var j = 0; i < tiderPåDagen.length; i++) {
+                    //console.log('Tidspunkt for møde denne måned: ' + this.møderDenneMåned[i].getStartTid().getHours());
+                    var index = tiderPåDagen.indexOf(this.møderDenneMåned[i].getStartTid().getHours());
+                    if(index != -1){
+                        tiderPåDagen.splice(index, 1);
+                    }
+                }
+            }
+        }
+
+        console.log(tiderPåDagen);
+
+        //Hvis mødet er på dagen, fjernes tidspunktet fra tidsplanen
+        /*if(this.møderDenneMåned[i].getStartTid().getDate() == dag && false){
+            var startTidspunkt = tilToTal(this.møderDenneMåned[i].getStartTid().getHours()) + ':' + tilToTal(this.møderDenneMåned[i].getStartTid().getMinutes());
+            var slutTidspunkt = tilToTal(this.møderDenneMåned[i].getSlutTid().getHours()) + ':' + tilToTal(this.møderDenneMåned[i].getSlutTid().getMinutes());
+
+            var tidspunkt = document.createElement('span');
+            tidspunkt.className = 'tidspunkt';
+            tidspunkt.innerHTML = startTidspunkt + ' - ' + slutTidspunkt;
+            tiderContainer.appendChild(tidspunkt);
+        }*/
+
+        //Sørger for der er 2 tal i et tal, så der fx står 08:00 i stedet for 8:0
+        function tilToTal(t){
+            if(t.toString().length == 1){
+                return '0' + t;
+            } else {
+                return t;
             }
         }
     }
