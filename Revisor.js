@@ -1,7 +1,9 @@
 class Revisor {
-    constructor(navn){
+    constructor(navn, møder = [], startdag, slutdag){
         this.revisorNavn = navn;
-        this.møder = [];
+        this.møder = møder;
+        this.startdag = startdag;
+        this.slutdag = slutdag;
     }
     tilføjMøder (møde) {
         this.møder.push(møde);
@@ -28,6 +30,14 @@ class Revisor {
 
     getMøder(){
         return this.møder;
+    }
+
+    getStartdag(){
+        return this.startdag;
+    }
+
+    getSlutdag(){
+        return this.slutdag;
     }
 }
 
