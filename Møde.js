@@ -31,6 +31,14 @@ class Møde {
 
     }
 
+
+    getStartTid() {
+        return this.startTime;
+    }
+    getSlutTid(){
+        return this.endTime;
+    }
+
     getKundenavn() {
         return this.kundenavn;
     }
@@ -77,5 +85,7 @@ class kortMøde extends Møde {
     }
 }
 møde2 = new kortMøde(start);
+
+
 
 

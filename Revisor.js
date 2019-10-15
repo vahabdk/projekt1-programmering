@@ -1,7 +1,7 @@
 class Revisor {
-    constructor(navn){
+    constructor(navn, møder = []){
         this.revisorNavn = navn;
-        this.møder = [];
+        this.møder = møder;
     }
     tilføjMøder (møde) {
         this.møder.push(møde);
@@ -16,6 +16,10 @@ class Revisor {
              console.log("Møde antal" + i + "start: " + this.møder[i].startTime + "slut: " + this.møder[i].endTime);
          }
 
+    }
+
+    getMøder(){
+        return this.møder;
     }
 }
 

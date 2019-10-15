@@ -49,53 +49,16 @@
             <div class="højreSide">
                 <h3 class="titel">Vælg en ledig tid</h3>
                 <div id="tiderContainer">
-                    <span class="tidspunkt">12:00 - 12:30</span>
-                    <span class="tidspunkt">12:30 - 13:00</span>
-                    <span class="tidspunkt">13:00 - 13:30</span>
                 </div>
             </div>
         </div>
     </div>
 
     <script src="Kalender.js"></script>
-
-    <script>
-        var k = new Kalender();
-        k.initKalender();
-
-        //TIlføj eventhandler for måned-knapper, så kalenderen kan opdateres når der vælges en ny måned
-        var månedknapper = document.getElementsByClassName('månedKnap');
-        for (var i = 0; i<månedknapper.length; i++){
-            månedknapper[i].addEventListener('click', function(){
-                console.log('Knap klikket');
-                k.updateMonth(this.getAttribute('data-måned'));
-            });
-        }
-
-        //Tilføj clikhandler for de to pile, til at vælge et nyt år
-        document.getElementById('årVenstre').addEventListener('click', function(){
-            k.updateÅr(-1);
-        });
-        document.getElementById('årHøjre').addEventListener('click', function(){
-            k.updateÅr(1);
-        });
-
-        var månedknapper = document.getElementsByClassName('månedKnap');
-        for (var i = 0; i<månedknapper.length; i++){
-            månedknapper[i].addEventListener('click', function(){
-                console.log('Knap klikket');
-                k.updateMonth(this.getAttribute('data-måned'));
-            });
-        }
-
-        //Tilføjer eventlistener til dynamisk tilføjede elementer (altså via javascript), hvilket ugedagene er
-        //Kilde: https://stackoverflow.com/a/27373951
-        document.addEventListener('click', function (e) {
-            if (e.target.classList.contains('iMåneden')) {
-                k.opdaterTidsplan(e.target);
-            }
-        });
-    </script>
+    <script src="classRevisorhus.js"></script>
+    <script src="Revisor.js"></script>
+    <script src="Møde.js"></script>
+    <script src="main.js"></script>
 
 </body>
 </html>
