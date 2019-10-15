@@ -25,6 +25,10 @@ class Revisor {
         }
         return text;
     }
+
+    getMøder(){
+        return this.møder;
+    }
 }
 
 møder = new Revisor();
