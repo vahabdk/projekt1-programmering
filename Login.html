@@ -6,15 +6,18 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<div>
+<div id="loginContainer">
     <form name="Revisor login">
         <h2>Login</h2>
         <input type="text" id="user_name" value="" placeholder=" Brugernavn"/><br/>
         <input type="text" id="password" value="" placeholder=" Password"/><br/>
         <div id="loginError"></div>
         <br/>
-        <button type="login" onclick="Login" style="cursor: pointer">Login</button>
-        <button type="opret" onclick="Opret" style="cursor: pointer">Opret</button>
+        <button type="login" class="Login" onclick="Login" style="cursor: pointer">Login</button>
+
+        <!-- opretter her en link til opret bruger side som bliver stylet som en knap -->
+        <a href="opretBruger.html" class="opretBrugerKnap">Opret</a>
+
     </form>
 </div>
 </body>
