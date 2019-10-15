@@ -115,7 +115,7 @@ body{
 }
 #tidsplan .venstreSide{
     display: inline-block;
-    width: 33%;
+    width: 40%;
 }
 #tidsplan .venstreSide #tidsplanUgedag{
     display: block;
@@ -131,7 +131,7 @@ body{
 }
 #tidsplan .højreSide{
     display: inline-block;
-    width: 66%;
+    width: 60%;
 }
 #tidsplan .højreSide h3{
     font-size: 18px;

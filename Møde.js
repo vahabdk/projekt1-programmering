@@ -31,6 +31,14 @@ class Møde {
 
     }
 
+
+    getStartTid() {
+        return this.startTime;
+    }
+    getSlutTid(){
+        return this.endTime;
+    }
+
     getKundenavn() {
         return this.kundenavn;
     }
@@ -56,38 +64,28 @@ else {
     console.log('1 time');
 }
 
-console.log(møde1.getKundenavn());
-console.log(møde1.getKommentar());
-
 class langMøde extends Møde {
-    constructor(start, kundenavn, kommentar) {
+    constructor(start) {
         //langMøde varer 1 time
 
         var slut = new Date(start.getTime() + 60 * 60 * 1000);
-        super(start, slut, kommentar, kundenavn);
+        super(start, slut);
     }
 }
 møde1 = new langMøde(start);
 
 
 class kortMøde extends Møde {
-    constructor(start, kundenavn, kommentar) {
+    constructor(start) {
         //kort møde varer 30 minutter eller 1/2 time
 
         var slut = new Date(start.getTime() + 30 * 60 * 1000);
-        super(start, slut, kommentar, kundenavn);
+        super(start, slut);
 
     }
 }
 møde2 = new kortMøde(start);
 
-console.log(møde2.mødeLængde());
 
-if (møde2.mødeLængde() <= 0.5){
-    console.log('30 minutter');
-}
-else {
-    console.log('1 time');
-}
-console.log(møde2.getKundenavn());
-console.log(møde2.getKommentar());
+
+

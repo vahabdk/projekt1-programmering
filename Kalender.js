@@ -1,14 +1,21 @@
 class Kalender {
-    constructor(revisorhus){
+    constructor(revisorhus, revisor){
         //Som standard vælges den nuværende måned
         this.måned = new Date();
 
+        //Hvis der vælges en specifik dato, gemmes møderne i denne måned
+        //Man kunne gennemgå alle møder overhovedet, men pga. performance, gør vi dette i stedet
+        this.møderDenneMåned = [];
+
         this.revisorhus = revisorhus;
+        this.visKalenderFor = revisor;
 
         //Laver en array over navnene på månederne, så vi kan udskrive månednavn
         this.månedNavne = ['Januar', 'Februar', 'Marts', 'April', 'Maj', 'Juni', 'Juli', 'August',
             'September', 'Oktober', 'November', 'December'];
         this.ugedage = ['Søndag', 'Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lørdag'];
+
+        this.initKalender();
     }
 
     //Initialiserer kalenderen, ved at oprette de rette html-elementer
@@ -44,7 +51,7 @@ class Kalender {
             //Hvis dagen er i måneden, udskrives datoen i elementet
             if (i >= førsteDagIMåneden) {
                 dag.innerHTML = i - førsteDagIMåneden + 1;
-                dag.className += ' iMåneden';
+                dag.className += ' iMåneden ' + 'dag' + (i - førsteDagIMåneden + 1);
             } else {
                 dag.className += ' ikkeImåneden';
             }
@@ -55,6 +62,14 @@ class Kalender {
 
         //Hent data for dagene, og formatér kalenderen ud fra dette
         this.hentDataForUgedage();
+    }
+
+
+    setRevisorHus(rh){
+        this.revisorhus = rh;
+    }
+    setVisKalenderFor(revisor){
+        this.visKalenderFor = revisor;
     }
 
 
@@ -93,25 +108,66 @@ class Kalender {
 
     //Hent data for dagene, og formatér kalenderen ud fra dette
     hentDataForUgedage() {
-        //TODO: Find dage med ledige tider, og giv den classen 'ledig' og 'optaget'
+        //Find dage med ledige tider, og giv den classen 'ledig' og 'optaget'
+
+        var revisorMøder = this.visKalenderFor.getMøder();
+        this.møderDenneMåned = [];
+
+        //Gennemgå møder
+        for(var i=0; i<revisorMøder.length; i++) {
+
+            //Filtrér først alle de møder fra, som ikke er i den måned vi kigger på
+            if (revisorMøder[i].getStartTid().getMonth() == this.måned.getMonth()) {
+                this.møderDenneMåned.push(revisorMøder[i]);
+            }
+        }
+
+        //Gennemgå møder denne måned, og giv dem en class
+        for (var i=0; i<this.møderDenneMåned.length; i++){
+            var dato = this.møderDenneMåned[i].getStartTid().getDate();
+            document.getElementsByClassName('dag' + dato)[0].classList.add('optaget');
+        }
     }
 
     //Opdatér tidsplanen så den viser de rette oplysninger
     opdaterTidsplan(element){
 
-        //Gør tidsplanen synlig
-        document.getElementById('tidsplan').style.display = 'flex';
-
         //Opret et Date objekt for den dato der trykkes på
         var elementDato = new Date(this.måned.getFullYear(), this.måned.getMonth(), element.innerText);
 
+        var dag = element.innerText;
+        var ugedag = this.ugedage[elementDato.getDay()];
+
+        var tiderContainer = document.getElementById('tiderContainer');
+
+        console.log(elementDato);
+
+        //Gør tidsplanen synlig
+        document.getElementById('tidsplan').style.display = 'flex';
+
+        //Nulstil tiderContaineren (oversigten overledige tider)
+        tiderContainer.innerHTML = '';
+
         //Vis ugedag på siden
-        document.getElementById('tidsplanUgedag').innerText = this.ugedage[elementDato.getDay()];
+        document.getElementById('tidsplanUgedag').innerText = ugedag;
 
-        //Vis dato på siden
-        document.getElementById('tidsplanDato').innerText = elementDato.getDate() + '. ' + this.månedNavne[elementDato.getMonth()];
+        //Vis dato (dag) på siden
+        document.getElementById('tidsplanDato').innerText = elementDato.getDate() + '. ' +
+            this.månedNavne[elementDato.getMonth()] + ' ' + elementDato.getFullYear();
 
-        //TODO: Vis ledige tider
+
+        //Load tider ind i tidsplanen
+        for(var i=0; i<this.møderDenneMåned.length; i++){
+            if(this.møderDenneMåned[i].getStartTid().getDate() == dag){
+                var startTidspunkt = this.møderDenneMåned[i].getStartTid().getHours() + ':' + this.møderDenneMåned[i].getStartTid().getMinutes();
+                var slutTidspunkt = this.møderDenneMåned[i].getSlutTid().getHours() + ':' + this.møderDenneMåned[i].getSlutTid().getMinutes();
+
+                var tidspunkt = document.createElement('span');
+                tidspunkt.className = 'tidspunkt';
+                tidspunkt.innerHTML = startTidspunkt + ' - ' + slutTidspunkt;
+                tiderContainer.appendChild(tidspunkt);
+            }
+        }
     }
 
 }
