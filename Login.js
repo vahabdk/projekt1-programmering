@@ -1,23 +1,29 @@
-var brugernavn = "brugernavn";
-var password = "password";
-var error = "Forkert brugernavn eller password";
+function checkLogin(e) {
+    e.preventDefault();
 
-//oprette bruger
-this.brugernavn = document.getElementById(brugernavn);
-this.password = document.getElementById(password);
+    var brugernavn = document.getElementById('brugernavn').value;
+    var password = document.getElementById('password').value;
+    var error = "Forkert brugernavn og/eller password";
+    var loginSucces = "Login succesful";
+    var brugernavnTest = localStorage.getItem("brugernavn");
+    var passwordTest = localStorage.getItem("password");
+
+    if (brugernavn != brugernavnTest || password != passwordTest)
+    {
+        document.getElementById("error").innerHTML = error;
+    }
+    else if (brugernavnTest == brugernavn && passwordTest == password)
+        document.getElementById("loginSucces").innerHTML = loginSucces;
+}
 
 //gemmer data i local storage DOM
-function storeLogin(){
-    localStorage.setItem("username", username.value);
-    localStorage.setItem("password", password.value);
-    alert("Ny bruger er oprettet");
+function getLogin() {
+    var brugernavn = localStorage.getItem("brugernavn");
+    var password = localStorage.getItem("password");
 }
 
-function checkLogin(form) {
-    if(form.brugernavn.value != brugernavn)
-        alert(error);
-    if(form.password.value != password)
-        alert(error);
-    else if(form.brugernavn.value == brugernavn && form.password.value == password)
-        window.location=("index.html");
+function generateLogin(){
+    localStorage.setItem('brugernavn', 'vahab');
+    localStorage.setItem('password', '123');
 }
+

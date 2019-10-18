@@ -4,4 +4,8 @@ function tilføjMøder(){
     var kundenavn = document.getElementById("kundenavn").value;
     var kommentar = document.getElementById("kommentar").value;
 
+    var gyldig_møde = true;
+    var message = "";
+
+    if()
 }

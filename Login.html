@@ -6,19 +6,28 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<div id="loginContainer">
-    <form name="Revisor login">
-        <h2>Login</h2>
-        <input type="text" id="user_name" value="" placeholder=" Brugernavn"/><br/>
-        <input type="text" id="password" value="" placeholder=" Password"/><br/>
-        <div id="loginError"></div>
-        <br/>
-        <button type="login" class="Login" onclick="Login" style="cursor: pointer">Login</button>
+    <div id="loginContainer">
+        <form id="loginForm" name="Revisor login" method="get">
+            <div id="error"></div>
+            <h2>Login</h2>
+            <input type="text" id="brugernavn" value="" placeholder=" Brugernavn"/><br/>
+            <input type="password" id="password" value="" placeholder=" Password"/><br/>
 
+            <br/>
+            <button id="submit" class="Login" style="cursor: pointer">Log ind</button>
         <!-- opretter her en link til opret bruger side som bliver stylet som en knap -->
         <a href="opretBruger.html" class="opretBrugerKnap">Opret</a>
 
     </form>
 </div>
+
+<script src="Login.js"></script>
+
+<script>
+    document.getElementById('submit').addEventListener('click', function(e){
+        checkLogin(e);
+    })
+</script>
+
 </body>
 </html>

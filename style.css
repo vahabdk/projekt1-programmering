@@ -178,26 +178,32 @@ body{
     color: red;
 }
 
-.opretBrugerKnap, .Login{
+.Login, .opretBrugerKnap{
     font: bold 11px Arial;
     text-decoration: none;
     background-color: #EEEEEE;
     color: #333333;
-    padding: 2% 9% 2% 9%;
-    border-top: 1px solid #CCCCCC;
-    border-right: 1px solid #333333;
-    border-bottom: 1px solid #333333;
-    border-left: 1px solid #CCCCCC;
-
+    padding: 1% 9% 1% 9%;
+    border: 1px solid black;
+    height: 10%;
+    width: 35%;
+    text-align: center;
+    display: inline-block;
+    margin: auto;
 }
 
 #loginContainer{
     left:0;
     right:0;
     margin:auto;
-    width:8%;
+    width:20%;
     border:1px solid black;
     padding: 1% 2% 1% 2%;
     text-align: center;
+}
 
+
+
+#error{
+    color: red;
 }
