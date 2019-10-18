@@ -116,8 +116,13 @@ body{
 .dage .dag.ledig:hover{
     background-color: rgb(170, 255, 170);
 }
+.dage .dag.weekend{
+    background-color: rgb(230, 230, 230);
+    pointer-events: none;
+}
 .dage .dag.optaget{
     background-color: rgb(255, 230, 230);
+    pointer-events: none;
 }
 .dage .dag.ikkeImåneden {
     cursor: default;
