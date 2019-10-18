@@ -8,19 +8,18 @@
 <h1>Opret login</h1>
 <ul>
     <form>
-        Fornavn<br/> <input type="text" name="Fornavn">*<br/><br/>
-        Efternavn<br/> <input type="text" name="Efternavn"/>*<br/><br/>
-        Email<br/> <input type="text" name="Email"/>*<br/><br/>
+        Fornavn<br/> <input type="text" name="Fornavn" id="Fornavn">*<br/><br/>
+        Efternavn<br/> <input type="text" name="Efternavn" id="Efternavn">*<br/><br/>
+        Email<br/> <input type="text" name="Email" id="Email">*<br/><br/>
         Kundemøder i tidsrummet <br/>
-            <input type="number" name="Time" value="08" min="1" max="24">:<input type="number" name="Minutter" value="00" min="00" max="30" step="30"/> til
-            <input type="number" name="Time" value="09" min="1" max="24">:<input type="number" name="Minutter" value="00" min="00" max="30" step="30"/><br/><br/>
-        Brugernavn<br/> <input type="text" name="Brugernavn"/>*<br/><br/>
-        Kodeord<br/> <input type="password" name="Kodeord"/>*<br/><br/>
-        Ved at lave en bruger accepterer jeg gældende <a href="https://www.retsinformation.dk/forms/r0710.aspx?id=45902"> regler og vilkår<a/> <br/><br/>
-        <input type="submit" name="indsend">
-
-
+            <input type="number" name="Time" value="08" min="1" max="24" id="startTime">:<input type="number" name="Minutter" value="00" min="00" max="30" step="30" id="startMinut"> til
+            <input type="number" name="Time" value="14" min="1" max="24" id="slutTime">:<input type="number" name="Minutter" value="00" min="00" max="30" step="30" id="slutMinut"><br/><br/>
+        Brugernavn<br/> <input type="text" name="Brugernavn" id="Brugernavn">*<br/><br/>
+        Kodeord<br/> <input type="password" name="Kodeord" id="Kodeord">*<br/><br/>
+        Ved at lave en bruger accepterer jeg gældende <a href="https://www.retsinformation.dk/forms/r0710.aspx?id=45902"> regler og vilkår</a> <br/><br/>
+        <input type="submit" value="Indsend" onclick="kontrolInfo()" style="cursor:pointer;">
     </form>
 </ul>
+<script type="text/javascript" src="OpretBruger.js"></script>
 </body>
 </html>

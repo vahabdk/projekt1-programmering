@@ -11,7 +11,7 @@ class Revisorhus {
         text = this.revisorhusInfo + "<br/>";
 
         for (i = 0; i < this.revisorer.length; i++) {
-            text += this.revisorer[i].getinfo() + "<br/>";
+            text += this.revisorer[i].getInfo() + "<br/>";
         }
         return text;
     }
