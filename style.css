@@ -116,8 +116,13 @@ body{
 .dage .dag.ledig:hover{
     background-color: rgb(170, 255, 170);
 }
+.dage .dag.weekend{
+    background-color: rgb(230, 230, 230);
+    pointer-events: none;
+}
 .dage .dag.optaget{
     background-color: rgb(255, 230, 230);
+    pointer-events: none;
 }
 .dage .dag.ikkeImåneden {
     cursor: default;
@@ -171,4 +176,28 @@ body{
 /*login styles */
 #loginError{
     color: red;
+}
+
+.opretBrugerKnap, .Login{
+    font: bold 11px Arial;
+    text-decoration: none;
+    background-color: #EEEEEE;
+    color: #333333;
+    padding: 2% 9% 2% 9%;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+
+}
+
+#loginContainer{
+    left:0;
+    right:0;
+    margin:auto;
+    width:8%;
+    border:1px solid black;
+    padding: 1% 2% 1% 2%;
+    text-align: center;
+
 }
