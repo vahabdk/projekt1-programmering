@@ -3,6 +3,7 @@ function kontrolInfo(){
     var fornavn = document.getElementById("Fornavn").value;
     var efternavn = document.getElementById("Efternavn").value;
     var email = document.getElementById("Email").value;
+    var tlf = document.getElementById("Tlf").value;
     var startTime = document.getElementById("startTime").value;
     var startMinut = document.getElementById("startMinut").value;
     var slutTime = document.getElementById("slutTime").value;
@@ -24,14 +25,25 @@ function kontrolInfo(){
     if (slutMinut == 30){
         slutMinut = 0.5
     }
+
+    //Test af at det virker
+    console.log(fornavn+efternavn+email+tlf+startTid+slutTid+brugernavn+kodeord);
+
     //For at kontrollere input tilføjes to yderligere variabler
-    var formValid = true;
-    var validation_message = "";
+    validation(){
+        var formValid = true; alert("Revisor oprettet")
+        var validationMessage = "";
 
-//Test af at det virker
-    console.log(fornavn+efternavn+email+startTid+slutTid+brugernavn+kodeord);
+        if(formValid) {
 
-    if(formValid){
+        } else {
+            alert(validationMessage)
+        }
+        return (form_valid);
 
+        if (fornavn == null){
+            document.getElementById("fejlFornavn") = "Indtast fornavn"
+        }
     }
+
 }
