@@ -1,0 +1,138 @@
+
+/* Billedet af logoet centeres til venstre ift nav. baren og får sig en passende størrelse */
+.logo {
+    float: left;
+    width: 25%;
+    height: 15%;
+}
+
+/*Gør at navbaren fylder hele siden i bredden*/
+.container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Navbaren og dens punkter naturligt er i højreside */
+nav {
+    float: right;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul {
+    text-align: right;
+
+
+}
+
+/* Positionering af de enkelte punkter i nav.bar */
+nav li {
+    display: inline-block;
+    margin-right: 150px;
+    padding-top: 40px;
+    position: relative;
+}
+
+/* Finpudsning af skriften i nav.bar */
+nav a {
+    color: black;
+    text-transform: uppercase;
+    font-size: 17px;
+    text-decoration: none;
+}
+
+/* Streg over punkterne, når man hover */
+nav a::before{
+    content:'';
+    display: block;
+    height: 5px;
+    background-color: #444;
+    position: absolute;
+    top: 0;
+    width: 0%;
+    transition: all ease-in-out 350ms;
+}
+
+nav a:hover::before{
+    width: 100%;
+}
+
+
+/* Sidebaren placeres til højre for siden, så den fylder 20% af hovedsiden.
+Derudover bliver teksten teksten placeret til venstre og andre finurligheder */
+
+.right-sidebar {
+    text-align: left;
+    align-content: center;
+    margin-top: 10px;
+    width: 20%;
+    height: 1080px;
+    background-color: #043752;
+    float: right;
+    color: white;
+    position: relative;
+    font-family: "Roboto", sans-serif;
+    padding: 0px 12px;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+/* Hvid tekst i sidebaren for links (email og tlf nr.) */
+.right-sidebar a {
+    color: white;
+}
+
+ /* Hovedindholdet/brødteksten tilpasses sidebaren med de 80%
+ Ellers bare font og små rettelser */
+.maincontent {
+    display: inline-block;
+    width: 80%;
+    box-sizing: border-box;
+    padding: 20px 24px;
+    font-weight: bold;
+    font-family: Roboto, sans-serif;
+}
+
+/* Deler hovedstykket op i columns, så de fylder 1/3 af de 80%, så det passer med de 3 billeder */
+.column {
+    float: left;
+    width: 33.33%;
+    padding: 15px;
+    box-sizing: border-box;
+
+}
+
+/* Fontændring til link i column*/
+.column a {
+    font-family: Roboto, sans-serif;
+    text-align: center;
+    text-decoration: none;
+    color: #515763;
+    padding: 12px;
+    display: inline-block;
+}
+
+/* Ændring af farve ved hover */
+.column a:hover {
+    color: #000000;
+
+
+}
+
+/* sørger for a billederne fylder deres column del ud */
+#raadgivning {
+    width: 100%;
+}
+
+
+
+#skatmoms {
+    width: 100%;
+}
+
+
+
+#aarsregnskab {
+    width: 100%;
+}
