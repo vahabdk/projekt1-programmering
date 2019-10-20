@@ -25,9 +25,19 @@
         Kodeord<br/> <input type="password" name="Kodeord" id="Kodeord">*<br/>
         <span id="fejlKodeord" class="fejlbesked"></span><br/><br/>
         Ved at lave en bruger accepterer jeg gældende <a href="https://www.retsinformation.dk/forms/r0710.aspx?id=45902"> regler og vilkår</a> <br/><br/>
-        <input type="submit" value="Opret" onclick="kontrolInfo()" style="cursor:pointer;">
+        <input id="opretBrugerSubmit" type="submit" value="Opret" style="cursor:pointer;">
     </form>
 </ul>
+<script src="Kalender.js"></script>
+<script src="Revisorhus.js"></script>
+<script src="Revisor.js"></script>
+<script src="Møde.js"></script>
 <script type="text/javascript" src="OpretBruger.js"></script>
+<script>
+    document.getElementById('opretBrugerSubmit').addEventListener('click', function(e){
+        e.preventDefault();
+        kontrolInfo();
+    });
+</script>
 </body>
 </html>

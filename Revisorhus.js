@@ -1,8 +1,8 @@
 class Revisorhus {
 
-    constructor(revisorhusInfo) {
+    constructor(revisorhusInfo, revisorer = []) {
         this.revisorhusInfo = revisorhusInfo;
-        this.revisorer = [];
+        this.revisorer = revisorer;
     }
 
     //For at udskrive al info omkring revisorer, hentes info fra klassen revisorer, som findes i et andet js dokument. getinfo skal erstattes med korrekt reference
@@ -40,4 +40,4 @@ revhus.addRevisor("Jacob");
 revhus.addRevisor("Andreas");
 
 //Test af at det virker
-console.log(revhus.getRevisorhusInfo() + " er et revisorhus med følgende revisorer: " + revhus.getRevisorer());
+//console.log(revhus.getRevisorhusInfo() + " er et revisorhus med følgende revisorer: " + revhus.getRevisorer());

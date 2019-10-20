@@ -78,39 +78,15 @@ class Kalender {
     }
     getFørsteDagIMåneden(){
         return new Date(this.måned.getFullYear(), this.måned.getMonth(), 1).getDay();
-    }
-
-    //Opdater måneden når der trykkes på en af pilene til at skifte måned
-    updateMonth(måned){
-        //Ryd kalenderen
-        document.querySelector('.dage').innerHTML = '';
-
-        //Set måneden til den nuværende måned +/- 1 afhængig af hvilken pil der er trykket på
-        this.måned.setMonth(måned);
-
-        //Kald initKalender igen, så kalenderen intitialiseres med den nye måned
-        this.initKalender();
-    }
-
-    //Kaldes når der laves en ændring hos en revisor eller møde
-    refresh(){
-        //Ryd kalenderen
-        document.querySelector('.dage').innerHTML = '';
-        
-
-        //Kald initKalender igen, så kalenderen intitialiseres med den nye måned
-        this.initKalender();
-    }
+    }s
 
     updateÅr(difference){
-        //Ryd kalenderen
-        document.querySelector('.dage').innerHTML = '';
 
         //Set måneden til den nuværende måned +/- 1 afhængig af hvilken pil der er trykket på
         this.måned.setFullYear(this.måned.getFullYear() + difference);
 
-        //Kald initKalender igen, så kalenderen intitialiseres med den nye måned
-        this.initKalender();
+        //Kald initKalender igen, så kalenderen intitialiseres med den nye måned og nulstiller tidspslan med mere
+        this.refresh();
     }
 
 
@@ -157,9 +133,6 @@ class Kalender {
 
         var tiderContainer = document.getElementById('tiderContainer');
         this.mødeLængde = Number(document.getElementById('mødeOption').value);
-
-        //Gør tidsplanen synlig
-        document.getElementById('tidsplan').style.display = 'flex';
 
         //Nulstil tiderContaineren (oversigten overledige tider)
         tiderContainer.innerHTML = '';
@@ -230,7 +203,12 @@ class Kalender {
     }
 
     //Opdatér tidsplanen så den viser de rette oplysninger
+    //Kaldes når der trykkes på en ledig datao
     opdaterTidsplan(element){
+
+        //Gør tidsplanen synlig
+        document.getElementById('tidsplan').style.display = 'flex';
+        document.getElementById('opretMødeContainer').style.display = 'none';
 
         this.findMøderForDag(element);
 
@@ -244,6 +222,8 @@ class Kalender {
 
             var tidspunkt = document.createElement('span');
             tidspunkt.className = 'tidspunkt';
+            tidspunkt.dataset.start = JSON.stringify(new Date(this.tiderPåDagen[i]));
+            tidspunkt.dataset.slut = JSON.stringify(slutDate);
             tidspunkt.innerHTML = startTidspunkt + ' - ' + slutTidspunkt;
             document.getElementById('tiderContainer').appendChild(tidspunkt);
         }
@@ -262,6 +242,18 @@ class Kalender {
     getUgedag(dato){
         var midlertidigDato = new Date(this.måned.getFullYear(), this.måned.getMonth(), dato)
         return this.ugedage[midlertidigDato.getDay()];
+    }
+
+    //Kaldes når der laves en ændring hos en revisor eller møde
+    refresh(){
+        //Ryd kalenderen
+        document.querySelector('.dage').innerHTML = '';
+
+        document.getElementById('tidsplan').style.display = 'none';
+        document.getElementById('opretMødeContainer').style.display = 'none';
+
+        //Kald initKalender igen, så kalenderen intitialiseres med den nye måned
+        this.initKalender();
     }
 
 }

@@ -47,22 +47,7 @@ class Møde {
         return this.kommentar;
     }
 }
-var today = new Date();
 
-var start = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 11, 0, 0, 0);
-var slut = new Date(start.getTime() + 60 * 60 * 1000);
-var møde1 = new Møde(start, slut);
-møde1.printTime();
-
-console.log(møde1.mødeLængde());
-
-// dette for at gøre opmærksom på den tid der er til rådighed
-if (møde1.mødeLængde() <= 0.5){
-    console.log('30 minutter');
-}
-else {
-    console.log('1 time');
-}
 
 class langMøde extends Møde {
     constructor(start) {
@@ -72,8 +57,6 @@ class langMøde extends Møde {
         super(start, slut);
     }
 }
-møde1 = new langMøde(start);
-
 
 class kortMøde extends Møde {
     constructor(start) {
@@ -84,8 +67,3 @@ class kortMøde extends Møde {
 
     }
 }
-møde2 = new kortMøde(start);
-
-
-
-

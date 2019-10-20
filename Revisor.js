@@ -1,9 +1,14 @@
 class Revisor {
-    constructor(navn, møder = [], startdag, slutdag){
+    constructor(navn, møder = [], startdag, slutdag, email, tlf, brugernavn, kodeord){
         this.revisorNavn = navn;
         this.møder = møder;
         this.startdag = startdag;
         this.slutdag = slutdag;
+
+        this.email = email;
+        this.tlf = tlf;
+        this.brugernavn = brugernavn;
+        this.kodeord = kodeord;
     }
     tilføjMøder (møde) {
         this.møder.push(møde);
@@ -40,13 +45,3 @@ class Revisor {
         return this.slutdag;
     }
 }
-
-møder = new Revisor();
-
-//den er lavet for at teste om koden kører korrekt
-console.log(Revisor.getInfo);
-
-Revisor1 = new Revisor();
-Revisor2 = new Revisor();
-
-//det er muligt at tilføje flere revisorer til
