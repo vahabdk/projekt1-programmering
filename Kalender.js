@@ -78,7 +78,29 @@ class Kalender {
     }
     getFørsteDagIMåneden(){
         return new Date(this.måned.getFullYear(), this.måned.getMonth(), 1).getDay();
-    }s
+    }
+
+    //Opdater måneden når der trykkes på en af pilene til at skifte måned
+    updateMonth(måned){
+        //Ryd kalenderen
+        document.querySelector('.dage').innerHTML = '';
+
+        //Set måneden til den nuværende måned +/- 1 afhængig af hvilken pil der er trykket på
+        this.måned.setMonth(måned);
+
+        //Kald initKalender igen, så kalenderen intitialiseres med den nye måned
+        this.initKalender();
+    }
+
+    //Kaldes når der laves en ændring hos en revisor eller møde
+    refresh(){
+        //Ryd kalenderen
+        document.querySelector('.dage').innerHTML = '';
+
+
+        //Kald initKalender igen, så kalenderen intitialiseres med den nye måned
+        this.initKalender();
+    }
 
     updateÅr(difference){
 

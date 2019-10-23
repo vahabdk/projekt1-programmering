@@ -1,45 +1,39 @@
+// hvad er getElementById??
+
+// hvad er addEventListener? Det er en HTML DOM metode - søg i bogen!!!
+// https://eloquentjavascript.net/15_event.html
+
+document.getElementById('submit').addEventListener('click', function(e) {
+    checkLogin(e);
+})
+
 function checkLogin(e) {
     e.preventDefault();
-
     var brugernavn = document.getElementById('brugernavn').value;
     var password = document.getElementById('password').value;
-    var error = "Forkert brugernavn og/eller password";
-    var loginSucces = "Login succesful";
 
-
-    //Gennemgå de gemte revisore og log ind
-    var gemteRevisore = JSON.parse(localStorage.getItem('revisore'));
-    var loggedIn = false;
-    for(var i=0; i<gemteRevisore.length; i++){
-        if(gemteRevisore[i].brugernavn == brugernavn && gemteRevisore[i].kodeord == password){
-            localStorage.setItem('revisorLoggedIn', JSON.stringify(gemteRevisore[i]));
-            loggedIn = true;
-            //TODO: Log ind
-            console.log('Logged in: ')
-            console.log(gemteRevisore[i]);
+    var revisorer = getGemtRevisorHus().getRevisorer();
+    for (var i=0; i<revisorer.lenght; i++)
+    {
+        if (brugernavn == revisorer[i].brugernavn && password == revisorer[i].kodeord) {
+            location.href = "index.html";
         }
     }
-    if(!loggedIn){
-        document.getElementById("error").innerHTML = error;
+
+    if (brugernavn != revisorer[i].brugernavn || password != revisorer[i].kodeord) {
+        showErrorMessage()
     }
+}
 
-
-
-    var brugernavnTest = localStorage.getItem("brugernavn");
-    var passwordTest = localStorage.getItem("password");
-
-    if (brugernavn != brugernavnTest || password != passwordTest)
+function showErrorMessage()
     {
-        document.getElementById("error").innerHTML = error;
+    var error = "Forkert brugernavn og/eller password";
+    document.getElementById("loginMessage").innerHTML = error;
+
     }
-    else if (brugernavnTest == brugernavn && passwordTest == password)
-        document.getElementById("loginSucces").innerHTML = loginSucces;
+
+//gemmer data i local storage DOM
+function getLogin() {
+    var brugernavn = localStorage.getItem("brugernavn");
+    var password = localStorage.getItem("password");
 }
-
-
-
-function generateLogin(){
-    localStorage.setItem('brugernavn', 'vahab');
-    localStorage.setItem('password', '123');
-}
-

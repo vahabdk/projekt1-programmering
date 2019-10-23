@@ -185,9 +185,6 @@ body{
 
 
 /*login styles */
-#loginError{
-    color: red;
-}
 
 .Login, .opretBrugerKnap{
     font: bold 11px Arial;
