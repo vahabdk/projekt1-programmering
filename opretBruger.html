@@ -3,12 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Opret bruger</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 <h1>Opret login</h1>
 <ul>
-    <form>
+    <!-- ved "onsubmit" hentes JS -->
+    <form name="opretBruger" onsubmit="return kontrolInput()" method="get">
+        <!-- de forskellige input laves, så der kan indtastes -->
         Fornavn<br/> <input type="text" name="Fornavn" id="Fornavn">*<br/>
+        <!-- nedenunder her, forberedes der til at der kan komme en fejlbesked nedenunder gentages det hele-->
         <span id="fejlFornavn" class="fejlbesked"></span><br/><br/>
         Efternavn<br/> <input type="text" name="Efternavn" id="Efternavn">*<br/>
         <span id="fejlEfternavn" class="fejlbesked"></span><br/><br/>
@@ -25,7 +29,8 @@
         Kodeord<br/> <input type="password" name="Kodeord" id="Kodeord">*<br/>
         <span id="fejlKodeord" class="fejlbesked"></span><br/><br/>
         Ved at lave en bruger accepterer jeg gældende <a href="https://www.retsinformation.dk/forms/r0710.aspx?id=45902"> regler og vilkår</a> <br/><br/>
-        <input id="opretBrugerSubmit" type="submit" value="Opret" style="cursor:pointer;">
+        <!-- for at aktivere JS -->
+        <button type="submit"  id="opretBrugerSubmit" style="cursor:pointer;">Submit</button>
     </form>
 </ul>
 <script src="Kalender.js"></script>
