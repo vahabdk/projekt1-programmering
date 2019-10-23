@@ -79,7 +79,7 @@ for (var i = 0; i<månedknapper.length; i++){
     });
 }
 
-//Tilføjer eventlistener til dynamisk tilføjede elementer (altså via javascript), hvilket ugedagene er
+//Tilføjer eventlistener til dynamisk tilføjede elementer (altså via javascript), hvilket ugedagene er.
 //Kilde: https://stackoverflow.com/a/27373951
 document.addEventListener('click', function (e) {
     if (e.target.classList.contains('iMåneden')) {
@@ -94,10 +94,12 @@ document.addEventListener('click', function (e) {
 //Når der klikkes på 'Book møde' knappen
 document.getElementById('bookMødeSubmit').addEventListener('click', function(e){
    e.preventDefault();
-
+   //Kilde: https://stackoverflow.com/a/1085810
+   var valgRevisorElement = document.getElementById('revisorOption');
+   var valgRevisor = valgRevisorElement.options[valgRevisorElement.selectedIndex].value;
    var kundenavn = document.getElementById('kundenavn');
    var kommentar = document.getElementById('kommentar');
-   tilføjMødeTilStorage(new Møde(nuværendeStarttidspunkt, nuværendeSluttidspunkt, kommentar, kundenavn));
+   tilføjMødeTilStorage(rh, rh.getRevisorer()[valgRevisorElement], new Møde(nuværendeStarttidspunkt, nuværendeSluttidspunkt, kommentar, kundenavn));
 
 });
 
