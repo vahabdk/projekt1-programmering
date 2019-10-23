@@ -174,7 +174,7 @@ body{
 }
 
 /*login styles */
-#loginError{
+#loginMessage{
     color: red;
 }
 
