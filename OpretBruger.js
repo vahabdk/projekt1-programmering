@@ -68,7 +68,7 @@ function kontrolInfo() {
            document.getElementById("fejlTlf").innerHTML = "Indtast korrekt tlf nr.";
            inputCorrect = false;
        }
-       //Det skal ikke være muligt at have kunder fra 1400-0800 f.eks. derfor skal start tid
+       //Det skal ikke være muligt at have kunder fra f.eks. 1400-0800 derfor skal start tid
        //være mindre end sluttiden. Der refereres til de tidligere definerede variabler
        //Inde i HTML, er det defineret at man ikke kan taste et tal som er større end 24
        if (startTime>slutTime) {
@@ -90,7 +90,9 @@ function kontrolInfo() {
 
 
         //Her påkaldes den besked som skal dukke op, ved korrekt udfyldelse
+       // saveToDB er en reference til den lokale database som er oprettet i funktionen nedenunder
         if(inputCorrect) {
+            saveToDB();
             alert("Revisor oprettet");
         }
 
@@ -98,7 +100,7 @@ function kontrolInfo() {
 
 
 
-    saveToDB();
+
 
 
     function saveToDB(){
