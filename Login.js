@@ -1,29 +1,39 @@
+// hvad er getElementById??
+
+// hvad er addEventListener? Det er en HTML DOM metode - søg i bogen!!!
+// https://eloquentjavascript.net/15_event.html
+
+document.getElementById('submit').addEventListener('click', function(e) {
+    checkLogin(e);
+})
+
 function checkLogin(e) {
     e.preventDefault();
-
     var brugernavn = document.getElementById('brugernavn').value;
     var password = document.getElementById('password').value;
-    var error = "Forkert brugernavn og/eller password";
-    var loginSucces = "Login succesful";
-    var brugernavnTest = localStorage.getItem("brugernavn");
-    var passwordTest = localStorage.getItem("password");
 
-    if (brugernavn != brugernavnTest || password != passwordTest)
+    var revisorer = getGemtRevisorHus().getRevisorer();
+    for (var i=0; i<revisorer.lenght; i++)
     {
-        document.getElementById("error").innerHTML = error;
+        if (brugernavn == revisorer[i].brugernavn && password == revisorer[i].kodeord) {
+            location.href = "index.html";
+        }
     }
-    else if (brugernavnTest == brugernavn && passwordTest == password)
-        document.getElementById("loginSucces").innerHTML = loginSucces;
+
+    if (brugernavn != revisorer[i].brugernavn || password != revisorer[i].kodeord) {
+        showErrorMessage()
+    }
 }
+
+function showErrorMessage()
+    {
+    var error = "Forkert brugernavn og/eller password";
+    document.getElementById("loginMessage").innerHTML = error;
+
+    }
 
 //gemmer data i local storage DOM
 function getLogin() {
     var brugernavn = localStorage.getItem("brugernavn");
     var password = localStorage.getItem("password");
 }
-
-function generateLogin(){
-    localStorage.setItem('brugernavn', 'vahab');
-    localStorage.setItem('password', '123');
-}
-
