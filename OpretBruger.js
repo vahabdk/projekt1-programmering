@@ -1,4 +1,4 @@
-function kontrolInfo(){
+function kontrolInfo() {
     // alle indtast muligheder hentes via en getElementById. Værdierne hentes ved at bruge .value
     var fornavn = document.getElementById("Fornavn").value;
     var efternavn = document.getElementById("Efternavn").value;
@@ -30,7 +30,7 @@ function kontrolInfo(){
     console.log(fornavn+efternavn+email+tlf+startTid+slutTid+brugernavn+kodeord);
 
     //For at kontrollere input tilføjes to yderligere variabler
-    validation(){
+    function validation(){
         var formValid = true; alert("Revisor oprettet")
         var validationMessage = "";
 
@@ -45,5 +45,25 @@ function kontrolInfo(){
             document.getElementById("fejlFornavn") = "Indtast fornavn"
         }
     }
+
+
+    saveToDB();
+
+
+    function saveToDB(){
+        var nyRevisor;
+
+        var gemtRevisorhus =JSON.parse(localStorage.getItem('gemtRevisorhus'));
+
+        if(gemtRevisorhus != null){
+            nyRevisor = new Revisor(fornavn + ' ' + efternavn, new Array(), Number(startTime) + Number(startMinut),
+                Number(slutTime) + Number(slutMinut), email, tlf, brugernavn, kodeord);
+            gemtRevisorhus.addRevisor(nyRevisor);
+
+            localStorage = JSON.parse(localStorage.setItem('gemtRevisorhus', gemtRevisorhus));
+        }
+    }
+
+
 
 }
