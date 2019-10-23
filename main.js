@@ -49,6 +49,15 @@ if(gemtRevisorhus == null) {
 
 }
 
+//Opdatere revisorer, så når der oprettes en ny revisorer, bliver den vist som en option
+var revisorer = rh.getRevisorer();
+for (var i = 0; i < revisorer.length; i++) {
+    console.log(revisorer[i]);
+    var nyRevisor = document.createElement("option");
+    nyRevisor.value = i;
+    nyRevisor.innerText = revisorer[i].getNavn();
+    document.getElementById("revisorOption").appendChild(nyRevisor);
+}
 
 
 
@@ -105,5 +114,13 @@ document.getElementById('bookMødeSubmit').addEventListener('click', function(e)
 
 //Når mødelængden ændres
 document.getElementById('mødeOption').addEventListener('change', function(e){
+    k.refresh();
+});
+
+
+//Opdaterer kalender alt efter hvilken revisor man trykker på
+document.getElementById('revisorOption').addEventListener('change', function(e){
+    var revisorIndex = this.value;
+    k.setVisKalenderFor(rh.getRevisorer()[revisorIndex]);
     k.refresh();
 });
