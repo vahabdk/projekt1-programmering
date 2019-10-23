@@ -44,4 +44,11 @@ class Revisor {
     getSlutdag(){
         return this.slutdag;
     }
+
+
+    getNavn(){
+        return this.revisorNavn;
+    }
+
+
 }

@@ -49,6 +49,15 @@ if(gemtRevisorhus == null) {
 
 }
 
+//Opdatere revisorer, så når der oprettes en ny revisorer, bliver den vist som en option
+var revisorer = rh.getRevisorer();
+for (var i = 0; i < revisorer.length; i++) {
+    console.log(revisorer[i]);
+    var nyRevisor = document.createElement("option");
+    nyRevisor.value = i;
+    nyRevisor.innerText = revisorer[i].getNavn();
+    document.getElementById("revisorOption").appendChild(nyRevisor);
+}
 
 
 
@@ -79,7 +88,7 @@ for (var i = 0; i<månedknapper.length; i++){
     });
 }
 
-//Tilføjer eventlistener til dynamisk tilføjede elementer (altså via javascript), hvilket ugedagene er
+//Tilføjer eventlistener til dynamisk tilføjede elementer (altså via javascript), hvilket ugedagene er.
 //Kilde: https://stackoverflow.com/a/27373951
 document.addEventListener('click', function (e) {
     if (e.target.classList.contains('iMåneden')) {
@@ -94,14 +103,24 @@ document.addEventListener('click', function (e) {
 //Når der klikkes på 'Book møde' knappen
 document.getElementById('bookMødeSubmit').addEventListener('click', function(e){
    e.preventDefault();
-
+   //Kilde: https://stackoverflow.com/a/1085810
+   var valgRevisorElement = document.getElementById('revisorOption');
+   var valgRevisor = valgRevisorElement.options[valgRevisorElement.selectedIndex].value;
    var kundenavn = document.getElementById('kundenavn');
    var kommentar = document.getElementById('kommentar');
-   tilføjMødeTilStorage(new Møde(nuværendeStarttidspunkt, nuværendeSluttidspunkt, kommentar, kundenavn));
+   tilføjMødeTilStorage(rh, rh.getRevisorer()[valgRevisorElement], new Møde(nuværendeStarttidspunkt, nuværendeSluttidspunkt, kommentar, kundenavn));
 
 });
 
 //Når mødelængden ændres
 document.getElementById('mødeOption').addEventListener('change', function(e){
+    k.refresh();
+});
+
+
+//Opdaterer kalender alt efter hvilken revisor man trykker på
+document.getElementById('revisorOption').addEventListener('change', function(e){
+    var revisorIndex = this.value;
+    k.setVisKalenderFor(rh.getRevisorer()[revisorIndex]);
     k.refresh();
 });
