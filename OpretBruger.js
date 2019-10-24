@@ -56,7 +56,7 @@ function kontrolInfo() {
        var snabelA = email.indexOf("@");
        var punktum = email.indexOf(".");
 
-       if (email==null || email=="" || snabelA<1 || punktum<snabelA) {
+       if (email==null || email=="" || snabelA<1 || punktum<2) {
            document.getElementById("fejlEmail").innerHTML = "Indtast korrekt email";
            inputCorrect = false;
        }
