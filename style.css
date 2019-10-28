@@ -210,7 +210,12 @@ body{
     text-align: center;
 }
 
-
+#mødeOversigt{
+    border: 1px solid black;
+    padding: 1% 2% 1% 2%;
+    height: auto;
+    width: 300px;
+}
 
 #error{
     color: red;
