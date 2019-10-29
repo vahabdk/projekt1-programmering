@@ -103,12 +103,11 @@ function kontrolInfo() {
 
 
     function saveToDB(){
-        var nyRevisor;
 
         var gemtRevisorhus = getGemtRevisorHus();
 
         if(gemtRevisorhus != null){
-            nyRevisor = new Revisor(fornavn + ' ' + efternavn, new Array(), Number(startTime) + Number(startMinut),
+            var nyRevisor = new Revisor(fornavn + ' ' + efternavn, new Array(), Number(startTime) + Number(startMinut),
                 Number(slutTime) + Number(slutMinut), email, tlf, brugernavn, kodeord);
             gemtRevisorhus.addRevisor(nyRevisor);
 
