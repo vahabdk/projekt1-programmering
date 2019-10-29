@@ -13,14 +13,14 @@ function kontrolInfo() {
 
 
     // for at definere en start tid skal time og minut kobles. Af hensyn til JS kalender koden,
-    // konverteres 30 min til 0.5 time
+    // konverteres 30 min til 0.5 time. Fordi der er i HTML er defineret at man kun kan vælge 30 eller nul, defineres
+    // der ikke ydereligere
     var startTid = startTime + ":" + startMinut;
     if (startMinut == 30){
         startMinut = 0.5
     }
 
-    // for at definere en slut tid, skal time og minut valget kobles. Af hensyn til JS kalender koden,
-    // konverteres 30 min til 0.5 time
+    // Samme princip som ovenover
     var slutTid = slutTime + ":" + slutMinut;
     if (slutMinut == 30){
         slutMinut = 0.5
@@ -32,7 +32,9 @@ function kontrolInfo() {
     //For at funktionen kan køre, skal den køres. Det gør den her
     kontrolInput();
 
-    //For at kontrollere input tilføjes denne function
+    //For at kontrollere input tilføjes denne function. Som udgangspunkt er de
+    //indtastede værdier korrekte, det defineres i den første variabel, derfor sættes den som true. Efterfølgende sker
+    //kontrollen med if statements, som så kan forkaste at første antagelse var korrekt
    function kontrolInput() {
         var inputCorrect = true;
 
@@ -48,9 +50,9 @@ function kontrolInfo() {
            inputCorrect = false;
        }
 
-       //Ved kontrol af korrekt email skal @ og . eksistere. Punktummet skal være efter @
+       //Ved kontrol af korrekt email skal @ og . eksistere.
        //Ved at bruge .indexof metoden, kan man tælle hvor et givent tegn befinder sig.
-       //Derfor skal @>1 og punktum >2
+       //Derfor skal @>1 og punktum >2. Der kan ikke skrives snabelA<punktum da nogle mails indeholder punktum før og efter @
        //For at bruge den her indexof metode, skal der laves to variabler
 
        var snabelA = email.indexOf("@");
@@ -68,7 +70,7 @@ function kontrolInfo() {
            document.getElementById("fejlTlf").innerHTML = "Indtast korrekt tlf nr.";
            inputCorrect = false;
        }
-       //Det skal ikke være muligt at have kunder fra f.eks. 1400-0800 derfor skal start tid
+       //Det skal ikke være muligt at have kunder fra f.eks. kl. 1400-0800 derfor skal start tid
        //være mindre end sluttiden. Der refereres til de tidligere definerede variabler
        //Inde i HTML, er det defineret at man ikke kan taste et tal som er større end 24
        if (startTime>slutTime) {
@@ -88,32 +90,29 @@ function kontrolInfo() {
            inputCorrect = false;
        }
 
-
-        //Her påkaldes den besked som skal dukke op, ved korrekt udfyldelse
+       //Her påkaldes den besked som skal dukke op, ved korrekt udfyldelse
        // saveToDB er en reference til den lokale database som er oprettet i funktionen nedenunder
         if(inputCorrect) {
             saveToDB();
             alert("Revisor oprettet");
+            location.replace("revisorLoginside.html")
         }
 
     }
 
 
 
-
-
-
     function saveToDB(){
         var nyRevisor;
 
-        var gemtRevisorhus =JSON.parse(localStorage.getItem('gemtRevisorhus'));
+        var gemtRevisorhus = getGemtRevisorHus();
 
         if(gemtRevisorhus != null){
             nyRevisor = new Revisor(fornavn + ' ' + efternavn, new Array(), Number(startTime) + Number(startMinut),
                 Number(slutTime) + Number(slutMinut), email, tlf, brugernavn, kodeord);
             gemtRevisorhus.addRevisor(nyRevisor);
 
-            localStorage = JSON.parse(localStorage.setItem('gemtRevisorhus', gemtRevisorhus));
+            localStorage.setItem('gemtRevisorhus', JSON.stringify(gemtRevisorhus));
         }
     }
 
