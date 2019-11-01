@@ -3,6 +3,7 @@ class Revisorhus {
     constructor(revisorhusInfo, revisorer = []) {
         this.revisorhusInfo = revisorhusInfo;
         this.revisorer = revisorer;
+        this.alleRevisore = -1;
     }
 
     //For at udskrive al info omkring revisorer, hentes info fra klassen revisorer, som findes i et andet js dokument. getinfo skal erstattes med korrekt reference
@@ -25,6 +26,18 @@ class Revisorhus {
     getRevisorer() {
         return this.revisorer;
     }
+
+    getAlleRevisorer(){
+        var møder = [];
+        for(var i=0; i<this.getRevisorer().length; i++){
+            var revisor = this.getRevisorer()[i];
+            for (var j=0; j<this.revisor.getMøder(); j++){
+                møder.push(this.revisor.getMøder()[j]);
+            }
+        }
+        var alleRevisore = new Revisor('Alle revisore', møder, 8,16, null, null, null, null);
+    }
+
     //Laver en function for at kunne tilføje flere revisorer så det derved er muligt at skrive add.revisor("navn");
     addRevisor(revisor) {
         this.revisorer.push(revisor);

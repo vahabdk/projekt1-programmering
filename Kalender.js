@@ -82,14 +82,11 @@ class Kalender {
 
     //Opdater måneden når der trykkes på en af pilene til at skifte måned
     updateMonth(måned){
-        //Ryd kalenderen
-        document.querySelector('.dage').innerHTML = '';
-
         //Set måneden til den nuværende måned +/- 1 afhængig af hvilken pil der er trykket på
         this.måned.setMonth(måned);
 
         //Kald initKalender igen, så kalenderen intitialiseres med den nye måned
-        this.initKalender();
+        this.refresh();
     }
 
     //Kaldes når der laves en ændring hos en revisor eller møde
@@ -97,13 +94,11 @@ class Kalender {
         //Ryd kalenderen
         document.querySelector('.dage').innerHTML = '';
 
-
         //Kald initKalender igen, så kalenderen intitialiseres med den nye måned
         this.initKalender();
     }
 
     updateÅr(difference){
-
         //Set måneden til den nuværende måned +/- 1 afhængig af hvilken pil der er trykket på
         this.måned.setFullYear(this.måned.getFullYear() + difference);
 
@@ -133,19 +128,21 @@ class Kalender {
             var dato = document.getElementsByClassName('dag' + i)[0];
             var elementDato = new Date(this.måned.getFullYear(), this.måned.getMonth(), dato.innerText);
 
-            var antalMøder = this.findMøderForDag(dato, true);
+            //TODO: Find ud af, hvorfor den kaledes this.getDageIMåneden() gange, og hvorfor datoen passes
+            var antalLedigeTider = this.findMøderForDag(dato, true);
 
             if(this.getUgedag(i) == 'Lørdag' ||  this.getUgedag(i) == 'Søndag'){
                 dato.classList += ' weekend';
-            } else if(antalMøder == 0){
+            } else if(antalLedigeTider == 0){
                 dato.classList += ' optaget';
-            } else if(antalMøder > 0){
+            } else if(antalLedigeTider > 0){
                 dato.classList += ' ledig';
             }
         }
     }
 
-    //Find ud af, om dagen er helt fyldt op med møder, eller
+    //Find ud af, om dagen er helt fyldt op med møder, eller ej
+    //Første argument, element, referer til det element, som trykkes på, som vil være .dag (som er en dato)
     findMøderForDag (element, returnResult = false){
         //Opret et Date objekt for den dato der trykkes på
         var elementDato = new Date(this.måned.getFullYear(), this.måned.getMonth(), element.innerText);
