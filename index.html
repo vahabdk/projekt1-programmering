@@ -23,6 +23,7 @@
                 <!-- Der er lavet drop-down menubarer, for henholdsvis valg af revisorer og valg af møde længde -->
                 Vælg revisor: <br>
                 <select id="revisorOption">
+                    <option value = "-1" selected="selected"> Alle Revisorer </option>
 
                 </select><br><br>
                 Vælg mødelængde: <br>
@@ -84,25 +85,25 @@
                     <h3>Indtast dine oplysninger</h3>
                     <form id="opretMødeForm">
                         <label for="kundenavn">Navn:</label><br>
-                        <input type="text" name="kundenavn" id="kundenavn" placeholder="Dit navn"><br><br>
-                        <div id="fejlKundenavn" class="fejl"></div>
+                        <input type="text" name="kundenavn" id="kundenavn" placeholder="Dit navn"><br>
+                        <span id="fejlNavn" class="fejlbesked"></span><br><br>
 
                         <label for="tlfnr">Tlf:</label><br>
-                        <input type="number" name="tlfnr" id="tlfnr" placeholder="Tlf nummer"><br><br>
-                        <div id="fejlTlfnr" class="fejl"></div>
+                        <input type="number" name="tlfnr" id="tlfnr" placeholder="Tlf nummer"><br>
+                        <span id="fejlTlf" class="fejlbesked"></span><br><br>
 
                         <label for="mail">Mail:</label><br>
-                        <input type="email" name="mail" id="mail" placeholder="E-mail"><br><br>
-                        <div id="fejlEmail" class="fejl"></div>
+                        <input type="email" name="mail" id="mail" placeholder="E-mail"><br>
+                        <span id="fejlEmail" class="fejlbesked"></span><br><br>
 
-                        <label for="mødetype">Møde typer:</label><br>
+                        <label for="mødetype">Møde type:</label><br>
                         <select type="text" id="mødetype">
                             <option selected disabled value="0">  Vælg  </option>
                             <option value="1">Møde 1</option>
                             <option value="2">Møde 2</option>
                             <option value="3">Møde 3</option>
-                        </select><br><br>
-                        <div id="fejlMødetype" class="fejl"></div>
+                        </select><br>
+                        <span id="fejlMøde" class="fejlbesked"></span><br><br>
 
                         <label for="kommentar">Kommentar:</label><br>
                         <textarea id="kommentar" name="kommentar" placeholder="Indtast evt. kommentar"></textarea><br><br>
@@ -121,11 +122,10 @@
     <script src="Møde.js"></script>
     <script src="databehandling.js"></script>
     <script src="main.js"></script>
-    <script src="validation.js"></script>
     <script>
-        document.getElementById("bookMødeSubmit").addEventListener('click', function(e){
+        document.getElementById("bookMødeSubmit").addEventListener("click", function(e){
             e.preventDefault();
-            validereInfo();
+            validateInformation();
         });
     </script>
 </body>

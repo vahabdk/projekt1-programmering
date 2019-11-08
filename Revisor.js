@@ -32,16 +32,27 @@ class Revisor {
         }
         return text;
     }
+
     getMøder(){
         return this.møder;
     }
+
     getStartdag(){
         return this.startdag;
     }
+
     getSlutdag(){
         return this.slutdag;
     }
-    getNavn() {
+
+
+    getNavn(){
         return this.revisorNavn;
     }
+
+    getBrugernavn(){
+        return this.brugernavn;
+    }
+
+
 }
