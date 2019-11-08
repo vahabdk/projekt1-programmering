@@ -7,9 +7,9 @@
 </head>
 <body>
     <div id="loginContainer">
-        <form id="loginForm" name="Revisor login" method="get">
-            <div id="loginMessage"></div>
+        <form id="loginForm" name="Revisor login" onsubmit="checkLogin()" method="get">
             <h2>Login</h2>
+            <span id="loginMessage"></span><br>
             <input type="text" id="brugernavn" value="" placeholder=" Brugernavn"/><br/>
             <input type="password" id="password" value="" placeholder=" Password"/><br/>
 
@@ -21,6 +21,10 @@
     </form>
 </div>
 
+    <script src="Revisorhus.js"></script>
+    <script src="Revisor.js"></script>
+    <script src="Møde.js"></script>
+    <script src="databehandling.js"></script>
 <script src="Login.js"></script>
 
 <script>

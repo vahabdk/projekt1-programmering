@@ -13,27 +13,29 @@ function checkLogin(e) {
     var password = document.getElementById('password').value;
 
     var revisorer = getGemtRevisorHus().getRevisorer();
-    for (var i=0; i<revisorer.lenght; i++)
+    for (var i=0; i<revisorer.length; i++)
     {
         if (brugernavn == revisorer[i].brugernavn && password == revisorer[i].kodeord) {
-            location.href = "index.html";
+            console.log('rigtigt login');
+            localStorage.setItem("loginRevisor", JSON.stringify(revisorer[i]));
+            location.href = "revisorLoginside.html";
+            break;
         }
     }
 
-    if (brugernavn != revisorer[i].brugernavn || password != revisorer[i].kodeord) {
-        showErrorMessage()
-    }
+    showErrorMessage()
+
+
+function showErrorMessage() {
+    var error = "Forkert brugernavn og/eller password"
+    document.getElementById("loginMessage").innerHTML = error;
 }
 
-function showErrorMessage()
-    {
-    var error = "Forkert brugernavn og/eller password";
-    document.getElementById("loginMessage").innerHTML = error;
-
-    }
+}
 
 //gemmer data i local storage DOM
 function getLogin() {
     var brugernavn = localStorage.getItem("brugernavn");
     var password = localStorage.getItem("password");
 }
+
