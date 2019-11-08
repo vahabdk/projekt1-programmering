@@ -8,11 +8,11 @@
 <body>
 <h1>Opret login</h1>
 <ul>
-    <!-- ved "onsubmit" hentes JS -->
-    <form name="opretBruger" onsubmit="return kontrolInfo()" method="get">
+    <!--  JS -->
+    <form name="opretBruger" id="opretBruger">
         <!-- de forskellige input laves, så der kan indtastes -->
         Fornavn<br/> <input type="text" name="Fornavn" id="Fornavn">*<br/>
-        <!-- nedenunder her, forberedes der til at der kan komme en fejlbesked nedenunder gentages det hele-->
+        <!-- nedenunder her, forberedes der til at der kan komme en fejlbesked efterfølgende gentages det hele-->
         <span id="fejlFornavn" class="fejlbesked"></span><br/><br/>
         Efternavn<br/> <input type="text" name="Efternavn" id="Efternavn">*<br/>
         <span id="fejlEfternavn" class="fejlbesked"></span><br/><br/>
@@ -40,7 +40,7 @@
 <script src="databehandling.js"></script>
 <script src="OpretBruger.js"></script>
 <script>
-    document.getElementById('opretBrugerSubmit').addEventListener('click', function(e){
+    document.getElementById("opretBrugerSubmit").addEventListener("click", function(e){
         e.preventDefault();
         kontrolInfo();
     });

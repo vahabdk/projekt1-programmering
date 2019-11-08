@@ -50,5 +50,9 @@ class Revisor {
         return this.revisorNavn;
     }
 
+    getBrugernavn(){
+        return this.brugernavn;
+    }
+
 
 }

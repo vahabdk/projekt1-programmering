@@ -97,8 +97,22 @@ function kontrolInfo() {
        if (brugernavn==null || brugernavn=="") {
            document.getElementById("fejlBrugernavn").innerHTML = "Indtast brugernavn";
            inputCorrect = false;
+
        } else {
            document.getElementById("fejlBrugernavn").innerHTML = "";
+       }
+
+       /*Kontrol af at brugernavn er unikt. Der hentes en funktion fra revisor.js og databehandling.js
+       Herfra bruges et loop til at gå igennem alle oprettede revisorer i local storage. */
+       var rh = getGemtRevisorHus();
+       var listRevisorer = rh.getRevisorer();
+       for (var i = 0; i < listRevisorer.length; i++) {
+           if (listRevisorer [i].getBrugernavn() == brugernavn) {
+               document.getElementById("fejlBrugernavn").innerHTML = "Brugernavn allerede taget";
+               inputCorrect = false;
+           } else {
+               document.getElementById("fejlBrugernavn").innerHTML = "";
+           }
        }
 
        //Kontrol af kodeord
@@ -134,7 +148,5 @@ function kontrolInfo() {
             localStorage.setItem('gemtRevisorhus', JSON.stringify(gemtRevisorhus));
         }
     }
-
-
 
 }
