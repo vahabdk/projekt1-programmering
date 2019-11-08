@@ -1,10 +1,11 @@
 class Møde {
-    constructor (start, slut, kommentar, kundenavn){
+    constructor (start, slut, kommentar, kundenavn, tlfnr, mail){
         this.startTime = start;
         this.endTime = slut;
         this.kundenavn = kundenavn;
         this.kommentar = kommentar;
-
+        this.tlfnr = tlfnr;
+        this.mail = mail;
     }
 
     printTime(){

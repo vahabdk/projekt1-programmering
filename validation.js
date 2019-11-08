@@ -12,6 +12,7 @@ function validereInfo() {
     validereInput();
 
     function validereInput() {
+        console.log('validere input');
         korrektInput = true;
 
         //Validerer navnet
@@ -51,10 +52,10 @@ function validereInfo() {
 
         function gemtilLS() {
             if (korrektInput) {
-                console.log('hej')
+
                 var nytMøde = new Møde(nuværendeSluttidspunkt, nuværendeSluttidspunkt, kommentar, kundenavn, tlfnr, mail);
 
-                localStorage.setItem('gemtilLS', JSON.stringify(gemtilLS()));
+                localStorage.setItem('gemtilLS', JSON.stringify(nytMøde));
                                                        
             }
         }
