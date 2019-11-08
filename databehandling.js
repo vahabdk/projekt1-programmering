@@ -13,7 +13,7 @@ function formaterRevisor(r) {
     returnRevisore = [];
 
     for (var i = 0; i < r.length; i++) {
-        var revisor = r.revisorer[i];
+        var revisor = r[i];
         var revisorNavn = revisor.revisorNavn;
         var startdag = revisor.startdag;
         var slutdag = revisor.slutdag;
