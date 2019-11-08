@@ -56,7 +56,7 @@ function validereInfo() {
         function gemtilLS() {
             if (korrektInput) {
 
-                var nytMøde = new Møde(new Date(nuværendeSluttidspunkt), new Date(nuværendeSluttidspunkt), kommentar, kundenavn, tlfnr, mail);
+                var nytMøde = new Møde(nuværendeSluttidspunkt, nuværendeSluttidspunkt, kommentar, kundenavn, tlfnr, mail);
                 console.log(rh.getRevisorer())
                 rh.getRevisorer()[revisor].tilføjMøder(nytMøde)
                 localStorage.setItem('gemtRevisorhus', JSON.stringify(rh));

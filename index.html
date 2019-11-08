@@ -7,128 +7,119 @@
 </head>
 <body>
 
-    <div class="navbar">
-        <ul>
-            <li><a href="index.html">Kalender</a></li>
-            <li><a href="opretBruger.html">Opret revisor</a></li>
-            <li><a href="Login.html">Login</a></li>
-        </ul>
-    </div>
+<!-- For at kunne samle de to bokse, som udgør programmet.
+Mother er "mainContainer" og siblings er "optionContainer" og "calenderContainer" -->
+<div class="mainContainer">
+    <div class="step1Container">
+        <div class="optionContainer">
+            <!-- Der er lavet drop-down menubarer, for henholdsvis valg af revisorer og valg af møde længde -->
+            Vælg revisor: <br>
+            <select id="revisorOption">
+                <option value = "-1" selected="selected"> Alle Revisorer </option>
 
-    <!-- For at kunne samle de to bokse, som udgør programmet.
-    Mother er "mainContainer" og siblings er "optionContainer" og "calenderContainer" -->
-    <div class="mainContainer">
-        <div class="step1Container">
-            <div class="optionContainer">
-                <!-- Der er lavet drop-down menubarer, for henholdsvis valg af revisorer og valg af møde længde -->
-                Vælg revisor: <br>
-                <select id="revisorOption">
-                    <option value = "-1" selected="selected"> Alle Revisorer </option>
+            </select><br><br>
+            Vælg mødelængde: <br>
+            <select id="mødeOption">
+                <option value = "0.5" selected> 30 min</option>
+                <option value = "1"> 1 time</option>
+            </select>
+        </div>
+        <div class="calendercontainer">
+            <div class="måned">
+                <div class="årvælgerContainer">
+                    <span id="årVenstre"><</span>
+                    <span id="år"></span>
+                    <span id="årHøjre">></span>
+                </div>
 
-                </select><br><br>
-                Vælg mødelængde: <br>
-                <select id="mødeOption">
-                    <option value = "0.5" selected> 30 min</option>
-                    <option value = "1"> 1 time</option>
-                </select>
+                <div class="månedvælgerContainer">
+                    <div class="månedKnap" data-måned="0">Jan</div>
+                    <div class="månedKnap" data-måned="1">Feb</div>
+                    <div class="månedKnap" data-måned="2">Mar</div>
+                    <div class="månedKnap" data-måned="3">Apr</div>
+                    <div class="månedKnap" data-måned="4">Maj</div>
+                    <div class="månedKnap" data-måned="5">Jun</div>
+                    <div class="månedKnap" data-måned="6">Jul</div>
+                    <div class="månedKnap" data-måned="7">Aug</div>
+                    <div class="månedKnap" data-måned="8">Sep</div>
+                    <div class="månedKnap" data-måned="9">Okt</div>
+                    <div class="månedKnap" data-måned="10">Nov</div>
+                    <div class="månedKnap" data-måned="11">Dec</div>
+
+                </div>
+                <span id="månedNavn"></span>
             </div>
-            <div class="calendercontainer">
-                <div class="måned">
-                    <div class="årvælgerContainer">
-                        <span id="årVenstre"><</span>
-                        <span id="år"></span>
-                        <span id="årHøjre">></span>
-                    </div>
 
-                    <div class="månedvælgerContainer">
-                        <div class="månedKnap" data-måned="0">Jan</div>
-                        <div class="månedKnap" data-måned="1">Feb</div>
-                        <div class="månedKnap" data-måned="2">Mar</div>
-                        <div class="månedKnap" data-måned="3">Apr</div>
-                        <div class="månedKnap" data-måned="4">Maj</div>
-                        <div class="månedKnap" data-måned="5">Jun</div>
-                        <div class="månedKnap" data-måned="6">Jul</div>
-                        <div class="månedKnap" data-måned="7">Aug</div>
-                        <div class="månedKnap" data-måned="8">Sep</div>
-                        <div class="månedKnap" data-måned="9">Okt</div>
-                        <div class="månedKnap" data-måned="10">Nov</div>
-                        <div class="månedKnap" data-måned="11">Dec</div>
-
-                    </div>
-                    <span id="månedNavn"></span>
-                </div>
-
-                <div class="ugedage">
-                    <div class="ugedag mandag">Man</div>
-                    <div class="ugedag tirsdag">Tir</div>
-                    <div class="ugedag onsdag">Ons</div>
-                    <div class="ugedag torsdag">Tor</div>
-                    <div class="ugedag fredrag">Fre</div>
-                    <div class="ugedag lørdag">Lør</div>
-                    <div class="ugedag søndag">Søn</div>
-                </div>
-
-                <div class="dage"></div>
-
-                <div id="tidsplan">
-                    <div class="venstreSide">
-                        <span id="tidsplanUgedag"></span>
-                        <span id="tidsplanDato"></span>
-                    </div>
-                    <div class="højreSide">
-                        <h3 class="titel">Vælg en ledig tid</h3>
-                        <div id="tiderContainer"></div>
-                    </div>
-                </div>
-
-                <div id="opretMødeContainer">
-                    <h3>Indtast dine oplysninger</h3>
-                    <form id="opretMødeForm">
-                        <label for="kundenavn">Navn:</label><br>
-                        <input type="text" name="kundenavn" id="kundenavn" placeholder="Dit navn"><br>
-                        <span id="fejlNavn" class="fejlbesked"></span><br><br>
-
-                        <label for="tlfnr">Tlf:</label><br>
-                        <input type="number" name="tlfnr" id="tlfnr" placeholder="Tlf nummer"><br>
-                        <span id="fejlTlf" class="fejlbesked"></span><br><br>
-
-                        <label for="mail">Mail:</label><br>
-                        <input type="email" name="mail" id="mail" placeholder="E-mail"><br>
-                        <span id="fejlEmail" class="fejlbesked"></span><br><br>
-
-                        <label for="mødetype">Møde type:</label><br>
-                        <select type="text" id="mødetype">
-                            <option selected disabled value="0">  Vælg  </option>
-                            <option value="1">Møde 1</option>
-                            <option value="2">Møde 2</option>
-                            <option value="3">Møde 3</option>
-                        </select><br>
-                        <span id="fejlMøde" class="fejlbesked"></span><br><br>
-
-                        <label for="kommentar">Kommentar:</label><br>
-                        <textarea id="kommentar" name="kommentar" placeholder="Indtast evt. kommentar"></textarea><br><br>
-
-                        <button id="bookMødeSubmit">Book møde</button>
-                    </form>
-                </div>
-
+            <div class="ugedage">
+                <div class="ugedag mandag">Man</div>
+                <div class="ugedag tirsdag">Tir</div>
+                <div class="ugedag onsdag">Ons</div>
+                <div class="ugedag torsdag">Tor</div>
+                <div class="ugedag fredrag">Fre</div>
+                <div class="ugedag lørdag">Lør</div>
+                <div class="ugedag søndag">Søn</div>
             </div>
+
+            <div class="dage"></div>
+
+            <div id="tidsplan">
+                <div class="venstreSide">
+                    <span id="tidsplanUgedag"></span>
+                    <span id="tidsplanDato"></span>
+                </div>
+                <div class="højreSide">
+                    <h3 class="titel">Vælg en ledig tid</h3>
+                    <div id="tiderContainer"></div>
+                </div>
+            </div>
+
+            <div id="opretMødeContainer">
+                <h3>Indtast dine oplysninger</h3>
+                <form id="opretMødeForm">
+                    <label for="kundenavn">Navn:</label><br>
+                    <input type="text" name="kundenavn" id="kundenavn" placeholder="Dit navn"><br><br>
+                    <div id="fejlKundenavn" class="fejl"></div>
+
+                    <label for="tlfnr">Tlf:</label><br>
+                    <input type="number" name="tlfnr" id="tlfnr" placeholder="Tlf nummer"><br><br>
+                    <div id="fejlTlfnr" class="fejl"></div>
+
+                    <label for="mail">Mail:</label><br>
+                    <input type="email" name="mail" id="mail" placeholder="E-mail"><br><br>
+                    <div id="fejlEmail" class="fejl"></div>
+
+                    <label for="mødetype">Møde typer:</label><br>
+                    <select type="text" id="mødetype">
+                        <option selected disabled value="0">  Vælg  </option>
+                        <option value="1">Møde 1</option>
+                        <option value="2">Møde 2</option>
+                        <option value="3">Møde 3</option>
+                    </select><br><br>
+                    <div id="fejlMødetype" class="fejl"></div>
+
+                    <label for="kommentar">Kommentar:</label><br>
+                    <textarea id="kommentar" name="kommentar" placeholder="Indtast evt. kommentar"></textarea><br><br>
+
+                    <button id="bookMødeSubmit">Book møde</button>
+                </form>
+            </div>
+
         </div>
     </div>
+</div>
 
-    <script src="Kalender.js"></script>
-    <script src="Revisorhus.js"></script>
-    <script src="Revisor.js"></script>
-    <script src="Møde.js"></script>
-    <script src="databehandling.js"></script>
-    <script src="main.js"></script>
-    <script src="validation.js"></script>
-
-    <script>
-        document.getElementById("bookMødeSubmit").addEventListener("click", function(e){
-            e.preventDefault();
-            validereInfo();
-        });
-    </script>
+<script src="Kalender.js"></script>
+<script src="Revisorhus.js"></script>
+<script src="Revisor.js"></script>
+<script src="Møde.js"></script>
+<script src="databehandling.js"></script>
+<script src="main.js"></script>
+<script src="validation.js"></script>
+<script>
+    document.getElementById("bookMødeSubmit").addEventListener('click', function(e){
+        e.preventDefault();
+        validereInfo();
+    });
+</script>
 </body>
 </html>
