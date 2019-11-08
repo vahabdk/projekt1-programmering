@@ -14,14 +14,14 @@ if(gemtRevisorhus == null) {
 
     var møde2 = new kortMøde(imorgen);
 
-    var peter = new Revisor('Peter', [], startPeter, slutPeter);
-    var kurt = new Revisor('Kurt', [], 8, 16);
+    var peter = new Revisor('Peter', [], startPeter, slutPeter, 'peter@lortemail.dk', '123', 'pter', '123');
+    var kurt = new Revisor('Kurt', [], 8, 16, 'peter@lortemail.dk', '123', 'pter', '123');
 
-    var r1 = new Revisorhus('Revisorcentralen');
-    r1.addRevisor(peter);
-    r1.addRevisor(kurt)
+    var rh = new Revisorhus('Revisorcentralen');
+    rh.addRevisor(peter);
+    rh.addRevisor(kurt)
 
-    k = new Kalender(r1, r1.getRevisorer()[0]);
+    k = new Kalender(rh, rh.getRevisorer()[0]);
 
 
     var idag = new Date();
@@ -39,7 +39,7 @@ if(gemtRevisorhus == null) {
 
     k.refresh();
 
-    localStorage.setItem('gemtRevisorhus', JSON.stringify(r1));
+    localStorage.setItem('gemtRevisorhus', JSON.stringify(rh));
 } else {
 
     //Hent den gemte data, og gør den til objekter igen
@@ -49,7 +49,8 @@ if(gemtRevisorhus == null) {
 
 }
 
-//Opdatere revisorer, så når der oprettes en ny revisorer, bliver den vist som en option
+
+//Opdaterer revisorer, så når der oprettes en ny revisorer, bliver den vist som en option
 var revisorer = rh.getRevisorer();
 for (var i = 0; i < revisorer.length; i++) {
     console.log(revisorer[i]);
@@ -99,8 +100,8 @@ document.addEventListener('click', function (e) {
             tidspunkter[i].classList.remove("aktiv");
         }
         document.getElementById('opretMødeContainer').style.display = 'block';
-        nuværendeStarttidspunkt = e.target.getAttribute('data-start');
-        nuværendeSluttidspunkt = e.target.getAttribute('data-slut');
+        nuværendeStarttidspunkt = JSON.parse(e.target.getAttribute('data-start'));
+        nuværendeSluttidspunkt = JSON.parse(e.target.getAttribute('data-slut'));
         e.target.classList+= " aktiv";
     }
 });
