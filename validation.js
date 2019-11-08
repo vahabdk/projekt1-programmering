@@ -11,6 +11,8 @@ function validereInfo() {
 
     var revisor = document.getElementById("revisorOption").value;
 
+    console.log(revisor);
+
     validereInput();
 
     function validereInput() {
@@ -55,8 +57,9 @@ function validereInfo() {
 
         function gemtilLS() {
             if (korrektInput) {
-
-                var nytMøde = new Møde(nuværendeSluttidspunkt, nuværendeSluttidspunkt, kommentar, kundenavn, tlfnr, mail);
+                var start = new Date(JSON.parse(JSON.stringify(nuværendeStarttidspunkt)));
+                var slut = new Date(JSON.parse(JSON.stringify(nuværendeSluttidspunkt)));
+                var nytMøde = new Møde(start, slut, kommentar, kundenavn, tlfnr, mail);
                 console.log(rh.getRevisorer())
                 rh.getRevisorer()[revisor].tilføjMøder(nytMøde)
                 localStorage.setItem('gemtRevisorhus', JSON.stringify(rh));
