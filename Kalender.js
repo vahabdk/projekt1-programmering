@@ -251,6 +251,10 @@ class Kalender {
             tidspunkt.dataset.slut = JSON.stringify(slutDate);
             tidspunkt.innerHTML = startTidspunkt + ' - ' + slutTidspunkt;
             document.getElementById('tiderContainer').appendChild(tidspunkt);
+
+            console.log('Tider på dagen: ' + this.tiderPåDagen[i]);
+            var temp = new Date(JSON.parse(JSON.stringify(this.tiderPåDagen[i])));
+            console.log(temp)
         }
     }
 

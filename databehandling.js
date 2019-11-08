@@ -25,8 +25,8 @@ function formaterRevisor(r) {
 
         for (var j = 0; j < revisor.møder.length; j++) {
             var møde = revisor.møder[j];
-            var endtime = new Date(møde.endTime);
-            var startTime = new Date(møde.startTime);
+            var endtime = new Date(JSON.parse(JSON.stringify(møde.endTime))); //Inspiration: https://stackoverflow.com/a/11491993
+            var startTime = new Date(JSON.parse(JSON.stringify(møde.startTime)));
             var kommentar = møde.kommentar;
             var kundenavn = møde.kundenavn;
             var mail = møde.mail;
