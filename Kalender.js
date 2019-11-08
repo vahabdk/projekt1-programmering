@@ -123,12 +123,12 @@ class Kalender {
             }
         }
 
-        //Gennemgå møder denne måned, og giv dem en class
+        //Gennemgå møder denne måned, og formater dem, efter om de er ledige eller optaget eller weekend
         for (var i=1; i<this.getDageIMåneden() + 1; i++){
             var dato = document.getElementsByClassName('dag' + i)[0];
             var elementDato = new Date(this.måned.getFullYear(), this.måned.getMonth(), dato.innerText);
 
-            //TODO: Find ud af, hvorfor den kaledes this.getDageIMåneden() gange, og hvorfor datoen passes
+            //Få antallet af ledige tider denne måned, så datoerne i kalenderen kan formateres
             var antalLedigeTider = this.findMøderForDag(dato, true);
 
             if(this.getUgedag(i) == 'Lørdag' ||  this.getUgedag(i) == 'Søndag'){
@@ -143,6 +143,9 @@ class Kalender {
 
     //Find ud af, om dagen er helt fyldt op med møder, eller ej
     //Første argument, element, referer til det element, som trykkes på, som vil være .dag (som er en dato)
+    //Hvis andet argument er false, retuneres ingenting, og så vil funktionen blot finde de ledige mødetider, så de kan outputtes på skærmen
+    //Hvis andet argument er true, retuneres antallet af ledige mødetider, så vi fx kan formatere dagen i kalenderen, hvis
+    //der ikke er flere ledige mødetider.
     findMøderForDag (element, returnResult = false){
         //Opret et Date objekt for den dato der trykkes på
         var elementDato = new Date(this.måned.getFullYear(), this.måned.getMonth(), element.innerText);
@@ -181,7 +184,6 @@ class Kalender {
             if(this.møderDenneMåned[i].getStartTid().getDate() == dag) {
                 //Fjern de tider, som allerede er optaget
                 for (var j = 0; j < this.tiderPåDagen.length; j++) {
-                    //Fjern de tider, som allerede er booket.
 
                     var starterSammeTidspunkt = (this.møderDenneMåned[i].getStartTid() - this.tiderPåDagen[j] == 0);
 
@@ -198,16 +200,19 @@ class Kalender {
                     //Sletter elementet, hvis den starter på samme tidspunkt som mødet. Inspiration: https://stackoverflow.com/a/5767357
                     if(starterSammeTidspunkt) {
                         this.tiderPåDagen.splice(j, 1);
+                        //Vi tæller j en ned, da vi fjerner et element, og vi ellers ville springe et tidspunkt over
                         j--;
                     }
 
                     //Her sker magien. Først tjekker den om mødet er før tidPåDagen (Det 'møde' vi har oprettet)
+                    //Vi behøver ikke tjekke for, om de starter samtidig, da vi allerede har fjernet alle disse møder i if-statementet overfor.
                     //Herefter tjekker den om tiden mellem vores møde og tid på dagen er mindre end mødelængden.
                     //Fx:
                     //Er tid på dagen 08:30, og mødet starter 08:00
                     //Her vil vi have TidmellemMøder = 1800000 og Mødelængde = 3600000
+                    //Her vil TidmellemMøder være mindre end Mødelængde
                     //Dermed vil if-statementet blive true, og tid på dagen (08:30) fjernes, da der er et møde her
-                    if(tidMellemMøder > 0 && tidMellemMøder < (this.møderDenneMåned[i].mødeLængde() * 60 * 60 * 1000)) {
+                    if(tidMellemMøder > 0 && tidMellemMøder < (this.møderDenneMåned[i].getMødeLængde() * 60 * 60 * 1000)) {
                         this.tiderPåDagen.splice(j, 1);
                         j--;
                     }
@@ -222,13 +227,14 @@ class Kalender {
     }
 
     //Opdatér tidsplanen så den viser de rette oplysninger
-    //Kaldes når der trykkes på en ledig datao
+    //Kaldes når der trykkes på en ledig dato
     opdaterTidsplan(element){
 
         //Gør tidsplanen synlig
         document.getElementById('tidsplan').style.display = 'flex';
         document.getElementById('opretMødeContainer').style.display = 'none';
 
+        //Vis de ledige mødetider i tidsplanen for den dag der er trykket på
         this.findMøderForDag(element);
 
         //Output de ledige tider
@@ -259,11 +265,11 @@ class Kalender {
 
     //Retunerer en ugedato ud fra en dato
     getUgedag(dato){
-        var midlertidigDato = new Date(this.måned.getFullYear(), this.måned.getMonth(), dato)
+        var midlertidigDato = new Date(this.måned.getFullYear(), this.måned.getMonth(), dato);
         return this.ugedage[midlertidigDato.getDay()];
     }
 
-    //Kaldes når der laves en ændring hos en revisor eller møde
+    //Kaldes når der laves en ændring hos en revisor eller møde eller når vi skal se en ny måned
     refresh(){
         //Ryd kalenderen
         document.querySelector('.dage').innerHTML = '';
