@@ -5,7 +5,7 @@
 
 document.getElementById('submit').addEventListener('click', function(e) {
     checkLogin(e);
-})
+});
 
 function checkLogin(e) {
     e.preventDefault();

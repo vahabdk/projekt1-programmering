@@ -15,9 +15,11 @@ if(gemtRevisorhus == null) {
     var møde2 = new kortMøde(imorgen);
 
     var peter = new Revisor('Peter', [], startPeter, slutPeter);
+    var kurt = new Revisor('Kurt', [], 8, 16);
 
     var r1 = new Revisorhus('Revisorcentralen');
     r1.addRevisor(peter);
+    r1.addRevisor(kurt)
 
     k = new Kalender(r1, r1.getRevisorer()[0]);
 

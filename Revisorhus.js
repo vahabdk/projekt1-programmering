@@ -25,19 +25,9 @@ class Revisorhus {
     getRevisorer() {
         return this.revisorer;
     }
+
     //Laver en function for at kunne tilføje flere revisorer så det derved er muligt at skrive add.revisor("navn");
     addRevisor(revisor) {
         this.revisorer.push(revisor);
     }
 }
-
-//Laver en reference til revisorhusklassen, så den kan påkaldes.
-revhus = new Revisorhus("Birkholm Revision");
-
-//Her anvendes den function som blev lavet oppe i klassen.
-revhus.addRevisor("Kristian");
-revhus.addRevisor("Jacob");
-revhus.addRevisor("Andreas");
-
-//Test af at det virker
-//console.log(revhus.getRevisorhusInfo() + " er et revisorhus med følgende revisorer: " + revhus.getRevisorer());
