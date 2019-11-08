@@ -13,7 +13,7 @@ class Møde {
     }
 
 
-    mødeLængde(){
+    getMødeLængde(){
         return (this.endTime.getTime() - this.startTime.getTime()) / (1000 * 60 * 60);
     }
 
@@ -69,22 +69,3 @@ class kortMøde extends Møde {
     }
 }
 
-var today = new Date();
-
-var start = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 11, 0, 0, 0);
-var slut = new Date(start.getTime() + 60 * 60 * 1000);
-var møde1 = new Møde(start, slut);
-møde1.printTime();
-
-console.log(møde1.mødeLængde());
-
-// dette for at gøre opmærksom på den tid der er til rådighed
-if (møde1.mødeLængde() <= 0.5){
-    console.log('30 minutter');
-}
-else {
-    console.log('1 time');
-}
-
-console.log(møde1.getKundenavn());
-console.log(møde1.getKommentar());

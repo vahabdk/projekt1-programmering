@@ -9,6 +9,8 @@ function validereInfo() {
     var mødetype = document.getElementById("mødetype").value;
     var kommentar = document.getElementById("kommentar").value;
 
+    var revisor = document.getElementById("revisorOption").value;
+
     validereInput();
 
     function validereInput() {
@@ -47,6 +49,7 @@ function validereInfo() {
         if(korrektInput) {
             gemtilLS();
             alert("Mødet er oprettet.");
+            k.refresh()
         }
 
 
@@ -54,9 +57,9 @@ function validereInfo() {
             if (korrektInput) {
 
                 var nytMøde = new Møde(nuværendeSluttidspunkt, nuværendeSluttidspunkt, kommentar, kundenavn, tlfnr, mail);
-
-                localStorage.setItem('gemtilLS', JSON.stringify(nytMøde));
-                                                       
+                console.log(rh.getRevisorer())
+                rh.getRevisorer()[revisor].tilføjMøder(nytMøde)
+                localStorage.setItem('gemtRevisorhus', JSON.stringify(rh));
             }
         }
 
