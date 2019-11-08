@@ -85,13 +85,16 @@
                     <h3>Indtast dine oplysninger</h3>
                     <form id="opretMødeForm">
                         <label for="kundenavn">Navn:</label><br>
-                        <input type="text" name="kundenavn" id="kundenavn" placeholder="Dit navn"><br><br>
+                        <input type="text" name="kundenavn" id="kundenavn" placeholder="Dit navn"><br>
+                        <span id="fejlNavn" class="fejlbesked"></span><br><br>
 
                         <label for="tlfnr">Tlf:</label><br>
-                        <input type="number" name="tlfnr" id="tlfnr" placeholder="Tlf nummer"><br><br>
+                        <input type="number" name="tlfnr" id="tlfnr" placeholder="Tlf nummer"><br>
+                        <span id="fejlTlf" class="fejlbesked"></span><br><br>
 
                         <label for="mail">Mail:</label><br>
-                        <input type="email" name="mail" id="mail" placeholder="E-mail"><br><br>
+                        <input type="email" name="mail" id="mail" placeholder="E-mail"><br>
+                        <span id="fejlEmail" class="fejlbesked"></span><br><br>
 
                         <label for="mødetype">Møde type:</label><br>
                         <select type="text" id="mødetype">
@@ -99,7 +102,8 @@
                             <option value="1">Møde 1</option>
                             <option value="2">Møde 2</option>
                             <option value="3">Møde 3</option>
-                        </select><br><br>
+                        </select><br>
+                        <span id="fejlMøde" class="fejlbesked"></span><br><br>
 
                         <label for="kommentar">Kommentar:</label><br>
                         <textarea id="kommentar" name="kommentar" placeholder="Indtast evt. kommentar"></textarea><br><br>
@@ -118,5 +122,11 @@
     <script src="Møde.js"></script>
     <script src="databehandling.js"></script>
     <script src="main.js"></script>
+    <script>
+        document.getElementById("bookMødeSubmit").addEventListener("click", function(e){
+            e.preventDefault();
+            validateInformation();
+        });
+    </script>
 </body>
 </html>
