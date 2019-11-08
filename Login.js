@@ -5,7 +5,7 @@
 
 document.getElementById('submit').addEventListener('click', function(e) {
     checkLogin(e);
-});
+})
 
 function checkLogin(e) {
     e.preventDefault();
@@ -17,7 +17,9 @@ function checkLogin(e) {
     {
         if (brugernavn == revisorer[i].brugernavn && password == revisorer[i].kodeord) {
             console.log('rigtigt login');
-            localStorage.setItem("loginRevisor", JSON.stringify(revisorer[i]));
+            sessionStorage.setItem("loggedInRevisorObject", JSON.stringify(revisorer[i]));
+            sessionStorage.setItem("loggedInRevisorId", i);
+
             location.href = "revisorLoginside.html";
             break;
         }
@@ -39,3 +41,8 @@ function getLogin() {
     var password = localStorage.getItem("password");
 }
 
+function logAf(){
+    sessionStorage.removeItem('loggedInRevisorObject');
+    sessionStorage.removeItem('loggedInRevisorId');
+    window.location.href = 'Login.html'
+}
