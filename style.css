@@ -225,3 +225,7 @@ body{
 #error{
     color: red;
 }
+
+.fejlbesked{
+    color: red;
+}
