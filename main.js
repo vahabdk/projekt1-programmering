@@ -94,9 +94,14 @@ document.addEventListener('click', function (e) {
     if (e.target.classList.contains('iMåneden')) {
         k.opdaterTidsplan(e.target);
     } else if (e.target.classList.contains('tidspunkt')) {
+        var tidspunkter = document.getElementsByClassName("tidspunkt");
+        for (var i =0; i<tidspunkter.length; i++) {
+            tidspunkter[i].classList.remove("aktiv");
+        }
         document.getElementById('opretMødeContainer').style.display = 'block';
         nuværendeStarttidspunkt = e.target.getAttribute('data-start');
         nuværendeSluttidspunkt = e.target.getAttribute('data-slut');
+        e.target.classList+= " aktiv";
     }
 });
  //Når der klikkes på 'Book møde' knappen
@@ -123,3 +128,9 @@ document.getElementById('revisorOption').addEventListener('change', function(e){
     k.setVisKalenderFor(rh.getRevisorer()[revisorIndex]);
     k.refresh();
 });
+
+
+
+
+
+

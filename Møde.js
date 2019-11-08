@@ -1,21 +1,42 @@
 class Møde {
     constructor (start, slut, kommentar, kundenavn){
-        this.startTid = start;
-        this.slutTid = slut;
+        this.startTime = start;
+        this.endTime = slut;
         this.kundenavn = kundenavn;
         this.kommentar = kommentar;
 
     }
 
-
-    getMødeLængde(){
-        return (this.slutTid.getTime() - this.startTid.getTime()) / (1000 * 60 * 60);
+    printTime(){
+        console.log(' Mødet starter: ' + this.startTime + ' og slutter: ' + this.endTime);
     }
+
+
+    mødeLængde(){
+        return (this.endTime.getTime() - this.startTime.getTime()) / (1000 * 60 * 60);
+    }
+
+
+    printMødeLængde(){
+        //kilde: https://stackoverflow.com/questions/13894632/get-time-difference-between-two-dates-in-seconds
+
+        //getTime() afleverer tiden i millisekunder. Derfor må vi gange med 1000
+        //1000 (ms) * 60 (sekunder) * 60 (minutter) for at få tiden i timer
+        var differenceInHours = (this.endTime.getTime() - this.startTime.getTime()) / (1000 * 60 * 60);
+        console.log('Mødet varer: ' + differenceInHours + ' timer');
+    }
+
+    //Inspiration: https://stackoverflow.com/a/11796776
+    changeMeeting(args) {
+
+    }
+
+
     getStartTid() {
-        return this.startTid;
+        return this.startTime;
     }
     getSlutTid() {
-        return this.slutTid;
+        return this.endTime;
     }
 
     getKundenavn() {
@@ -40,7 +61,29 @@ class langMøde extends Møde {
 class kortMøde extends Møde {
     constructor(start) {
         //kort møde varer 30 minutter eller 1/2 time
+
         var slut = new Date(start.getTime() + 30 * 60 * 1000);
         super(start, slut);
+
     }
 }
+
+var today = new Date();
+
+var start = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 11, 0, 0, 0);
+var slut = new Date(start.getTime() + 60 * 60 * 1000);
+var møde1 = new Møde(start, slut);
+møde1.printTime();
+
+console.log(møde1.mødeLængde());
+
+// dette for at gøre opmærksom på den tid der er til rådighed
+if (møde1.mødeLængde() <= 0.5){
+    console.log('30 minutter');
+}
+else {
+    console.log('1 time');
+}
+
+console.log(møde1.getKundenavn());
+console.log(møde1.getKommentar());

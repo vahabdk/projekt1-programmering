@@ -86,20 +86,24 @@
                     <form id="opretMødeForm">
                         <label for="kundenavn">Navn:</label><br>
                         <input type="text" name="kundenavn" id="kundenavn" placeholder="Dit navn"><br><br>
+                        <div id="fejlKundenavn" class="fejl"></div>
 
                         <label for="tlfnr">Tlf:</label><br>
                         <input type="number" name="tlfnr" id="tlfnr" placeholder="Tlf nummer"><br><br>
+                        <div id="fejlTlfnr" class="fejl"></div>
 
                         <label for="mail">Mail:</label><br>
                         <input type="email" name="mail" id="mail" placeholder="E-mail"><br><br>
+                        <div id="fejlEmail" class="fejl"></div>
 
-                        <label for="mødetype">Møde type:</label><br>
+                        <label for="mødetype">Møde typer:</label><br>
                         <select type="text" id="mødetype">
                             <option selected disabled value="0">  Vælg  </option>
                             <option value="1">Møde 1</option>
                             <option value="2">Møde 2</option>
                             <option value="3">Møde 3</option>
                         </select><br><br>
+                        <div id="fejlMødetype" class="fejl"></div>
 
                         <label for="kommentar">Kommentar:</label><br>
                         <textarea id="kommentar" name="kommentar" placeholder="Indtast evt. kommentar"></textarea><br><br>
@@ -118,5 +122,12 @@
     <script src="Møde.js"></script>
     <script src="databehandling.js"></script>
     <script src="main.js"></script>
+    <script src="validation.js"></script>
+    <script>
+        document.getElementById("bookMødeSubmit").addEventListener('click', function(e){
+            e.preventDefault();
+            validereInfo();
+        });
+    </script>
 </body>
 </html>

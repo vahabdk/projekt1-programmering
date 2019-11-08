@@ -175,7 +175,12 @@ body{
     margin: 12px 0;
     cursor: pointer;
     font-weight: 700;
-    color: rgb(80, 80, 80);
+    color: #9b9ea3;
+}
+
+.tidspunkt.aktiv {
+    color: #000000 !important;
+
 }
 
 #opretMødeContainer{
@@ -229,3 +234,11 @@ body{
 .fejlbesked{
     color: red;
 }
+
+
+
+.fejl {
+    color: red;
+    font-size: 10px;
+}
+
