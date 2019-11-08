@@ -5,7 +5,6 @@ function getGemtRevisorHus() {
     gemteRevisore = formaterRevisor(gemtRevisorhus.revisorer);
 
     return new Revisorhus(gemtRevisorhus.revisorhusInfo, gemteRevisore);
-
 }
 
 
@@ -30,11 +29,16 @@ function formaterRevisor(r) {
             var startTime = new Date(møde.startTime);
             var kommentar = møde.kommentar;
             var kundenavn = møde.kundenavn;
+            var mail = møde.mail;
+            var tlfnr = møde.tlfnr;
 
-            møder.push(new Møde(startTime, endtime, kommentar, kundenavn));
+            møder.push(new Møde(startTime, endtime, kommentar, kundenavn, mail, tlfnr));
         }
         returnRevisore.push(new Revisor(revisorNavn, møder, startdag, slutdag, email, tlf, brugernavn, kodeord));
     }
+
+    console.log(returnRevisore);
+
     return returnRevisore;
 }
 
