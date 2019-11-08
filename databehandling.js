@@ -2,8 +2,18 @@ function getGemtRevisorHus() {
     var gemteRevisore = [];
     var gemtRevisorhus = JSON.parse(localStorage.getItem('gemtRevisorhus'));
 
-    for (var i = 0; i < gemtRevisorhus.revisorer.length; i++) {
-        var revisor = gemtRevisorhus.revisorer[i];
+    gemteRevisore = formaterRevisor(gemtRevisorhus.revisorer);
+
+    return new Revisorhus(gemtRevisorhus.revisorhusInfo, gemteRevisore);
+
+}
+
+
+function formaterRevisor(r) {
+    returnRevisore = [];
+
+    for (var i = 0; i < r.length; i++) {
+        var revisor = r.revisorer[i];
         var revisorNavn = revisor.revisorNavn;
         var startdag = revisor.startdag;
         var slutdag = revisor.slutdag;
@@ -23,12 +33,11 @@ function getGemtRevisorHus() {
 
             møder.push(new Møde(startTime, endtime, kommentar, kundenavn));
         }
-
-        gemteRevisore.push(new Revisor(revisorNavn, møder, startdag, slutdag, email, tlf, brugernavn, kodeord));
+        returnRevisore.push(new Revisor(revisorNavn, møder, startdag, slutdag, email, tlf, brugernavn, kodeord));
     }
-
-    return new Revisorhus(gemtRevisorhus.revisorhusInfo, gemteRevisore);
+    return returnRevisore;
 }
+
 
 //Tilføj møde til storage, for det nuværende revisorhus og nuvæende revisor
 function tilføjMødeTilStorage(møde){

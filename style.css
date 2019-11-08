@@ -1,6 +1,11 @@
 body{
     background-color: rgb(250, 250, 250);
 }
+
+.navbar ul{
+
+}
+
 .mainContainer{
     display: flex;
     justify-content: center;
