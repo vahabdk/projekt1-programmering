@@ -47,8 +47,6 @@ if(gemtRevisorhus == null) {
 
     k = new Kalender(gemtRevisorhus, rh.getRevisorer()[0]);
 
-
-
 }
 
 //Opdatere revisorer, så når der oprettes en ny revisorer, bliver den vist som en option
@@ -101,8 +99,7 @@ document.addEventListener('click', function (e) {
         nuværendeSluttidspunkt = e.target.getAttribute('data-slut');
     }
 });
-
-//Når der klikkes på 'Book møde' knappen
+ //Når der klikkes på 'Book møde' knappen
 document.getElementById('bookMødeSubmit').addEventListener('click', function(e){
    e.preventDefault();
    //Kilde: https://stackoverflow.com/a/1085810
