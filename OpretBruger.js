@@ -93,27 +93,35 @@ function kontrolInfo() {
            document.getElementById("fejlTid").innerHTML = "";
        }
 
-       //Kontrol af brugernavn
+       /*Kontrol af brugernavn, først kontrolleres at der bliver skrevet noget til brugernavnet. Dernæste skal det kontrolleres,
+       at brugernabnet er unikt. Der er lavet et for loop som kører alle brugernavnene igennem og hvis et navn er lig med det
+       indtastede, så kommer en fejlbesked. Der anvendes funktioner fra databehandling og revisor.
+        Hvis loopet finder et match tidligt, standses loopet med break;*/
        if (brugernavn==null || brugernavn=="") {
            document.getElementById("fejlBrugernavn").innerHTML = "Indtast brugernavn";
            inputCorrect = false;
-
+           console.log(brugernavn);
        } else {
-           document.getElementById("fejlBrugernavn").innerHTML = "";
+          var rh = getGemtRevisorHus();
+          var listRevisorer = rh.getRevisorer();
+
+          for (var i = 0; i < listRevisorer.length; i++) {
+              console.log(listRevisorer [i].getBrugernavn())
+
+              if (listRevisorer [i].getBrugernavn() == brugernavn) {
+                  document.getElementById("fejlBrugernavn").innerHTML = "Brugernavn allerede taget";
+                  inputCorrect = false;
+                  break;
+              } else{
+                  document.getElementById("fejlBrugernavn").innerHTML = "";
+              }
+          }
+
        }
 
        /*Kontrol af at brugernavn er unikt. Der hentes en funktion fra revisor.js og databehandling.js
        Herfra bruges et loop til at gå igennem alle oprettede revisorer i local storage. */
-       var rh = getGemtRevisorHus();
-       var listRevisorer = rh.getRevisorer();
-       for (var i = 0; i < listRevisorer.length; i++) {
-           if (listRevisorer [i].getBrugernavn() == brugernavn) {
-               document.getElementById("fejlBrugernavn").innerHTML = "Brugernavn allerede taget";
-               inputCorrect = false;
-           } else {
-               document.getElementById("fejlBrugernavn").innerHTML = "";
-           }
-       }
+
 
        //Kontrol af kodeord
        if (kodeord==null || kodeord=="") {

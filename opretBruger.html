@@ -29,7 +29,7 @@
         Kodeord<br/> <input type="password" name="Kodeord" id="Kodeord">*<br/>
         <span id="fejlKodeord" class="fejlbesked"></span><br/><br/>
         Ved at lave en bruger accepterer jeg gældende <a href="https://www.retsinformation.dk/forms/r0710.aspx?id=45902"> regler og vilkår</a> <br/><br/>
-        <!-- for at aktivere JS -->
+        <!-- Knappen som skal sende information videre eller få brugeren til at indtaste korrekt information -->
         <button type="submit"  id="opretBrugerSubmit" style="cursor:pointer;">Submit</button>
     </form>
 </ul>
@@ -39,6 +39,9 @@
 <script src="Møde.js"></script>
 <script src="databehandling.js"></script>
 <script src="OpretBruger.js"></script>
+
+<!-- for at påkalde funktionen til knappen submit. Der er tilføjet en preventDefault, fordi siden ikke skal refreshe,
+hvis man har tastet forkert eller har glemt noget. KontrolInfo ligger i OpretBruger.js -->
 <script>
     document.getElementById("opretBrugerSubmit").addEventListener("click", function(e){
         e.preventDefault();

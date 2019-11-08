@@ -150,12 +150,21 @@ body{
     font-weight: 700;
     color: rgb(120, 120, 120);
 }
+
+
 #tidsplan .venstreSide #tidsplanDato{
     display: block;
     font-size: 18px;
     font-weight: 700;
-    color: rgb(60, 60, 60);
+    color: #9b9ea3;
 }
+
+.tidspunkt.aktiv {
+    color: #000000;
+
+}
+
+
 #tidsplan .højreSide{
     display: inline-block;
     width: 60%;
@@ -227,5 +236,9 @@ body{
 }
 
 .fejlbesked{
+    color: red;
+}
+
+.fejlbesked {
     color: red;
 }
