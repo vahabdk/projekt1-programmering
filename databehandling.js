@@ -2,6 +2,43 @@ function getGemtRevisorHus() {
     var gemteRevisore = [];
     var gemtRevisorhus = JSON.parse(localStorage.getItem('gemtRevisorhus'));
 
+    if(gemtRevisorhus == null){
+        //Lav dummydata hvis der ikke er nogen data i forvejen
+        var imorgen = new Date();
+        imorgen.setDate(imorgen.getDate() + 1);
+
+        var startPeter = 8;
+        var slutPeter = 16;
+
+        var møde2 = new kortMøde(imorgen);
+
+        var peter = new Revisor('Peter', [], startPeter, slutPeter, 'peter@lortemail.dk', '123', 'pter', '123');
+        var kurt = new Revisor('Kurt', [], 8, 16, 'peter@lortemail.dk', '123', 'pter', '123');
+
+        var rh = new Revisorhus('Revisorcentralen');
+        rh.addRevisor(peter);
+        rh.addRevisor(kurt);
+
+        k = new Kalender(rh, rh.getRevisorer()[0]);
+
+        var idag = new Date();
+        idag.setDate(1);
+        var udFyldDagen = false;
+        for(var j=1; j<=k.getDageIMåneden(); j++){
+            for(var i=startPeter; i<slutPeter - udFyldDagen; i++){
+                peter.tilføjMøder(new langMøde(new Date(idag.getFullYear(), idag.getMonth(), idag.getDate(), i, 0, 0, 0)));
+            }
+            udFyldDagen = !udFyldDagen;
+            idag.setDate(j + 1);
+        }
+
+        peter.tilføjMøder(new langMøde(new Date(2019, 9, 18, 14, 30, 0, 0)));
+
+
+        gemtRevisorhus = rh;
+        localStorage.setItem('gemtRevisorhus', JSON.stringify(rh));
+    }
+
     gemteRevisore = formaterRevisor(gemtRevisorhus.revisorer);
 
     return new Revisorhus(gemtRevisorhus.revisorhusInfo, gemteRevisore);

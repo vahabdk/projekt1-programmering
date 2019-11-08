@@ -14,6 +14,7 @@ class Kalender {
         this.visKalenderFor = revisor;
 
 
+
         //Laver en array over navnene på månederne, så vi kan udskrive månednavn
         this.månedNavne = ['Januar', 'Februar', 'Marts', 'April', 'Maj', 'Juni', 'Juli', 'August',
             'September', 'Oktober', 'November', 'December'];
@@ -24,6 +25,12 @@ class Kalender {
 
     //Initialiserer kalenderen, ved at oprette de rette html-elementer
     initKalender() {
+
+        //Ryd kalenderen
+        document.querySelector('.dage').innerHTML = '';
+
+        document.getElementById('tidsplan').style.display = 'none';
+        document.getElementById('opretMødeContainer').style.display = 'none';
 
         //Udskriver hvilken måned og år vi befinder os i
         document.getElementById('år').innerText =  this.måned.getFullYear();
