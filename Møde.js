@@ -1,3 +1,6 @@
+// starter med at definere Møde class constructor: Møde består af
+
+
 class Møde {
     constructor (start, slut, kommentar, kundenavn, tlfnr, mail){
         this.startTime = start;
