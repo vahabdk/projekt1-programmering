@@ -57,6 +57,8 @@ function validereInfo() {
 
         function gemtilLS() {
             if (korrektInput) {
+                //Vi formaterer daten som er stringified. Inspiration: https://stackoverflow.com/a/11491993
+                //nuværendeStarttidspunkt og sluttidspunkt fås fra main.js, hvor den viser tidsplanen
                 var start = new Date(JSON.parse(JSON.stringify(nuværendeStarttidspunkt)));
                 var slut = new Date(JSON.parse(JSON.stringify(nuværendeSluttidspunkt)));
                 var nytMøde = new Møde(start, slut, kommentar, kundenavn, tlfnr, mail);
