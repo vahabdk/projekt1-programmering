@@ -1,0 +1,75 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+#loginForm{
+    width: 280px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+}
+#loginForm h2{
+    float: top;
+    font-size: 40px;
+    border-bottom: 4px solid black;
+    width: 40%;
+    margin-bottom: 20%;
+}
+
+.tekstboks{
+    width: 100%;
+    overflow: hidden;
+    font-size: 20px;
+    padding-bottom: 2%;
+    border-bottom: 2px solid black;
+}
+
+.tekstboks input{
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 18px;
+    width: 100%;
+    padding-top: 5%;
+    float: left;
+}
+
+.Login{
+    font: bold 16px Arial;
+    color: black;
+    text-decoration: none;
+    padding: 2% 3% 2% 3%;
+    border: 0.5px solid black;
+    height: 30%;
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    margin: auto;
+    background-color: white;
+    cursor: pointer;
+    border-radius: 5%;
+}
+
+.opretBrugerKnap {
+    font: bold 16px Arial;
+    color: black;
+    text-decoration: none;
+    padding: 2% 3% 2% 3%;
+    border: 0.5px solid black;
+    height: 30%;
+    width: 94%;
+    text-align: center;
+    display: inline-block;
+    margin: auto;
+    background-color: white;
+    cursor: pointer;
+    border-radius: 5%;
+}
+
+.fejlbesked{
+    color: red;
+}

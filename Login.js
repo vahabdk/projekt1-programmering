@@ -45,4 +45,5 @@ function logAf(){
     sessionStorage.removeItem('loggedInRevisorObject');
     sessionStorage.removeItem('loggedInRevisorId');
     window.location.href = 'Login.html'
+    console.log(loggedInRevisorObject);
 }

@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<div lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Revisor Login</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="revisorLoginside.css">
 </head>
 <div>
+    <div id="box">
 <h1> Revisor Login </h1>
 
 <div class="navn" id="revisorNavn"></div>
-<button id="logUd" onclick="logAf()">Log af</button>
-<h2>Oversigt over møder:</h2>
+        <button id="logUd" onclick="logAf()">Log af</button><br><br>
+
+<h2>Oversigt over møder</h2>
 
 <br>
     <select id="Dato">
@@ -78,7 +80,7 @@
     <div class="revisorMøde">
         <span></span>
     </div><br>
-    <button class="slet møde" id="slet møde">Slet møde</button>
+    <button class="sletmøde" id="sletmøde">Slet møde</button>
     <br>
     _____________________________________
     <br><br>
@@ -100,14 +102,20 @@
         <span>Tid 14:00 - 15:00</span><br>
         <span>Kundenavn</span><br>
         <span>Mødetype</span><br>
-        <span>Kommentar</span>
-    </div>
-</div>
-</div>
+        <span>Kommentar</span><br>
+    </div><br>
+
+</div><br>
+        <button class="sletmøde" id="sletAllemøder">Slet alle møder</button><br><br>
 </div>
 </div>
 <br>
-<button class="slet møde" id="slet møde">Slet alle møder</button>
+
+</div>
+
+</div>
+
+
 
 
 <script src="Revisorhus.js"></script>
@@ -116,7 +124,6 @@
 <script src="databehandling.js"></script>
 <script src="revisorLoginside.js"></script>
 <script src="Login.js"></script>
-
 
 </body>
 </html>
