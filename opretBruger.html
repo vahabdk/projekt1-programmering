@@ -5,34 +5,66 @@
     <title>Opret bruger</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
-<h1>Opret login</h1>
-<ul>
-    <!--  JS -->
-    <form name="opretBruger" id="opretBruger">
-        <!-- de forskellige input laves, så der kan indtastes -->
-        Fornavn<br/> <input type="text" name="Fornavn" id="Fornavn">*<br/>
-        <!-- nedenunder her, forberedes der til at der kan komme en fejlbesked efterfølgende gentages det hele-->
-        <span id="fejlFornavn" class="fejlbesked"></span><br/><br/>
-        Efternavn<br/> <input type="text" name="Efternavn" id="Efternavn">*<br/>
-        <span id="fejlEfternavn" class="fejlbesked"></span><br/><br/>
-        Email<br/> <input type="text" name="Email" id="Email">*<br/>
-        <span id="fejlEmail" class="fejlbesked"></span><br/><br/>
-        Tlf<br/> <input type="number" name="Tlf" id="Tlf">*<br/>
-        <span id="fejlTlf" class="fejlbesked"></span><br/><br/>
-        Kundemøder i tidsrummet <br/>
-            <input type="number" name="Time" value="08" min="1" max="24" id="startTime">:<input type="number" name="Minutter" value="00" min="00" max="30" step="30" id="startMinut"> til
-            <input type="number" name="Time" value="14" min="1" max="24" id="slutTime">:<input type="number" name="Minutter" value="00" min="00" max="30" step="30" id="slutMinut"><br/>
-            <span id="fejlTid" class="fejlbesked"></span><br/><br/>
-        Brugernavn<br/> <input type="text" name="Brugernavn" id="Brugernavn">*<br/>
-        <span id="fejlBrugernavn" class="fejlbesked"></span><br/><br/>
-        Kodeord<br/> <input type="password" name="Kodeord" id="Kodeord">*<br/>
-        <span id="fejlKodeord" class="fejlbesked"></span><br/><br/>
-        Ved at lave en bruger accepterer jeg gældende <a href="https://www.retsinformation.dk/forms/r0710.aspx?id=45902"> regler og vilkår</a> <br/><br/>
-        <!-- Knappen som skal sende information videre eller få brugeren til at indtaste korrekt information -->
-        <button type="submit"  id="opretBrugerSubmit" style="cursor:pointer;">Submit</button>
-    </form>
-</ul>
+<body id="bodyOpret" class="bodyOpret">
+<div id="baggrund" class="navOpret">
+    <div class="nav">
+        <ul class="navbar">
+            <li class="navList"><a class="navLista" href="index.html">Kalender</a></li>
+            <li class="navList"><a class="navLista" href="opretBruger.html">Opret revisor</a></li>
+            <li class="navList"><a class="navLista" href="Login.html">Login</a></li>
+        </ul>
+    </div>
+    <div id="opretBrugerBoks" class="opretBruger">
+        <h1 id="opretBrugerOverskrift" class="opretBruger">Opret login</h1>
+
+            <form name="opretBruger" id="opretBrugerForm" class="opretBruger">
+                <!-- de forskellige input laves, så der kan indtastes -->
+                <div class="opretBrugerinput">
+                <br/> <input type="text" name="Fornavn" id="Fornavn" placeholder="Fornavn"><br/>
+                </div>
+                <!-- nedenunder her, forberedes der til at der kan komme en fejlbesked efterfølgende gentages det hele-->
+                <span id="fejlFornavn" class="fejlbesked"></span><br/><br/>
+
+                <div class="opretBrugerinput">
+                <br/> <input type="text" name="Efternavn" id="Efternavn" placeholder="Efternavn"><br/>
+                </div>
+                <span id="fejlEfternavn" class="fejlbesked"></span><br/><br/>
+
+                <div class="opretBrugerinput">
+                <br/> <input type="text" name="Email" id="Email" placeholder="Email"><br/>
+                </div>
+                <span id="fejlEmail" class="fejlbesked"></span><br/><br/>
+
+                <div class="opretBrugerinput">
+                <br/> <input type="number" name="Tlf" id="Tlf" placeholder="Tlf nr."><br/>
+                </div>
+                <span id="fejlTlf" class="fejlbesked"></span><br/><br/>
+
+                <div class="inputTid">
+                Kundemøder i tidsrummet <br/>
+                <input type="number" name="Time" value="08" min="1" max="24" id="startTime"> : <input type="number" name="Minutter" value="00" min="00" max="30" step="30" id="startMinut"> til
+                <input type="number" name="Time" value="14" min="1" max="24" id="slutTime"> : <input type="number" name="Minutter" value="00" min="00" max="30" step="30" id="slutMinut"><br/>
+                </div>
+                    <span id="fejlTid" class="fejlbesked"></span><br/><br/>
+
+                <div class="opretBrugerinput">
+                <br/> <input type="text" name="Brugernavn" id="Brugernavn" placeholder="Brugernavn"><br/>
+                </div>
+                <span id="fejlBrugernavn" class="fejlbesked"></span><br/><br/>
+
+                <div class="opretBrugerinput">
+                <br/> <input type="password" name="Kodeord" id="Kodeord" placeholder="Kodeord"><br/>
+                </div>
+                <span id="fejlKodeord" class="fejlbesked"></span><br/><br/>
+
+
+                Ved at lave en bruger accepterer jeg gældende <a href="https://www.retsinformation.dk/forms/r0710.aspx?id=45902"> regler og vilkår</a> <br/><br/>
+                <!-- Knappen som skal sende information videre eller få brugeren til at indtaste korrekt information -->
+                <button type="submit"  id="opretBrugerSubmit">Opret bruger</button><br/><br/>
+            </form>
+
+    </div>
+</div>
 <script src="Kalender.js"></script>
 <script src="Revisorhus.js"></script>
 <script src="Revisor.js"></script>
