@@ -19,7 +19,7 @@ function getGemtRevisorHus() {
         rh.addRevisor(peter);
         rh.addRevisor(kurt);
 
-        k = new Kalender(rh, rh.getRevisorer()[0]);
+        var k = new Kalender(rh, rh.getRevisorer()[0]);
 
         var idag = new Date();
         idag.setDate(1);

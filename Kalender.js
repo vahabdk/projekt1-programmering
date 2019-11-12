@@ -26,51 +26,57 @@ class Kalender {
     //Initialiserer kalenderen, ved at oprette de rette html-elementer
     initKalender() {
 
-        //Ryd kalenderen
-        document.querySelector('.dage').innerHTML = '';
+        //Hvis vi er inde på en side med kalenderen, skal denne initialiseres.
+        //Ellers oprettes Kalender-objektet bare
 
-        document.getElementById('tidsplan').style.display = 'none';
-        document.getElementById('opretMødeContainer').style.display = 'none';
+        if(document.querySelector('.dage') != null){
+            //Ryd kalenderen
+            document.querySelector('.dage').innerHTML = '';
 
-        //Udskriver hvilken måned og år vi befinder os i
-        document.getElementById('år').innerText =  this.måned.getFullYear();
-        document.getElementById('månedNavn').innerText = this.månedNavne[this.måned.getMonth()];
+            document.getElementById('tidsplan').style.display = 'none';
+            document.getElementById('opretMødeContainer').style.display = 'none';
 
-        //Finder første ugedag i den givende måned
-        //Da getDay() angiver søndag som den 0. dag i ugen, sætter vi førsteDagIMåneden til 7, hvis det er en søndag
-        //Source: https://stackoverflow.com/questions/13571700/get-first-and-last-date-of-current-month-with-javascript-or-jquery
-        var førsteDagIMåneden = new Date(this.måned.getFullYear(), this.måned.getMonth(), 1).getDay();
-        if(førsteDagIMåneden == 0) førsteDagIMåneden = 7;
+            //Udskriver hvilken måned og år vi befinder os i
+            document.getElementById('år').innerText =  this.måned.getFullYear();
+            document.getElementById('månedNavn').innerText = this.månedNavne[this.måned.getMonth()];
 
-        //Antal dage i måneden. Fungerer ved at tage den 0. dag i den næste måned, som er den sidste dag i denne måned
-        //Inspiration: https://stackoverflow.com/a/1184359
-        var antalDageIMåneden = new Date(this.måned.getFullYear(), this.måned.getMonth() + 1, 0).getDate();
+            //Finder første ugedag i den givende måned
+            //Da getDay() angiver søndag som den 0. dag i ugen, sætter vi førsteDagIMåneden til 7, hvis det er en søndag
+            //Source: https://stackoverflow.com/questions/13571700/get-first-and-last-date-of-current-month-with-javascript-or-jquery
+            var førsteDagIMåneden = new Date(this.måned.getFullYear(), this.måned.getMonth(), 1).getDay();
+            if(førsteDagIMåneden == 0) førsteDagIMåneden = 7;
 
-        //Finder html-elementet som indeholder alle dagene, så vi kan tilføje de enkelte dage til dette element
-        var dage = document.querySelector('.dage');
+            //Antal dage i måneden. Fungerer ved at tage den 0. dag i den næste måned, som er den sidste dag i denne måned
+            //Inspiration: https://stackoverflow.com/a/1184359
+            var antalDageIMåneden = new Date(this.måned.getFullYear(), this.måned.getMonth() + 1, 0).getDate();
 
-        //Gå gennem alle dage i måneden (og opret også elementer på de dage før d. første dag i måneden)
-        for(var i=1; i<antalDageIMåneden + førsteDagIMåneden; i++) {
+            //Finder html-elementet som indeholder alle dagene, så vi kan tilføje de enkelte dage til dette element
+            var dage = document.querySelector('.dage');
 
-            //Opretter et html-element til at repræsentere hver dag i måneden
-            //Kilde: https://www.w3schools.com/js/js_htmldom_nodes.asp
-            var dag = document.createElement('div');
-            dag.className = 'dag';
+            //Gå gennem alle dage i måneden (og opret også elementer på de dage før d. første dag i måneden)
+            for(var i=1; i<antalDageIMåneden + førsteDagIMåneden; i++) {
 
-            //Hvis dagen er i måneden, udskrives datoen i elementet
-            if (i >= førsteDagIMåneden) {
-                dag.innerHTML = i - førsteDagIMåneden + 1;
-                dag.className += ' iMåneden ' + 'dag' + (i - førsteDagIMåneden + 1);
-            } else {
-                dag.className += ' ikkeImåneden';
+                //Opretter et html-element til at repræsentere hver dag i måneden
+                //Kilde: https://www.w3schools.com/js/js_htmldom_nodes.asp
+                var dag = document.createElement('div');
+                dag.className = 'dag';
+
+                //Hvis dagen er i måneden, udskrives datoen i elementet
+                if (i >= førsteDagIMåneden) {
+                    dag.innerHTML = i - førsteDagIMåneden + 1;
+                    dag.className += ' iMåneden ' + 'dag' + (i - førsteDagIMåneden + 1);
+                } else {
+                    dag.className += ' ikkeImåneden';
+                }
+
+                //Tilføj det nye element til html-elementet med id: dage
+                dage.appendChild(dag);
             }
 
-            //Tilføj det nye element til html-elementet med id: dage
-            dage.appendChild(dag);
+            //Hent data for dagene, og formatér kalenderen ud fra dette
+            this.hentDataForUgedage();
         }
 
-        //Hent data for dagene, og formatér kalenderen ud fra dette
-        this.hentDataForUgedage();
     }
 
 
@@ -115,6 +121,7 @@ class Kalender {
 
 
     //Hent data for dagene, og formatér kalenderen ud fra dette
+    //Altså hvilke ugedage der er optaget, og hvilke der er ledige
     hentDataForUgedage() {
         //Find dage med ledige tider, og giv den classen 'ledig' og 'optaget'
 
@@ -199,8 +206,8 @@ class Kalender {
 
                     if(false){
                         console.log('møder denne måned: ' + this.møderDenneMåned[i].getStartTid());
-                        console.log('Tider på dagen: ' + tiderPåDagen[j]);
-                        console.log('Mødelængde: ' + (this.møderDenneMåned[i].mødeLængde() * 60 * 60 * 1000));
+                        console.log('Tider på dagen: ' + this.tiderPåDagen[j]);
+                        console.log('Mødelængde: ' + (this.møderDenneMåned[i].getMødeLængde() * 60 * 60 * 1000));
                         console.log('Tid mellem møder ' + tidMellemMøder);
                     }
 
@@ -209,24 +216,66 @@ class Kalender {
                         this.tiderPåDagen.splice(j, 1);
                         //Vi tæller j en ned, da vi fjerner et element, og vi ellers ville springe et tidspunkt over
                         j--;
+                        continue;
                     }
 
-                    //Her sker magien. Først tjekker den om mødet er før tidPåDagen (Det 'møde' vi har oprettet)
+                    //Her sker magien.
+                    //Først tjekker den om mødet er før tidPåDagen (Det 'møde' vi har oprettet)
                     //Vi behøver ikke tjekke for, om de starter samtidig, da vi allerede har fjernet alle disse møder i if-statementet overfor.
                     //Herefter tjekker den om tiden mellem vores møde og tid på dagen er mindre end mødelængden.
                     //Fx:
                     //Er tid på dagen 08:30, og mødet starter 08:00
                     //Her vil vi have TidmellemMøder = 1800000 og Mødelængde = 3600000
                     //Her vil TidmellemMøder være mindre end Mødelængde
-                    //Dermed vil if-statementet blive true, og tid på dagen (08:30) fjernes, da der er et møde her
+                    //Dermed vil if-statementet blive true, og tid på dagen (08:30-09:00) fjernes, da der er et møde her
                     if(tidMellemMøder > 0 && tidMellemMøder < (this.møderDenneMåned[i].getMødeLængde() * 60 * 60 * 1000)) {
                         this.tiderPåDagen.splice(j, 1);
                         j--;
+                        continue;
                     }
+
+                    //Hvis mødet er  klokken 15:30-16:30, og vi har en tidpådagen fra 15:00 - 16:00, skal tiden på dagen slettes,
+                    //når mødelængden er på en time.
+                    //Først bestemmes om mødet starter efter tiden på dagen. Gør det det, regner vi forskellen mellem
+                    //tid mellem møderne * -1, og den mødelængde der er.
+                    //I eksemplet ovenfor, vil vi have
+                    //    mødelængde valgt: 3600000
+                    //    tidmellem møder: -1800000
+                    //Dermed giver udtrykket (tidMellemMøder * -1 < (this.mødeLængde * 60 * 60 * 1000)) kun true i præcis dette tilflde
+                    var mødeStarterEfterTidPåDagen = (tidMellemMøder < 0);
+                    if(mødeStarterEfterTidPåDagen){
+                        if(tidMellemMøder * -1 < (this.mødeLængde * 60 * 60 * 1000)){
+                            this.tiderPåDagen.splice(j, 1);
+                            j--;
+                        }
+                    }
+
                 } // Slut på forloop for tiderPåDagen
 
             } // Slut på if(this.møderDenneMåned[i].getStartTid().getDate() == dag)
         } // slut på forloop med this.møderDenneMåned
+
+        //Debugging
+        if(false){
+            for(var i=0; i<this.møderDenneMåned.length; i++){
+                if(this.møderDenneMåned[i].getStartTid().getDate() == dag) {
+                    for (var j = 0; j < this.tiderPåDagen.length; j++) {
+                        var tidMellemMøder = this.tiderPåDagen[j].getTime() - this.møderDenneMåned[i].getStartTid().getTime();
+                        console.log('Tider på dagen: ' + this.tiderPåDagen[j]);
+                        console.log('Møde: ' + this.møderDenneMåned[i].getStartTid());
+                        console.log('mødelængde valgt: ' + this.mødeLængde * 60 * 60 * 1000);
+                        console.log('tidmellem møder: ' + tidMellemMøder);
+
+                        var mødeStarterEfterTidMellemMøder = (tidMellemMøder < 0);
+                        if(mødeStarterEfterTidMellemMøder){
+                            console.log('--');
+                            console.log(tidMellemMøder * -1 < (this.mødeLængde * 60 * 60 * 1000))
+                        }
+                    }
+                }
+            }
+        }
+
 
         if(returnResult) {
             return this.tiderPåDagen.length;
@@ -258,10 +307,6 @@ class Kalender {
             tidspunkt.dataset.slut = JSON.stringify(slutDate);
             tidspunkt.innerHTML = startTidspunkt + ' - ' + slutTidspunkt;
             document.getElementById('tiderContainer').appendChild(tidspunkt);
-
-            console.log('Tider på dagen: ' + this.tiderPåDagen[i]);
-            var temp = new Date(JSON.parse(JSON.stringify(this.tiderPåDagen[i])));
-            console.log(temp)
         }
     }
 
