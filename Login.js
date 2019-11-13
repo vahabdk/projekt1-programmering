@@ -23,12 +23,11 @@ function checkLogin(e) {
             location.href = "revisorLoginside.html";
             break;
         }
+        else if showErrorMessage()
     }
 
-    showErrorMessage()
 
-
-function showErrorMessage() {
+    function showErrorMessage() {
     var error = "Forkert brugernavn og/eller password"
     document.getElementById("loginMessage").innerHTML = error;
 }
