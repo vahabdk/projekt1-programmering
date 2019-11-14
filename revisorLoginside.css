@@ -27,6 +27,7 @@ body{
     cursor: pointer;
     border-radius: 5%;
     margin-bottom: 5%;
+    padding: 0.5%;
 }
 
 #sletmøde{
@@ -37,6 +38,7 @@ body{
     background-color: white;
     cursor: pointer;
     border-radius: 5%;
+
 }
 
 #sletAllemøder{
