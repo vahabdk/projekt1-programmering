@@ -24,15 +24,21 @@ function getGemtRevisorHus() {
         var idag = new Date();
         idag.setDate(1);
         var udFyldDagen = false;
+        var id = 0;
         for(var j=1; j<=k.getDageIMåneden(); j++){
             for(var i=startPeter; i<slutPeter - udFyldDagen; i++){
-                peter.tilføjMøder(new langMøde(new Date(idag.getFullYear(), idag.getMonth(), idag.getDate(), i, 0, 0, 0)));
+                peter.tilføjMøder(new langMøde(new Date(idag.getFullYear(), idag.getMonth(), idag.getDate(), i, 0, 0, 0),
+                    id, 'kommentar', 'kundenavn', 'tlfnr', 'mail'));
+                //console.log(peter.getMøder()[id]);
+                id++;
             }
             udFyldDagen = !udFyldDagen;
             idag.setDate(j + 1);
+            console.log(peter.getMøder()[j-1]);
         }
 
-        peter.tilføjMøder(new langMøde(new Date(2019, 9, 18, 14, 30, 0, 0)));
+        peter.tilføjMøder(new langMøde(new Date(2019, 9, 18, 14, 30, 0, 0),
+            id, 'kommentar', 'kundenavn', 'mail', 'tlfnr'));
 
 
         gemtRevisorhus = rh;
@@ -62,6 +68,7 @@ function formaterRevisor(r) {
 
         for (var j = 0; j < revisor.møder.length; j++) {
             var møde = revisor.møder[j];
+            var id = møde.ID;
             var endtime = new Date(JSON.parse(JSON.stringify(møde.endTime))); //Inspiration: https://stackoverflow.com/a/11491993
             var startTime = new Date(JSON.parse(JSON.stringify(møde.startTime)));
             var kommentar = møde.kommentar;
@@ -69,7 +76,7 @@ function formaterRevisor(r) {
             var mail = møde.mail;
             var tlfnr = møde.tlfnr;
 
-            møder.push(new Møde(startTime, endtime, kommentar, kundenavn, mail, tlfnr));
+            møder.push(new Møde(startTime, endtime, id, kommentar, kundenavn, mail, tlfnr));
         }
         returnRevisore.push(new Revisor(revisorNavn, møder, startdag, slutdag, email, tlf, brugernavn, kodeord));
     }

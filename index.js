@@ -4,7 +4,7 @@ class Kalender {
     }
 
     //Load tidspunkter og formater kalender for en måned
-    loadMonth(){
+    loadMonth(){dage
 
     }
 

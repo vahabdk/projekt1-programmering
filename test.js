@@ -6,12 +6,12 @@ for (var i=0; i<10; i++){
 
 //Hent et element
 var tekst = '';
-var tidspunkt = new Date;
+var tidspunkt = new Date();
 tidspunkt = tidspunkt.toLocaleTimeString();
 
 var mitElement = document.getElementById('testElement');
 //Set en css property med denne variabel
-mitElement.style.backgroundColor = 'red';
+//mitElement.style.backgroundColor = 'red';
 
 tekst += 'Det her er første linje<br>';
 tekst += 'Det her er anden linje<br>';
@@ -67,6 +67,8 @@ document.getElementById('startTid').innerText = start;
 document.getElementById('slutTid').innerText = slut;
 
 for (var i=0; i<møder.length; i++){
-    document.getElementById('møder').innerHTML += møder[i].getStartTid() + '<br>';
+    var tidspunkt = møder[i].getStartTid().toLocaleTimeString();
+    document.getElementById('møder').innerHTML += tidspunkt + '<br>';
+
 }
 

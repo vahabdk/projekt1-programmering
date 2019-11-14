@@ -2,9 +2,10 @@
 
 
 class Møde {
-    constructor (start, slut, kommentar, kundenavn, tlfnr, mail){
+    constructor (start, slut, id, kommentar, kundenavn, tlfnr, mail){
         this.startTime = start;
         this.endTime = slut;
+        this.ID = id;
         this.kundenavn = kundenavn;
         this.kommentar = kommentar;
         this.tlfnr = tlfnr;
@@ -49,6 +50,9 @@ class Møde {
 
     getKommentar() {
         return this.kommentar;
+    }
+    getID(){
+        return this.ID;
     }
 }
 
