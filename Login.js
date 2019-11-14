@@ -23,7 +23,7 @@ function checkLogin(e) {
             location.href = "revisorLoginside.html";
             break;
         }
-        else if showErrorMessage()
+
     }
 
 
