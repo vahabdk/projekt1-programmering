@@ -22,7 +22,7 @@ var dag;
 var møder = ro.getMøder();
 
 //Laver en variabel som sætter den til dagens dato
-var idag = new Date ()
+var idag = new Date ();
 
 //Sætter selectelementernes defaultvalue til at være dagens dato
 document.getElementById('år').value = idag.getFullYear();
@@ -46,28 +46,33 @@ document.getElementById('dag').addEventListener('change', myfunc);
 
         for (var i=0; i<møder.length; i++){
             console.log(møder[i].getStartTid());
+
+            //Skaber variabler til mødets tider og dato
             var startTid = møder[i].getStartTid();
+            var slutTid = møder[i].getSlutTid();
             var mødeDato = new Date (startTid.getFullYear(), startTid.getMonth(), startTid.getDate());
-            if (valgtDato.getTime() == mødeDato.getTime()) {
+
+            if (valgtDato.getFullYear() == mødeDato.getFullYear() &&
+            valgtDato.getMonth() == mødeDato.getMonth() && valgtDato.getFullYear()) {
                 var kundenavn = møder[i].getKundenavn();
                 var kommentar = møder[i].getKommentar();
                 var mail = møder[i].getMail();
                 var tlfnr = møder[i].getTlfnr();
+                var startTid = møder
                 console.log(kundenavn);
                 console.log(kommentar);
                 console.log(mail);
                 console.log(tlfnr);
+                console.log(startTid)
 
 
-            }
+
+            }s
         }
 
     //if statement er mødedato lig valgtdato, så udskriver den mødeobjektet
 
-        if (valgtDato == mødeDato) {
-        console.log(mødeda)
 
-        }
     }
 
 
