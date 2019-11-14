@@ -52,25 +52,27 @@ document.getElementById('dag').addEventListener('change', myfunc);
             var slutTid = møder[i].getSlutTid();
             var mødeDato = new Date (startTid.getFullYear(), startTid.getMonth(), startTid.getDate());
 
+            //if-statement som siger, at hvis mødedato lig valgtdato, så udskriver den mødeobjektet
             if (valgtDato.getFullYear() == mødeDato.getFullYear() &&
-            valgtDato.getMonth() == mødeDato.getMonth() && valgtDato.getFullYear()) {
+            valgtDato.getMonth() == mødeDato.getMonth() && valgtDato.getDate() == mødeDato.getDate()) {
                 var kundenavn = møder[i].getKundenavn();
                 var kommentar = møder[i].getKommentar();
                 var mail = møder[i].getMail();
                 var tlfnr = møder[i].getTlfnr();
-                var startTid = møder
+                var startTid = møder[i].getStartTid();
+                var slutTid = møder[i].getSlutTid();
                 console.log(kundenavn);
                 console.log(kommentar);
                 console.log(mail);
                 console.log(tlfnr);
-                console.log(startTid)
+                console.log(startTid);
 
 
+            var møde = document.createElement("div");
+                møde.innerHTML = kundenavn + kommentar + mail + tlfnr + startTid + slutTid
 
-            }s
+            }
         }
-
-    //if statement er mødedato lig valgtdato, så udskriver den mødeobjektet
 
 
     }
