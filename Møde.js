@@ -2,7 +2,8 @@
 
 
 class Møde {
-    constructor (start, slut, kommentar, kundenavn, tlfnr, mail){
+    constructor (start, slut, id, kommentar, kundenavn, tlfnr, mail){
+        this.ID = id;
         this.startTime = start;
         this.endTime = slut;
         this.kundenavn = kundenavn;
@@ -50,24 +51,27 @@ class Møde {
     getKommentar() {
         return this.kommentar;
     }
+    getID(){
+        return this.ID;
+    }
 }
 
 
 class langMøde extends Møde {
-    constructor(start) {
+    constructor(start, id, kommentar, kundenavn, tlfnr, mail) {
         //langMøde varer 1 time
 
         var slut = new Date(start.getTime() + 60 * 60 * 1000);
-        super(start, slut);
+        super(start, slut, id, kommentar, kundenavn, tlfnr, mail);
     }
 }
 
 class kortMøde extends Møde {
-    constructor(start) {
+    constructor(start, id, kommentar, kundenavn, tlfnr, mail) {
         //kort møde varer 30 minutter eller 1/2 time
 
         var slut = new Date(start.getTime() + 30 * 60 * 1000);
-        super(start, slut);
+        super(start, slut, id, kommentar, kundenavn, tlfnr, mail);
 
     }
 }

@@ -16,6 +16,7 @@ function validereInfo() {
     validereInput();
 
     function validereInput() {
+        console.log(k.generateID());
         console.log('validere input');
         korrektInput = true;
 
@@ -44,7 +45,7 @@ function validereInfo() {
 
         //Validerer at mødetype er valgt
         if (mødetype == 0) {
-            document.getElementById("fejlMødetype").innerHTML = "Husk at vælge en mødetype! <br/>";
+            document.getElementById("fejlMøde").innerHTML = "Husk at vælge en mødetype! <br/>";
             korrektInput = false;
         }
 
@@ -57,11 +58,12 @@ function validereInfo() {
 
         function gemtilLS() {
             if (korrektInput) {
+                console.log(k.generateID());
                 //Vi formaterer daten som er stringified. Inspiration: https://stackoverflow.com/a/11491993
                 //nuværendeStarttidspunkt og sluttidspunkt fås fra main.js, hvor den viser tidsplanen
                 var start = new Date(JSON.parse(JSON.stringify(nuværendeStarttidspunkt)));
                 var slut = new Date(JSON.parse(JSON.stringify(nuværendeSluttidspunkt)));
-                var nytMøde = new Møde(start, slut, kommentar, kundenavn, tlfnr, mail);
+                var nytMøde = new Møde(start, slut, k.generateID(), kommentar, kundenavn, tlfnr, mail);
                 console.log(rh.getRevisorer())
                 rh.getRevisorer()[revisor].tilføjMøder(nytMøde)
                 localStorage.setItem('gemtRevisorhus', JSON.stringify(rh));

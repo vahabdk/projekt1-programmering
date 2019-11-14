@@ -319,10 +319,19 @@ class Kalender {
         }
     }
 
-    //Retunerer en ugedato ud fra en dato
+    //Retunerer en ugedag ud fra en dato
     getUgedag(dato){
         var midlertidigDato = new Date(this.måned.getFullYear(), this.måned.getMonth(), dato);
         return this.ugedage[midlertidigDato.getDay()];
+    }
+
+    generateID(){
+        var møder = 0;
+        for (var i=0; i<this.revisorhus.getRevisorer().length; i++){
+            var revisor = this.revisorhus.getRevisorer()[i];
+            møder += revisor.getMøder().length;
+        }
+        return møder;
     }
 
     //Kaldes når der laves en ændring hos en revisor eller møde eller når vi skal se en ny måned
@@ -336,5 +345,4 @@ class Kalender {
         //Kald initKalender igen, så kalenderen intitialiseres med den nye måned
         this.initKalender();
     }
-
 }
