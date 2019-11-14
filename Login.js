@@ -5,7 +5,7 @@
 
 document.getElementById('submit').addEventListener('click', function(e) {
     checkLogin(e);
-})
+});
 
 function checkLogin(e) {
     e.preventDefault();
@@ -38,11 +38,4 @@ function checkLogin(e) {
 function getLogin() {
     var brugernavn = localStorage.getItem("brugernavn");
     var password = localStorage.getItem("password");
-}
-
-function logAf(){
-    sessionStorage.removeItem('loggedInRevisorObject');
-    sessionStorage.removeItem('loggedInRevisorId');
-    window.location.href = 'Login.html'
-    console.log(loggedInRevisorObject);
 }
