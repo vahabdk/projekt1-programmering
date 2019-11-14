@@ -50,6 +50,17 @@ class Møde {
     getKommentar() {
         return this.kommentar;
     }
+
+    getTlfnr() {
+        return this.tlfnr
+
+    }
+
+    getMail() {
+        return this.mail
+    }
+
+
 }
 
 
