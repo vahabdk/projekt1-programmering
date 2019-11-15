@@ -3,21 +3,37 @@ body{
     padding: 0;
     font-family: sans-serif;
 }
-
-#box h1{
+#oversigt{
+    width: 50%;
+    position: absolute;
+    top: 20%;
+    left: 65%;
+    transform: translate(-50%, -50%);
+    color: black;
+}
+h1{
     float: top;
     font-size: 40px;
     border-bottom: 4px solid black;
     width: 40%;
     margin-bottom: 5%;
+    padding-bottom: 1%;
 }
 
 #revisorNavn{
     float: top;
-    font-size: 20px;
+    font: 20px;
     width: 40%;
+    border-bottom: 2px solid black;
+    padding-bottom: 1%;
 }
 
+h2{
+    font-size: 20px;
+    border-bottom: 2px solid black;
+    width: 40%;
+    padding-bottom: 1%;
+}
 #logUd{
     font: 12px Arial;
     color: black;
@@ -51,4 +67,11 @@ body{
     cursor: pointer;
     border-radius: 5%;
     padding: 0.5%;
+}
+
+#mødeOversigt{
+    font: 16px Arial;
+    border: 1px solid black;
+    text-align: left;
+    width: 40%;
 }
