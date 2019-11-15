@@ -4,12 +4,15 @@ body{
     font-family: sans-serif;
 }
 #oversigt{
-    width: 50%;
+    width: 400px;
     position: absolute;
-    top: 20%;
-    left: 65%;
+    top: 45%;
+    left: 50%;
     transform: translate(-50%, -50%);
     color: black;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    background-color: white;
+    padding: 2%;
 }
 h1{
     float: top;
@@ -44,7 +47,7 @@ h2{
     border-radius: 5%;
     margin-bottom: 5%;
     margin-top: 1%;
-    padding: 0.5%;
+    padding: 1%;
 }
 
 #sletmøde{
@@ -74,4 +77,29 @@ h2{
     border: 1px solid black;
     text-align: left;
     width: 40%;
+}
+
+.nav {
+    border: 1px #9b9ea3;
+    width: 99%;
+    padding: 0.5%;
+    text-align: center;
+    background-color: #9b9ea3;
+}
+
+.navbar {
+    list-style-type: none;
+    padding: 0;
+    overflow: hidden;
+    background-color: #9b9ea3;
+}
+
+.navList {
+    display: inline;
+    padding: 5%;
+}
+
+.navLista {
+    color: white;
+    text-decoration: none;
 }
