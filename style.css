@@ -212,6 +212,8 @@ body{
 }
 
 .nav {
+    font-family: 'Roboto', 'roboto', sans-serif;
+    margin: 1px;
     border: 1px #9b9ea3;
     width: 99%;
     padding: 0.5%;
