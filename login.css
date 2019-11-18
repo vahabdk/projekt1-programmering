@@ -76,3 +76,30 @@ body{
 .fejlbesked{
     color: red;
 }
+
+.nav {
+    font-family: 'Roboto', 'roboto', sans-serif;
+    margin: 2px;
+    border: 1px #9b9ea3;
+    width: 99%;
+    padding: 0.5%;
+    text-align: center;
+    background-color: #9b9ea3;
+}
+
+.navbar {
+    list-style-type: none;
+    padding: 0;
+    overflow: hidden;
+    background-color: #9b9ea3;
+}
+
+.navList {
+    display: inline;
+    padding: 5%;
+}
+
+.navLista {
+    color: white;
+    text-decoration: none;
+}
