@@ -25,11 +25,13 @@ function getGemtRevisorHus() {
         idag.setDate(1);
         var udFyldDagen = false;
         var id = 0;
+
         for(var j=1; j<=k.getDageIMåneden(); j++){
             for(var i=startPeter; i<slutPeter - udFyldDagen; i++){
-                peter.tilføjMøder(new langMøde(new Date(idag.getFullYear(), idag.getMonth(), idag.getDate(), i, 0, 0, 0),
-                    id, 'kommentar', 'kundenavn', 'tlfnr', 'mail'));
-                //console.log(peter.getMøder()[id]);
+                var tidspunkt = new Date(idag.getFullYear(), idag.getMonth(), idag.getDate(), i, 0, 0, 0);
+                peter.tilføjMøder(new langMøde(tidspunkt, id, 'kommentar', 'kundenavn', 'tlfnr', 'mail'));
+
+                console.log(new langMøde(tidspunkt, id, 'kommentar', 'kundenavn', 'tlfnr', 'mail').getKommentar());
                 id++;
             }
             udFyldDagen = !udFyldDagen;
@@ -52,7 +54,7 @@ function getGemtRevisorHus() {
 
 
 function formaterRevisor(r) {
-    returnRevisore = [];
+    var returnRevisore = [];
 
     for (var i = 0; i < r.length; i++) {
         var revisor = r[i];
@@ -77,6 +79,8 @@ function formaterRevisor(r) {
             var tlfnr = møde.tlfnr;
 
             møder.push(new Møde(startTime, endtime, id, kommentar, kundenavn, mail, tlfnr));
+
+            console.log(møder[j]);
         }
         returnRevisore.push(new Revisor(revisorNavn, møder, startdag, slutdag, email, tlf, brugernavn, kodeord));
     }
