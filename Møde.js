@@ -54,6 +54,17 @@ class Møde {
     getID(){
         return this.ID;
     }
+
+    getTlfnr() {
+        return this.tlfnr;
+
+    }
+
+    getMail() {
+        return this.mail;
+
+    }
+
 }
 
 
