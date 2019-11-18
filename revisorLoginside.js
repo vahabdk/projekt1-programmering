@@ -11,6 +11,7 @@ ro = formaterRevisor(ro)[0];
 console.log(id);
 console.log(ro);
 
+//Henter og indsætter info om hvilken revisor der er logget ind
 document.getElementById('revisorNavn').innerHTML = ro.getNavn();
 
 
@@ -21,7 +22,7 @@ var dag;
 //Henter de møder tilknyttet til den revisor der er logget ind
 var møder = ro.getMøder();
 
-//Laver en variabel som sætter den til dagens dato
+//Laver en variabel som sættes til dagens dato
 var idag = new Date ();
 
 //Sætter selectelementernes defaultvalue til at være dagens dato
@@ -34,6 +35,8 @@ document.getElementById('år').addEventListener('change', myfunc);
 document.getElementById('måned').addEventListener('change', myfunc);
 document.getElementById('dag').addEventListener('change', myfunc);
 
+
+myfunc();
 
     function myfunc() {
 
@@ -67,9 +70,14 @@ document.getElementById('dag').addEventListener('change', myfunc);
                 console.log(tlfnr);
                 console.log(startTid);
 
+            startTid = startTid.toLocaleTimeString();
+            slutTid = slutTid.toLocaleTimeString();
+
+            var mødeoversigt =  document.getElementById("mødeoversigt");
 
             var møde = document.createElement("div");
-                møde.innerHTML = kundenavn + kommentar + mail + tlfnr + startTid + slutTid
+                møde.innerHTML = "Kundenavn: " + kundenavn + "<br />" + mail + "<br />" + tlfnr + "<br />" + startTid + " - " + slutTid + "<br />" + "Yderligere kommentar: " + kommentar;
+                mødeoversigt.appendChild(møde);
 
             }
         }
