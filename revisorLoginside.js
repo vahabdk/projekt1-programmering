@@ -64,27 +64,51 @@ myfunc();
                 var tlfnr = møder[i].getTlfnr();
                 var startTid = møder[i].getStartTid();
                 var slutTid = møder[i].getSlutTid();
+                var id = møder[i].getID();
                 console.log(kundenavn);
                 console.log(kommentar);
                 console.log(mail);
                 console.log(tlfnr);
                 console.log(startTid);
 
+            //Gør mødestart/slut læseligt
             startTid = startTid.toLocaleTimeString();
             slutTid = slutTid.toLocaleTimeString();
 
+            //Laver en variabel for div'en "mødeoversigt
             var mødeoversigt =  document.getElementById("mødeoversigt");
 
+            //Skaber et element til møderne for den dag, hvor kundens informationer indsættes i HTML
             var møde = document.createElement("div");
-                møde.innerHTML = "Kundenavn: " + kundenavn + "<br />" + mail + "<br />" + tlfnr + "<br />" + startTid + " - " + slutTid + "<br />" + "Yderligere kommentar: " + kommentar;
+                møde.innerHTML = "Kundenavn: " + kundenavn + "<br />" + mail + "<br />" + tlfnr + "<br />" + startTid + " - " + slutTid + "<br />" + "Yderligere kommentar: " + kommentar + "<br />" + "<button id='sletMøde' onclick='sletMøde("+id+")>Slet Møde</button>";
                 mødeoversigt.appendChild(møde);
 
+                function sletMøde(id) {
+
+                    for (var i=0; i<ro.getMøder().length; i++){
+                       if (ro.getMøder() [i].getID() == id)  {
+                           var møderArray = ro.getMøder();
+                           møderArray.pop(i);
+
+                           //Find revisor som er logget ind, og erstat hans møder med møderArray
+                           //Til sidst gem hele revisorhuset igen i gemtRevisorhus
+
+                           break;
+
+                       }
+
+                    }
+
             }
+            
         }
 
 
     }
 
+
+        
+    }
 
 
 function logAf(){
