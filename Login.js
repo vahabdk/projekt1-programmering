@@ -16,22 +16,22 @@ function checkLogin(e) {
     for (var i=0; i<revisorer.length; i++)
     {
         if (brugernavn == revisorer[i].brugernavn && password == revisorer[i].kodeord) {
-            console.log('rigtigt login');
+            console.log("rigtigt login");
             sessionStorage.setItem("loggedInRevisorObject", JSON.stringify(revisorer[i]));
             sessionStorage.setItem("loggedInRevisorId", i);
 
             location.href = "revisorLoginside.html";
             break;
         }
-        else showErrorMessage()
+        else { showErrorMessage() }
     }
 
 
-    function showErrorMessage() {
-    var error = "Forkert brugernavn og/eller password"
-    document.getElementById("loginMessage").innerHTML = error;
 }
 
+function showErrorMessage() {
+    var error = "Forkert brugernavn og/eller password"
+    document.getElementById("loginMessage").innerHTML = error;
 }
 
 //gemmer data i local storage DOM
