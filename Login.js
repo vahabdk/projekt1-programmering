@@ -35,9 +35,3 @@ function showErrorMessage() {
     var error = "Forkert brugernavn og/eller password"
     document.getElementById("loginMessage").innerHTML = error;
 }
-
-//gemmer data i local storage DOM
-function getLogin() {
-    var brugernavn = localStorage.getItem("brugernavn");
-    var password = localStorage.getItem("password");
-}
