@@ -92,7 +92,7 @@ myfunc();
             }
         }
 
-        if(!erDerMøder) document.getElementById("mødeoversigt").innerHTML = 'Der er ingen møder denne dag :(';
+        if(!erDerMøder) document.getElementById("mødeoversigt").innerHTML = 'Der er ingen møder denne dag :)';
     }
 
 

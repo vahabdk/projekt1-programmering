@@ -218,14 +218,14 @@ body{
     width: 99%;
     padding: 0.5%;
     text-align: center;
-    background-color: #9b9ea3;
+    background-color: #4C748C;
 }
 
 .navbar {
     list-style-type: none;
     padding: 0;
     overflow: hidden;
-    background-color: #9b9ea3;
+    background-color: #4C748C;
 }
 
 .navList {

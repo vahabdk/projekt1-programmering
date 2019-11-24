@@ -1,5 +1,4 @@
 body{
-    margin: 0;
     padding: 0;
     font-family: sans-serif;
 }
@@ -57,7 +56,7 @@ body{
     border-radius: 5%;
 }
 
-.opretBrugerKnap {
+.opretBrugerSubmit {
     font: bold 16px Arial;
     color: black;
     text-decoration: none;
@@ -70,7 +69,6 @@ body{
     margin: auto;
     background-color: white;
     cursor: pointer;
-    border-radius: 5%;
 }
 
 .fejlbesked{
@@ -84,14 +82,14 @@ body{
     width: 99%;
     padding: 0.5%;
     text-align: center;
-    background-color: #9b9ea3;
+    background-color: #4C748C;
 }
 
 .navbar {
     list-style-type: none;
     padding: 0;
     overflow: hidden;
-    background-color: #9b9ea3;
+    background-color: #4C748C;
 }
 
 .navList {

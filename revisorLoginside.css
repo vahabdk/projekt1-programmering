@@ -1,5 +1,4 @@
 body{
-    margin: 5%;
     padding: 0;
     font-family: sans-serif;
 }
@@ -77,18 +76,20 @@ h2{
 }
 
 .nav {
+    font-family: 'Roboto', 'roboto', sans-serif;
+    margin: 2px;
     border: 1px #9b9ea3;
     width: 99%;
     padding: 0.5%;
     text-align: center;
-    background-color: #9b9ea3;
+    background-color: #4C748C;
 }
 
 .navbar {
     list-style-type: none;
     padding: 0;
     overflow: hidden;
-    background-color: #9b9ea3;
+    background-color: #4C748C;
 }
 
 .navList {
@@ -110,4 +111,16 @@ h2{
     text-align: left;
     display: inline-block;
     line-height: 20px;
+}
+
+#sletMøde {
+    width: 100%;
+    border-radius: 2%;
+    background-color: white;
+    padding: 2%;
+    cursor: pointer;
+    border: 0.5px solid black;
+    font-size: 15px;
+    font: bold;
+
 }
