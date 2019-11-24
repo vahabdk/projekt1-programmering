@@ -4,13 +4,12 @@ body{
     font-family: sans-serif;
 }
 #oversigt{
-    width: 400px;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    width: 30%;
+    float: left;
+    position: relative;
     color: black;
     padding: 2%;
+    box-sizing: border-box;
 }
 h1{
     float: top;
@@ -70,11 +69,11 @@ h2{
     padding: 0.5%;
 }
 
-#mødeOversigt{
+#mødeoversigt{
     font: 16px Arial;
-    border: 1px solid black;
-    text-align: left;
-    width: 40%;
+    float: right;
+    width: 70%;
+    box-sizing: border-box;
 }
 
 .nav {
@@ -100,4 +99,15 @@ h2{
 .navLista {
     color: white;
     text-decoration: none;
+}
+
+.enkelteMøde {
+
+    padding: 20px 25px;
+    margin: 20px 10px;
+    box-shadow: 0 1px 20px rgba(0,0,0,0.10), 0 10px 10px rgba(0,0,0,0.10);
+    width: 33%;
+    text-align: left;
+    display: inline-block;
+    line-height: 20px;
 }
