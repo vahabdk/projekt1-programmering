@@ -30,10 +30,10 @@ document.getElementById('år').value = idag.getFullYear();
 document.getElementById('måned').value = idag.getMonth();
 document.getElementById('dag').value = idag.getDate();
 
-//Når man har valgt en dato i select, så skal den run funktionen myfunc
-document.getElementById('år').addEventListener('change', myfunc);
-document.getElementById('måned').addEventListener('change', myfunc);
-document.getElementById('dag').addEventListener('change', myfunc);
+//Når man har valgt en dato i select, så skal den run funktionen hentMøder()
+document.getElementById('år').addEventListener('change', hentMøder);
+document.getElementById('måned').addEventListener('change', hentMøder);
+document.getElementById('dag').addEventListener('change', hentMøder);
 
 
 hentMøder();
