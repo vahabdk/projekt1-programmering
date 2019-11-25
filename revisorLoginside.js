@@ -8,9 +8,6 @@ if (roid == null || ro == null) {
 
 ro = formaterRevisor(ro)[0];
 
-console.log(roid);
-console.log(ro);
-
 //Henter og indsætter info om hvilken revisor der er logget ind
 document.getElementById('revisorNavn').innerHTML = ro.getNavn();
 
@@ -21,6 +18,9 @@ var dag;
 
 //Henter de møder tilknyttet til den revisor der er logget ind
 var møder = ro.getMøder();
+
+//Sorterer møder efter dato
+møder.sort(sorterEfterMødeDato);
 
 //Laver en variabel som sættes til dagens dato
 var idag = new Date ();
@@ -49,7 +49,6 @@ hentMøder();
         var erDerMøder = false;
 
         for (var i=0; i<møder.length; i++){
-            console.log(møder[i].getStartTid());
 
             //Skaber variabler til mødets tider og dato
             var startTid = møder[i].getStartTid();
@@ -69,11 +68,14 @@ hentMøder();
                 var slutTid = møder[i].getSlutTid();
                 var id = møder[i].getID();
                 erDerMøder = true;
+                /*
                 console.log(kundenavn);
                 console.log(kommentar);
                 console.log(mail);
                 console.log(tlfnr);
                 console.log(startTid);
+
+                 */
 
                 //Gør mødestart/slut læseligt
                 startTid = startTid.toLocaleTimeString().substring(0,5);
@@ -101,8 +103,12 @@ function sletMøde(id) {
 
     for (var i = 0; i < ro.getMøder().length; i++) {
         if (ro.getMøder() [i].getID() == id) {
+            console.log(ro.getMøder() [i]);
+
             var møderArray = ro.getMøder();
-            møderArray.pop(i);
+            møderArray.splice(i, 1);
+            console.log(møderArray);
+
             var grh = getGemtRevisorHus();
             grh.getRevisorer()[roid].setMøder(møderArray);
 
@@ -112,7 +118,6 @@ function sletMøde(id) {
             hentMøder();
 
             break;
-
         }
 
     }
@@ -123,4 +128,16 @@ function logAf(){
     sessionStorage.removeItem('loggedInRevisorObject');
     sessionStorage.removeItem('loggedInRevisorId');
     window.location.href = 'Login.html';
+}
+
+//Sorterer efter mødedato
+//Retunerer -1 hvis a kommer først og 1 hvis b kommer først
+function sorterEfterMødeDato(a, b){
+    var r = 1;
+
+    if(a.getStartTid().getTime() < b.getStartTid().getTime()){
+        r = -1;
+    }
+
+    return r;
 }

@@ -79,8 +79,6 @@ function formaterRevisor(r) {
             var tlfnr = møde.tlfnr;
 
             møder.push(new Møde(startTime, endtime, id, kommentar, kundenavn, mail, tlfnr));
-
-            console.log(møder[j]);
         }
         returnRevisore.push(new Revisor(revisorNavn, møder, startdag, slutdag, email, tlf, brugernavn, kodeord));
     }
