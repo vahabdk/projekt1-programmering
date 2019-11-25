@@ -36,9 +36,9 @@ document.getElementById('måned').addEventListener('change', myfunc);
 document.getElementById('dag').addEventListener('change', myfunc);
 
 
-myfunc();
+hentMøder();
 
-    function myfunc() {
+    function hentMøder() {
         document.getElementById("mødeoversigt").innerHTML = "";
         år = document.getElementById("år").value;
         måned = document.getElementById("måned").value;
@@ -109,9 +109,7 @@ function sletMøde(id) {
             localStorage.setItem('gemtRevisorhus', JSON.stringify(grh));
             sessionStorage.setItem('loggedInRevisorObject', JSON.stringify(grh.getRevisorer()[roid]));
 
-            //Find revisor som er logget ind, og erstat hans møder med møderArray
-            //Til sidst gem hele revisorhuset igen i gemtRevisorhus
-            myfunc();
+            hentMøder();
 
             break;
 
