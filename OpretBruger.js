@@ -106,7 +106,7 @@ function kontrolInfo() {
           var listRevisorer = rh.getRevisorer();
 
           for (var i = 0; i < listRevisorer.length; i++) {
-              console.log(listRevisorer [i].getBrugernavn())
+              console.log(listRevisorer [i].getBrugernavn());
 
               if (listRevisorer [i].getBrugernavn() == brugernavn) {
                   document.getElementById("fejlBrugernavn").innerHTML = "Brugernavn allerede taget";
