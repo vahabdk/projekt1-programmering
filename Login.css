@@ -69,6 +69,7 @@ body{
     margin: auto;
     background-color: white;
     cursor: pointer;
+    border-radius: 5%;
 }
 
 .fejlbesked{
