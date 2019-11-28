@@ -36,6 +36,9 @@ class Revisor {
     getMøder(){
         return this.møder;
     }
+    setMøder(a){
+        this.møder = a;
+    }
 
     getStartdag(){
         return this.startdag;
