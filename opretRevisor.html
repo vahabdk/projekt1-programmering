@@ -10,32 +10,32 @@
     <div class="nav">
         <ul class="navbar">
             <li class="navList"><a class="navLista" href="index.html">Kalender</a></li>
-            <li class="navList"><a class="navLista" href="opretBruger.html">Opret revisor</a></li>
+            <li class="navList"><a class="navLista" href="opretRevisor.html">Opret revisor</a></li>
             <li class="navList"><a class="navLista" href="Login.html">Revisor login</a></li>
         </ul>
     </div>
-    <div id="opretBrugerBoks" class="opretBruger">
-        <h1 id="opretBrugerOverskrift" class="opretBruger">Opret login</h1>
+    <div id="opretRevisorBoks" class="opretRevisor">
+        <h1 id="opretRevisorOverskrift" class="opretRevisor">Opret login</h1>
 
-            <form name="opretBruger" id="opretBrugerForm" class="opretBruger">
+            <form name="opretRevisor" id="opretRevisorForm" class="opretRevisor">
                 <!-- de forskellige input laves, så der kan indtastes -->
-                <div class="opretBrugerinput">
+                <div class="opretRevisorinput">
                 <br/> <input type="text" name="Fornavn" id="Fornavn" placeholder="Fornavn"><br/>
                 </div>
                 <!-- nedenunder her, forberedes der til at der kan komme en fejlbesked efterfølgende gentages det hele-->
                 <span id="fejlFornavn" class="fejlbesked"></span><br/><br/>
 
-                <div class="opretBrugerinput">
+                <div class="opretRevisorinput">
                 <br/> <input type="text" name="Efternavn" id="Efternavn" placeholder="Efternavn"><br/>
                 </div>
                 <span id="fejlEfternavn" class="fejlbesked"></span><br/><br/>
 
-                <div class="opretBrugerinput">
+                <div class="opretRevisorinput">
                 <br/> <input type="text" name="Email" id="Email" placeholder="Email"><br/>
                 </div>
                 <span id="fejlEmail" class="fejlbesked"></span><br/><br/>
 
-                <div class="opretBrugerinput">
+                <div class="opretRevisorinput">
                 <br/> <input type="number" name="Tlf" id="Tlf" placeholder="Tlf nr."><br/>
                 </div>
                 <span id="fejlTlf" class="fejlbesked"></span><br/><br/>
@@ -47,12 +47,12 @@
                 </div>
                     <span id="fejlTid" class="fejlbesked"></span><br/><br/>
 
-                <div class="opretBrugerinput">
+                <div class="opretRevisorinput">
                 <br/> <input type="text" name="Brugernavn" id="Brugernavn" placeholder="Brugernavn"><br/>
                 </div>
                 <span id="fejlBrugernavn" class="fejlbesked"></span><br/><br/>
 
-                <div class="opretBrugerinput">
+                <div class="opretRevisorinput">
                 <br/> <input type="password" name="Kodeord" id="Kodeord" placeholder="Kodeord"><br/>
                 </div>
                 <span id="fejlKodeord" class="fejlbesked"></span><br/><br/>
@@ -60,7 +60,7 @@
 
                 Ved at lave en bruger accepterer jeg gældende <a href="https://www.retsinformation.dk/forms/r0710.aspx?id=45902"> regler og vilkår</a> <br/><br/>
                 <!-- Knappen som skal sende information videre eller få brugeren til at indtaste korrekt information -->
-                <button type="submit"  id="opretBrugerSubmit">Opret bruger</button><br/><br/>
+                <button type="submit"  id="opretRevisorSubmit">Opret bruger</button><br/><br/>
             </form>
 
     </div>
@@ -70,12 +70,12 @@
 <script src="Revisor.js"></script>
 <script src="Møde.js"></script>
 <script src="databehandling.js"></script>
-<script src="OpretBruger.js"></script>
+<script src="OpretRevisor.js"></script>
 
 <!-- for at påkalde funktionen til knappen submit. Der er tilføjet en preventDefault, fordi siden ikke skal refreshe,
-hvis man har tastet forkert eller har glemt noget. KontrolInfo ligger i OpretBruger.js -->
+hvis man har tastet forkert eller har glemt noget. KontrolInfo ligger i OpretRevisor.js -->
 <script>
-    document.getElementById("opretBrugerSubmit").addEventListener("click", function(e){
+    document.getElementById("opretRevisorSubmit").addEventListener("click", function(e){
         e.preventDefault();
         kontrolInfo();
     });
