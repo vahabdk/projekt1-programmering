@@ -1,4 +1,5 @@
-/*Formålet med denne JS fil er at få korrekt data på de revisorer som opretter sig og så
+/*Lavet af AD
+Formålet med denne JS fil er at få korrekt data på de revisorer som opretter sig og så
 disse data bliver brugt på henholdsvis revisor siden og i kalenderen*/
 
 function kontrolInfo() {
@@ -141,7 +142,8 @@ function kontrolInfo() {
 
     }
 
-/* Herunder bliver den indtastet data gemt i local storage og tilføjet til class revisorhus og ind i databehandling filen.
+/* Lavet af FH
+Herunder bliver den indtastet data gemt i local storage og tilføjet til class revisorhus og ind i databehandling filen.
  På denne måde bliver det muligt at anvende revisoren på tværs af html og JS filer. */
 
     function saveToDB(){

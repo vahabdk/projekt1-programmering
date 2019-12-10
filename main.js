@@ -1,4 +1,5 @@
-//Opret variabel til at gemme kalender-objektet
+//Lavet af FH
+// Opret variabel til at gemme kalender-objektet
 var k;
 var rh = getGemtRevisorHus();
 

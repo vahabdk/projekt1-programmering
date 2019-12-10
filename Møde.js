@@ -1,3 +1,4 @@
+// Lavet af VR
 // starter med at definere Møde class constructor: Møde består af
 
 

@@ -1,4 +1,4 @@
-
+//Lavet af VR
 var roid = sessionStorage.getItem('loggedInRevisorId');
 var ro = new Array( JSON.parse (sessionStorage.getItem('loggedInRevisorObject')) );
 
@@ -7,7 +7,7 @@ if (roid == null || ro == null) {
 }
 
 ro = formaterRevisor(ro)[0];
-
+//lavet af MM
 //Henter og indsætter info om hvilken revisor der er logget ind
 document.getElementById('revisorNavn').innerHTML = ro.getNavn();
 
@@ -97,7 +97,7 @@ hentMøder();
     }
 
 
-
+//Lavet af FH
 function sletMøde(id) {
 
     for (var i = 0; i < ro.getMøder().length; i++) {

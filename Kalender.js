@@ -1,3 +1,4 @@
+//Lavet af FH
 class Kalender {
     constructor(revisorhus, revisor){
         //Som standard vælges den nuværende måned

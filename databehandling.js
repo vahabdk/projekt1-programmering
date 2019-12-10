@@ -1,3 +1,4 @@
+//Lavet af FH
 function getGemtRevisorHus() {
     var gemteRevisore = [];
     var gemtRevisorhus = JSON.parse(localStorage.getItem('gemtRevisorhus'));

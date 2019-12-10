@@ -1,6 +1,4 @@
-// hvad er getElementById??
-
-// hvad er addEventListener? Det er en HTML DOM metode - søg i bogen!!!
+// Lavet af VR
 // https://eloquentjavascript.net/15_event.html
 
 document.getElementById('submit').addEventListener('click', function(e) {
