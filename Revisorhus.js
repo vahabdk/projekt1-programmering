@@ -1,3 +1,4 @@
+// Lavet af AD
 class Revisorhus {
 
     constructor(revisorhusInfo, revisorer = []) {

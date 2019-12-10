@@ -1,3 +1,4 @@
+//Lavet af MM
 console.log(k)
 
 //Validerer info

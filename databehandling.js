@@ -1,3 +1,4 @@
+//Lavet af FH
 function getGemtRevisorHus() {
     var gemteRevisore = [];
     var gemtRevisorhus = JSON.parse(localStorage.getItem('gemtRevisorhus'));
@@ -88,8 +89,3 @@ function formaterRevisor(r) {
     return returnRevisore;
 }
 
-
-//Tilføj møde til storage, for det nuværende revisorhus og nuvæende revisor
-function tilføjMødeTilStorage(møde){
-
-}

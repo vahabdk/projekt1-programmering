@@ -1,3 +1,4 @@
+//Denne fil er blevet brugt som test, og indgår ikke i det endelige system
 //Standard for loop
 for (var i=0; i<10; i++){
     console.log(i);

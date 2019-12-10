@@ -1,3 +1,4 @@
+// Lavet af VR
 // starter med at definere Møde class constructor: Møde består af
 
 
@@ -11,6 +12,7 @@ class Møde {
         this.tlfnr = tlfnr;
         this.mail = mail;
     }
+
 
     printTime(){
         console.log(' Mødet starter: ' + this.startTime + ' og slutter: ' + this.endTime);

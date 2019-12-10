@@ -1,4 +1,4 @@
-
+//Lavet af VR
 var roid = sessionStorage.getItem('loggedInRevisorId');
 var ro = new Array( JSON.parse (sessionStorage.getItem('loggedInRevisorObject')) );
 
@@ -7,7 +7,7 @@ if (roid == null || ro == null) {
 }
 
 ro = formaterRevisor(ro)[0];
-
+//lavet af MM
 //Henter og indsætter info om hvilken revisor der er logget ind
 document.getElementById('revisorNavn').innerHTML = ro.getNavn();
 
@@ -56,7 +56,6 @@ hentMøder();
             var mødeDato = new Date (startTid.getFullYear(), startTid.getMonth(), startTid.getDate());
 
 
-
             //if-statement som siger, at hvis mødedato lig valgtdato, så udskriver den mødeobjektet
             if (valgtDato.getFullYear() == mødeDato.getFullYear() &&
             valgtDato.getMonth() == mødeDato.getMonth() && valgtDato.getDate() == mødeDato.getDate()) {
@@ -98,7 +97,7 @@ hentMøder();
     }
 
 
-
+//Lavet af FH
 function sletMøde(id) {
 
     for (var i = 0; i < ro.getMøder().length; i++) {
@@ -138,6 +137,5 @@ function sorterEfterMødeDato(a, b){
     if(a.getStartTid().getTime() < b.getStartTid().getTime()){
         r = -1;
     }
-
     return r;
 }

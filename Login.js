@@ -1,3 +1,6 @@
+// hvad er getElementById??
+
+// hvad er addEventListener? Det er en HTML DOM metode - søg i bogen!!!
 // https://eloquentjavascript.net/15_event.html
 
 document.getElementById('submit').addEventListener('click', function(e) {
@@ -29,6 +32,6 @@ function checkLogin(e) {
 }
 
 function showErrorMessage() {
-    var error = "Forkert brugernavn og/eller password";
+    var error = "Forkert brugernavn og/eller password"
     document.getElementById("loginMessage").innerHTML = error;
 }
