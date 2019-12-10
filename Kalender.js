@@ -13,9 +13,8 @@ class Kalender {
         this.revisorhus = revisorhus;
         this.visKalenderFor = revisor;
 
-
-
         //Laver en array over navnene på månederne, så vi kan udskrive månednavn
+        //Defineres her, så de kan tilgås fra hele klassen
         this.månedNavne = ['Januar', 'Februar', 'Marts', 'April', 'Maj', 'Juni', 'Juli', 'August',
             'September', 'Oktober', 'November', 'December'];
         this.ugedage = ['Søndag', 'Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lørdag'];
@@ -94,7 +93,7 @@ class Kalender {
     }
 
     //Opdater måneden når der trykkes på en af pilene til at skifte måned
-    updateMonth(måned){
+    opdaterMåned(måned){
         //Set måneden til den nuværende måned +/- 1 afhængig af hvilken pil der er trykket på
         this.måned.setMonth(måned);
 
@@ -102,23 +101,13 @@ class Kalender {
         this.refresh();
     }
 
-    //Kaldes når der laves en ændring hos en revisor eller møde
-    refresh(){
-        //Ryd kalenderen
-        document.querySelector('.dage').innerHTML = '';
-
-        //Kald initKalender igen, så kalenderen intitialiseres med den nye måned
-        this.initKalender();
-    }
-
-    updateÅr(difference){
+    opdaterÅr(difference){
         //Set måneden til den nuværende måned +/- 1 afhængig af hvilken pil der er trykket på
         this.måned.setFullYear(this.måned.getFullYear() + difference);
 
         //Kald initKalender igen, så kalenderen intitialiseres med den nye måned og nulstiller tidspslan med mere
         this.refresh();
     }
-
 
     //Hent data for dagene, og formatér kalenderen ud fra dette
     //Altså hvilke ugedage der er optaget, og hvilke der er ledige
@@ -189,7 +178,7 @@ class Kalender {
             var dagen = new Date(this.måned.getFullYear(), this.måned.getMonth(), dag);
             var minutter = (i % 1);
             if(minutter == 0.5) minutter = 30;
-            this.tiderPåDagen.push(new Date(dagen.getFullYear(), dagen.getMonth(), dagen.getDate(), i, minutter, 0, 0));
+            this.tiderPåDagen.push(new Date(dagen.getFullYear(), dagen.getMonth(), dagen.getDate(), Math.floor(i), minutter));
         }
 
         //Gennemgå de møder der er, og find frem til alle de tider der er ledige
@@ -241,7 +230,7 @@ class Kalender {
                     //I eksemplet ovenfor, vil vi have
                     //    mødelængde valgt: 3600000
                     //    tidmellem møder: -1800000
-                    //Dermed giver udtrykket (tidMellemMøder * -1 < (this.mødeLængde * 60 * 60 * 1000)) kun true i præcis dette tilflde
+                    //Dermed giver udtrykket (tidMellemMøder * -1 < (this.mødeLængde * 60 * 60 * 1000)) kun true i præcis denne type tilfælde
                     var mødeStarterEfterTidPåDagen = (tidMellemMøder < 0);
                     if(mødeStarterEfterTidPåDagen){
                         if(tidMellemMøder * -1 < (this.mødeLængde * 60 * 60 * 1000)){
@@ -325,6 +314,7 @@ class Kalender {
         return this.ugedage[midlertidigDato.getDay()];
     }
 
+    //Generer et ID til et møde
     generateID(){
         var møder = 0;
         for (var i=0; i<this.revisorhus.getRevisorer().length; i++){

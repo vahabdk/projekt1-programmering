@@ -12,6 +12,7 @@ class Møde {
         this.mail = mail;
     }
 
+
     printTime(){
         console.log(' Mødet starter: ' + this.startTime + ' og slutter: ' + this.endTime);
     }

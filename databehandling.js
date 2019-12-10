@@ -88,8 +88,3 @@ function formaterRevisor(r) {
     return returnRevisore;
 }
 
-
-//Tilføj møde til storage, for det nuværende revisorhus og nuvæende revisor
-function tilføjMødeTilStorage(møde){
-
-}

@@ -56,7 +56,6 @@ hentMøder();
             var mødeDato = new Date (startTid.getFullYear(), startTid.getMonth(), startTid.getDate());
 
 
-
             //if-statement som siger, at hvis mødedato lig valgtdato, så udskriver den mødeobjektet
             if (valgtDato.getFullYear() == mødeDato.getFullYear() &&
             valgtDato.getMonth() == mødeDato.getMonth() && valgtDato.getDate() == mødeDato.getDate()) {
@@ -138,6 +137,5 @@ function sorterEfterMødeDato(a, b){
     if(a.getStartTid().getTime() < b.getStartTid().getTime()){
         r = -1;
     }
-
     return r;
 }

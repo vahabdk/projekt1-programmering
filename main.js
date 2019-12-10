@@ -24,25 +24,18 @@ for (var i = 0; i < revisorer.length; i++) {
 var månedknapper = document.getElementsByClassName('månedKnap');
 for (var i = 0; i<månedknapper.length; i++){
     månedknapper[i].addEventListener('click', function(){
-        console.log('Knap klikket');
-        k.updateMonth(this.getAttribute('data-måned'));
+        console.log('Månedsknap klikket');
+        k.opdaterMåned(this.getAttribute('data-måned'));
     });
 }
 
 //Tilføj clikhandler for de to pile, til at vælge et nyt år
 document.getElementById('årVenstre').addEventListener('click', function(){
-    k.updateÅr(-1);
+    k.opdaterÅr(-1);
 });
 document.getElementById('årHøjre').addEventListener('click', function(){
-    k.updateÅr(1);
+    k.opdaterÅr(1);
 });
-
-var månedknapper = document.getElementsByClassName('månedKnap');
-for (var i = 0; i<månedknapper.length; i++){
-    månedknapper[i].addEventListener('click', function(){
-        k.updateMonth(this.getAttribute('data-måned'));
-    });
-}
 
 //Tilføjer eventlistener til dynamisk tilføjede elementer (altså via javascript), hvilket ugedagene er.
 //Kilde: https://stackoverflow.com/a/27373951
