@@ -30,7 +30,7 @@ for (var i = 0; i<månedknapper.length; i++){
     });
 }
 
-//Tilføj clikhandler for de to pile, til at vælge et nyt år
+//Tilføj event listener for de to pile, til at vælge et nyt år
 document.getElementById('årVenstre').addEventListener('click', function(){
     k.opdaterÅr(-1);
 });
@@ -62,8 +62,8 @@ document.getElementById('bookMødeSubmit').addEventListener('click', function(e)
    var valgRevisor = valgRevisorElement.options[valgRevisorElement.selectedIndex].value;
    var kundenavn = document.getElementById('kundenavn');
    var kommentar = document.getElementById('kommentar');
-   tilføjMødeTilStorage(rh, rh.getRevisorer()[valgRevisorElement], new Møde(nuværendeStarttidspunkt, nuværendeSluttidspunkt, kommentar, kundenavn));
 
+   //funktionen gemtilLS i validation.js benyttes også når der klikkes.
 });
 
 //Når mødelængden ændres

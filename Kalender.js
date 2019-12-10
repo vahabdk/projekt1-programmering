@@ -8,7 +8,10 @@ class Kalender {
         //Man kunne gennemgå alle møder overhovedet, men pga. performance, gør vi dette i stedet
         this.møderDenneMåned = [];
 
+        //Array med alle de tider som potentielt kan bookes af en kunde. Hvert element fjernes når et møde overlapper
         this.tiderPåDagen = [];
+
+        //Mødelængden som brugeren vælger
         this.mødeLængde = 0;
 
         this.revisorhus = revisorhus;
@@ -32,7 +35,6 @@ class Kalender {
         if(document.querySelector('.dage') != null){
             //Ryd kalenderen
             document.querySelector('.dage').innerHTML = '';
-
             document.getElementById('tidsplan').style.display = 'none';
             document.getElementById('opretMødeContainer').style.display = 'none';
 
@@ -102,8 +104,8 @@ class Kalender {
         this.refresh();
     }
 
+    //Set måneden til den nuværende måned +/- 1 afhængig af hvilken pil der er trykket på
     opdaterÅr(difference){
-        //Set måneden til den nuværende måned +/- 1 afhængig af hvilken pil der er trykket på
         this.måned.setFullYear(this.måned.getFullYear() + difference);
 
         //Kald initKalender igen, så kalenderen intitialiseres med den nye måned og nulstiller tidspslan med mere
@@ -113,8 +115,8 @@ class Kalender {
     //Hent data for dagene, og formatér kalenderen ud fra dette
     //Altså hvilke ugedage der er optaget, og hvilke der er ledige
     hentDataForUgedage() {
-        //Find dage med ledige tider, og giv den classen 'ledig' og 'optaget'
 
+        //Find dage med ledige tider, og giv den classen 'ledig' og 'optaget'
         var revisorMøder = this.visKalenderFor.getMøder();
         this.møderDenneMåned = [];
 
@@ -154,10 +156,14 @@ class Kalender {
         //Opret et Date objekt for den dato der trykkes på
         var elementDato = new Date(this.måned.getFullYear(), this.måned.getMonth(), element.innerText);
 
+        //bestem nuværende dag og ugedag
         var dag = element.innerText;
         var ugedag = this.ugedage[elementDato.getDay()];
 
+
         var tiderContainer = document.getElementById('tiderContainer');
+
+        //Hent brugerens valgte mødelængde
         this.mødeLængde = Number(document.getElementById('mødeOption').value);
 
         //Nulstil tiderContaineren (oversigten overledige tider)
@@ -291,6 +297,7 @@ class Kalender {
             var slutDate = new Date(this.tiderPåDagen[i].getTime() + (this.mødeLængde * 60 * 60 * 1000));
             var slutTidspunkt = this.tilToTal(slutDate.getHours()) + ':' + this.tilToTal(slutDate.getMinutes());
 
+            //lav et nyt element ud fra de rette oplysninger, og læg det ind i DOM'en
             var tidspunkt = document.createElement('span');
             tidspunkt.className = 'tidspunkt';
             tidspunkt.dataset.start = JSON.stringify(new Date(this.tiderPåDagen[i]));
@@ -302,6 +309,7 @@ class Kalender {
 
     //Sørger for der er 2 tal i et tal, så der fx står 08:00 i stedet for 8:0
     tilToTal(t){
+        //Er tallet med ét ciffer, lægges et nul til før tallet, ellers returneres tallet.
         if(t.toString().length == 1){
             return '0' + t;
         } else {
@@ -312,10 +320,11 @@ class Kalender {
     //Retunerer en ugedag ud fra en dato
     getUgedag(dato){
         var midlertidigDato = new Date(this.måned.getFullYear(), this.måned.getMonth(), dato);
+        //getDay returnerer indexet på ugendagen, hvilket bruges i arrayen ugedage, til at få navnet på dansk
         return this.ugedage[midlertidigDato.getDay()];
     }
 
-    //Generer et ID til et møde
+    //Generer et ID til et møde ud fra antallet af eksisterende møder
     generateID(){
         var møder = 0;
         for (var i=0; i<this.revisorhus.getRevisorer().length; i++){
