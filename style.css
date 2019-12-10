@@ -242,13 +242,13 @@ body{
     font-family: 'Roboto', 'roboto', sans-serif;
 }
 
-.opretBruger {
+.opretRevisor {
     width: 50%;
     position: relative;
     left: 25%;
 }
 
-#opretBrugerOverskrift {
+#opretRevisorOverskrift {
     float: top;
     font-size: 40px;
     border-bottom: 4px solid black;
@@ -257,7 +257,7 @@ body{
     margin-top: 10%;
 }
 
-.opretBrugerinput {
+.opretRevisorinput {
     width: 100%;
     overflow: hidden;
     font-size: 20px;
@@ -265,7 +265,7 @@ body{
     padding-bottom: 2%;
 }
 
-.opretBrugerinput input {
+.opretRevisorinput input {
     border: none;
     outline: none;
     background: none;
@@ -285,7 +285,7 @@ body{
     font-size: 18px;
 }
 
-#opretBrugerSubmit {
+#opretRevisorSubmit {
     width: 100%;
     border-radius: 2%;
     background-color: white;
