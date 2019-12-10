@@ -29,6 +29,6 @@ function checkLogin(e) {
 }
 
 function showErrorMessage() {
-    var error = "Forkert brugernavn og/eller password"
+    var error = "Forkert brugernavn og/eller password";
     document.getElementById("loginMessage").innerHTML = error;
 }
