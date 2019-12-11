@@ -5,20 +5,6 @@ var rh = getGemtRevisorHus();
 
 k = new Kalender(rh, rh.getRevisorer()[0]);
 
-
-//Opdaterer revisorer, så når der oprettes en ny revisorer, bliver den vist som en option
-var revisorer = rh.getRevisorer();
-for (var i = 0; i < revisorer.length; i++) {
-    console.log(revisorer[i]);
-    var nyRevisor = document.createElement("option");
-    nyRevisor.value = i;
-    nyRevisor.innerText = revisorer[i].getNavn();
-    document.getElementById("revisorOption").appendChild(nyRevisor);
-}
-
-
-
-
 //Add Event listeners
 
 //TIlføj eventhandler for måned-knapper, så kalenderen kan opdateres når der vælges en ny måned
@@ -71,6 +57,18 @@ document.getElementById('mødeOption').addEventListener('change', function(e){
     k.refresh();
 });
 
+
+//Lavet af MM
+
+//Opdaterer revisorer, så når der oprettes en ny revisorer, bliver den vist som en option
+var revisorer = rh.getRevisorer();
+for (var i = 0; i < revisorer.length; i++) {
+    console.log(revisorer[i]);
+    var nyRevisor = document.createElement("option");
+    nyRevisor.value = i;
+    nyRevisor.innerText = revisorer[i].getNavn();
+    document.getElementById("revisorOption").appendChild(nyRevisor);
+}
 
 //Opdaterer kalender alt efter hvilken revisor man trykker på
 document.getElementById('revisorOption').addEventListener('change', function(e){

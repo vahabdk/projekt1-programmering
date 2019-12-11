@@ -131,6 +131,7 @@ function sletMøde(id) {
     }
 }
 
+//Lavet af VR
 //Log af ved at rydde sessionstorage
 function logAf(){
     sessionStorage.removeItem('loggedInRevisorObject');
@@ -138,6 +139,7 @@ function logAf(){
     window.location.href = 'Login.html';
 }
 
+//Lavet af FH
 //Sorterer efter mødedato
 //Retunerer -1 hvis a kommer først og 1 hvis b kommer først
 function sorterEfterMødeDato(a, b){
