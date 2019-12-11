@@ -57,16 +57,20 @@ function validereInfo() {
         }
 
 
+        //Gem til local storage
         function gemtilLS() {
+            //Sikrer igen at inputtet er korrekt
             if (korrektInput) {
-                console.log(k.generateID());
                 //Vi formaterer daten som er stringified. Inspiration: https://stackoverflow.com/a/11491993
                 //nuværendeStarttidspunkt og sluttidspunkt fås fra main.js, hvor den viser tidsplanen
                 var start = new Date(JSON.parse(JSON.stringify(nuværendeStarttidspunkt)));
                 var slut = new Date(JSON.parse(JSON.stringify(nuværendeSluttidspunkt)));
+
+                //instansierer det nye møde
                 var nytMøde = new Møde(start, slut, k.generateID(), kommentar, kundenavn, tlfnr, mail);
-                console.log(rh.getRevisorer())
-                rh.getRevisorer()[revisor].tilføjMøder(nytMøde)
+
+                //Tilføj mødet til den nye revisor og push den op på localstorage
+                rh.getRevisorer()[revisor].tilføjMøder(nytMøde);
                 localStorage.setItem('gemtRevisorhus', JSON.stringify(rh));
             }
         }
