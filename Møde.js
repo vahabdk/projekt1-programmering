@@ -1,6 +1,6 @@
 // Lavet af VR
 // starter med at definere Møde class constructor: Møde består af
-
+// https://eloquentjavascript.net/Eloquent_JavaScript.pdf p.102
 
 class Møde {
     constructor (start, slut, id, kommentar, kundenavn, tlfnr, mail){
@@ -16,8 +16,8 @@ class Møde {
     printTime(){
         console.log(' Mødet starter: ' + this.startTime + ' og slutter: ' + this.endTime);
     }
-
-
+// getTime
+// https://eloquentjavascript.net/Eloquent_JavaScript.pdf p.149
     getMødeLængde(){
         return (this.endTime.getTime() - this.startTime.getTime()) / (1000 * 60 * 60);
     }
@@ -67,7 +67,9 @@ class Møde {
     }
 
 }
-
+// inheritance
+// super()
+// https://eloquentjavascript.net/Eloquent_JavaScript.pdf p.112
 
 class langMøde extends Møde {
     constructor(start, id, kommentar, kundenavn, tlfnr, mail) {

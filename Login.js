@@ -1,5 +1,7 @@
 // Lavet af VR
-// https://eloquentjavascript.net/15_event.html
+// eventlistener
+// JSON.stringify
+// https://eloquentjavascript.net/Eloquent_JavaScript.pdf p.243, p.78
 
 document.getElementById('submit').addEventListener('click', function(e) {
     checkLogin(e);
