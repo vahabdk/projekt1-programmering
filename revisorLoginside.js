@@ -10,6 +10,8 @@ if (roid == null || ro == null) {
 }
 
 ro = formaterRevisor(ro)[0];
+
+
 //lavet af MM
 //Henter og indsætter info om hvilken revisor der er logget ind
 document.getElementById('revisorNavn').innerHTML = ro.getNavn();
